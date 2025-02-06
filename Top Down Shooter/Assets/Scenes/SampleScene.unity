@@ -1624,6 +1624,7 @@ GameObject:
   - component: {fileID: 2005153921}
   - component: {fileID: 2005153920}
   - component: {fileID: 2005153919}
+  - component: {fileID: 2005153924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1643,8 +1644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a6b30e79f9e8c44995c95b8e7649c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInput: {x: 0, y: 0}
-  aimInput: {x: 0, y: 0}
+  movementDirection: {x: 0, y: 0, z: 0}
+  movementSpeed: 2
 --- !u!65 &2005153920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1732,6 +1733,32 @@ Transform:
   - {fileID: 1990906904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &2005153924
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005153918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2055344584
 GameObject:
   m_ObjectHideFlags: 0
