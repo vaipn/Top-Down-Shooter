@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField] private Vector3 movementDirection;
 	[SerializeField] private float movementSpeed;
+	private float verticalVelocity;
 
 	private Vector2 moveInput;
 	private Vector2 aimInput;
+	
 
 	private void Awake()
 	{
@@ -38,11 +38,23 @@ public class PlayerMovement : MonoBehaviour
 	private void ApplyMovement()
 	{
 		movementDirection = new Vector3(moveInput.x, 0, moveInput.y);
+		ApplyGravity();
 
 		if (movementDirection.magnitude > 0)
 		{
 			characterController.Move(movementDirection * Time.deltaTime * movementSpeed);
 		}
+	}
+
+	private void ApplyGravity()
+	{
+		if (!characterController.isGrounded)
+		{
+			verticalVelocity -= 9.81f * Time.deltaTime;
+			movementDirection.y = verticalVelocity;
+		}
+		else
+			verticalVelocity = -0.5f;
 	}
 
 	private void OnEnable()
