@@ -47,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
 		AnimatorControllers();
 	}
 
+	private void Shoot()
+	{
+		animator.SetTrigger("Fire");
+	}
+
 	private void AnimatorControllers()
 	{
 		float xVelocity = Vector3.Dot(movementDirection.normalized, transform.right);
@@ -102,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
 	private void AssignInputEvents()
 	{
 		controls = new PlayerControls();
+
+		controls.Character.Fire.performed += context => Shoot();
 
 		controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
 		controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
