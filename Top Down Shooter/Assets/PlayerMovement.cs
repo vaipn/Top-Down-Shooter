@@ -1,10 +1,12 @@
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 	private PlayerControls controls;
 	private CharacterController characterController;
+	private Animator animator;
 
 	[Header("Movement info")]
 	[SerializeField] private Vector3 movementDirection;
@@ -35,12 +37,23 @@ public class PlayerMovement : MonoBehaviour
 	private void Start()
 	{
 		characterController = GetComponent<CharacterController>();
+		animator = GetComponentInChildren<Animator>();
 	}
 
 	private void Update()
 	{
 		ApplyMovement();
 		AimTowardsMouse();
+		AnimatorControllers();
+	}
+
+	private void AnimatorControllers()
+	{
+		float xVelocity = Vector3.Dot(movementDirection.normalized, transform.right);
+		float zVelocity = Vector3.Dot(movementDirection.normalized, transform.forward);
+
+		animator.SetFloat("xVelocity", xVelocity, 0.1f, Time.deltaTime);
+		animator.SetFloat("zVelocity", zVelocity, 0.1f, Time.deltaTime);
 	}
 
 	private void AimTowardsMouse()

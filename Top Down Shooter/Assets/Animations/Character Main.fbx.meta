@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6611b4e37a78bcd40abd9cef849c492e
+guid: e2e20ea341077f346bc752413f95029d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,13 +33,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Rifle Walk Backward
+      name: Rifle Aiming Dying
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 87
       wrapMode: 0
-      orientationOffsetY: 9.5
+      orientationOffsetY: 4
       level: 0
       cycleOffset: 0
       loop: 0
@@ -901,11 +901,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e2e20ea341077f346bc752413f95029d, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
