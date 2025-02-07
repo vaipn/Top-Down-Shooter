@@ -11,7 +11,10 @@ public class PlayerMovement : MonoBehaviour
 	[Header("Movement info")]
 	[SerializeField] private Vector3 movementDirection;
 	[SerializeField] private float movementSpeed;
+	[SerializeField] private float runSpeed;
+	private float walkSpeed;
 	private float verticalVelocity;
+	private bool isRunning;
 
 	[Header("Aim info")]
 	[SerializeField] private Transform aim;
@@ -25,19 +28,16 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Awake()
 	{
-		controls = new PlayerControls();
-
-		controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
-		controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
-
-		controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
-		controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
+		AssignInputEvents();
 	}
+
 
 	private void Start()
 	{
 		characterController = GetComponent<CharacterController>();
 		animator = GetComponentInChildren<Animator>();
+
+		walkSpeed = movementSpeed;
 	}
 
 	private void Update()
@@ -54,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
 
 		animator.SetFloat("xVelocity", xVelocity, 0.1f, Time.deltaTime);
 		animator.SetFloat("zVelocity", zVelocity, 0.1f, Time.deltaTime);
+
+		bool playRunAnimation = isRunning && movementDirection.magnitude > 0;
+
+		animator.SetBool("isRunning", playRunAnimation);
 	}
 
 	private void AimTowardsMouse()
@@ -94,6 +98,31 @@ public class PlayerMovement : MonoBehaviour
 			verticalVelocity = -0.5f;
 	}
 
+	#region New Input System
+	private void AssignInputEvents()
+	{
+		controls = new PlayerControls();
+
+		controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
+		controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
+
+		controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
+		controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
+
+		controls.Character.Run.performed += context =>
+		{
+			movementSpeed = runSpeed;
+			isRunning = true;
+			
+		};
+
+		controls.Character.Run.canceled += context =>
+		{
+			movementSpeed = walkSpeed;
+			isRunning = false;
+		};
+	}
+
 	private void OnEnable()
 	{
 		controls.Enable();
@@ -103,4 +132,5 @@ public class PlayerMovement : MonoBehaviour
 	{
 		controls.Disable();
 	}
+	#endregion
 }

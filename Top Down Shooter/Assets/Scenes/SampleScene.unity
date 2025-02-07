@@ -1621,6 +1621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
   movementSpeed: 2
+  runSpeed: 5
   aim: {fileID: 985588907}
   aimLayerMask:
     serializedVersion: 2
