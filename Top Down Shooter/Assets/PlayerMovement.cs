@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
 			transform.forward = lookingDirection;
 
-			aim.position = new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z);
+			aim.position = new Vector3(hitInfo.point.x, transform.position.y + 1.3f, hitInfo.point.z);
 		}
 	}
 
