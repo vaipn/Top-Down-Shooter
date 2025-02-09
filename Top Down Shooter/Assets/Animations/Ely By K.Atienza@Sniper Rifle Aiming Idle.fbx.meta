@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dff0e9e2f71eb924e997808f383b3b2d
+guid: bf8e65bb468076f4a96bf35afa6dc7fb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Firing Shotgun
+      name: Sniper Rifle Aiming Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 76
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
