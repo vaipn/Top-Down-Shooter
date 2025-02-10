@@ -17,4 +17,14 @@ public class PlayerAnimationEvents : MonoBehaviour
 
 		//refill bullets
 	}
+
+	public void ReturnRigWeightToOne()
+	{
+		weaponVisualController.ReturnRigWeightToOne();
+	}
+
+	public void WeaponGrabIsOver()
+	{
+		weaponVisualController.FinishedGrabbingWeapon();
+	}
 }

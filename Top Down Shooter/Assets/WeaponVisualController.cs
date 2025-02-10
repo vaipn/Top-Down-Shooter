@@ -22,6 +22,7 @@ public class WeaponVisualController : MonoBehaviour
 	private bool shouldRigBeIncreased;
 	private Rig rig;
 
+	private bool isGrabbingWeapon;
 
 	[Header("Left hand IK")]
 	[SerializeField] private Transform leftHandTarget;
@@ -39,10 +40,10 @@ public class WeaponVisualController : MonoBehaviour
 	{
 		WeaponSwitch();
 
-		if (Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKeyDown(KeyCode.R) && !isGrabbingWeapon)
 		{
 			animator.SetTrigger("Reload");
-			rig.weight = 0;
+			PauseRig();
 		}
 
 		if (shouldRigBeIncreased)
@@ -54,6 +55,31 @@ public class WeaponVisualController : MonoBehaviour
 		}
 	}
 
+	private void PauseRig()
+	{
+		rig.weight = 0;
+	}
+
+	private void PlayWeaponGrabAnimation(GrabType grabType)
+	{
+		PauseRig();
+		animator.SetFloat("Weapon Grab Type", (float)grabType);
+		animator.SetTrigger("Grab Weapon");
+
+		SetIsGrabbingWeaponTo(true);
+	}
+
+	public void FinishedGrabbingWeapon()
+	{
+		SetIsGrabbingWeaponTo(false);
+	}
+
+	private void SetIsGrabbingWeaponTo(bool busy)
+	{
+		isGrabbingWeapon = busy;
+		animator.SetBool("isGrabbingWeapon", isGrabbingWeapon);
+	}
+
 	public void ReturnRigWeightToOne() => shouldRigBeIncreased = true;
 
 	private void WeaponSwitch()
@@ -62,30 +88,35 @@ public class WeaponVisualController : MonoBehaviour
 		{
 			SwitchOn(pistol);
 			SwitchAnimationLayer(1);
+			PlayWeaponGrabAnimation(GrabType.SideGrab);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			SwitchOn(revolver);
 			SwitchAnimationLayer(1);
+			PlayWeaponGrabAnimation(GrabType.SideGrab);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			SwitchOn(autoRifle);
 			SwitchAnimationLayer(1);
+			PlayWeaponGrabAnimation(GrabType.BackGrab);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			SwitchOn(shotGun);
 			SwitchAnimationLayer(2);
+			PlayWeaponGrabAnimation(GrabType.BackGrab);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha5))
 		{
 			SwitchOn(sniperRifle);
 			SwitchAnimationLayer(3);
+			PlayWeaponGrabAnimation(GrabType.BackGrab);
 		}
 	}
 
@@ -125,3 +156,5 @@ public class WeaponVisualController : MonoBehaviour
 		animator.SetLayerWeight(layerIndex, 1);
 	}
 }
+
+public enum GrabType { SideGrab, BackGrab};
