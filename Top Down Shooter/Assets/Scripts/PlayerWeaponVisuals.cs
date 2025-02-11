@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class WeaponVisualController : MonoBehaviour
+public class PlayerWeaponVisuals : MonoBehaviour
 {
 	private Animator animator;
+	private bool isGrabbingWeapon;
 
+	#region Gun transforms region
 	[SerializeField] private Transform[] gunTransforms;
 
 	[SerializeField] private Transform pistol;
@@ -16,13 +18,13 @@ public class WeaponVisualController : MonoBehaviour
 	[SerializeField] private Transform sniperRifle;
 
 	private Transform currentGun;
+	#endregion
 
 	[Header("Rig")]
-	[SerializeField] private float rigIncreaseStep;
-	private bool shouldRigBeIncreased;
+	[SerializeField] private float rigWeightIncreaseRate;
+	private bool shouldIncreaseRigWeight;
 	private Rig rig;
 
-	private bool isGrabbingWeapon;
 
 	[Header("Left hand IK")]
 	[SerializeField] private Transform leftHandTarget;
@@ -43,26 +45,26 @@ public class WeaponVisualController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R) && !isGrabbingWeapon)
 		{
 			animator.SetTrigger("Reload");
-			PauseRig();
+			ReduceRigWeight();
 		}
 
-		if (shouldRigBeIncreased)
+		if (shouldIncreaseRigWeight)
 		{
-			rig.weight += rigIncreaseStep * Time.deltaTime;
+			rig.weight += rigWeightIncreaseRate * Time.deltaTime;
 
 			if (rig.weight >= 1)
-				shouldRigBeIncreased = false;
+				shouldIncreaseRigWeight = false;
 		}
 	}
 
-	private void PauseRig()
+	private void ReduceRigWeight()
 	{
 		rig.weight = 0;
 	}
 
 	private void PlayWeaponGrabAnimation(GrabType grabType)
 	{
-		PauseRig();
+		ReduceRigWeight();
 		animator.SetFloat("Weapon Grab Type", (float)grabType);
 		animator.SetTrigger("Grab Weapon");
 
@@ -80,7 +82,7 @@ public class WeaponVisualController : MonoBehaviour
 		animator.SetBool("isGrabbingWeapon", isGrabbingWeapon);
 	}
 
-	public void ReturnRigWeightToOne() => shouldRigBeIncreased = true;
+	public void ReturnRigWeightToOne() => shouldIncreaseRigWeight = true;
 
 	private void WeaponSwitch()
 	{
