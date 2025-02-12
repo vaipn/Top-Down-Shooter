@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
 	private Animator animator;
 
 	[Header("Movement info")]
-	private Vector2 moveInput;
 	[SerializeField] private Vector3 movementDirection;
 	[SerializeField] private float movementSpeed;
 	[SerializeField] private float turnSpeed;
@@ -19,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	private float verticalVelocity;
 	private bool isRunning;
 
+	public Vector2 moveInput { get; private set; }
 	private void Start()
 	{
 		player = GetComponent<Player>();

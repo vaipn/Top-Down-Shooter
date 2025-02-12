@@ -1454,7 +1454,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.020599991, y: 1.2999997, z: 2.0693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1615,7 +1615,7 @@ Transform:
   m_GameObject: {fileID: 985588903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.62, y: 1.3, z: -0.01697141}
+  m_LocalPosition: {x: 0.275, y: 1.3, z: 1.704}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 2005153923}
+  m_Follow: {fileID: 985588907}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -2543,7 +2543,7 @@ Transform:
   m_GameObject: {fileID: 1566899739}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.020599991, y: 1.2999997, z: 2.0693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2757,6 +2757,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aim: {fileID: 985588907}
+  minCameraDistance: 0.5
+  maxCameraDistance: 3
+  aimSensitivity: 3
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 192
