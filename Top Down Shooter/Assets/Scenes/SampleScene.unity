@@ -2651,6 +2651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
   movementSpeed: 2
+  turnSpeed: 7
   runSpeed: 5
 --- !u!4 &2005153923
 Transform:

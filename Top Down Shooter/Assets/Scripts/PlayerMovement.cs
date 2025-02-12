@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 moveInput;
 	[SerializeField] private Vector3 movementDirection;
 	[SerializeField] private float movementSpeed;
+	[SerializeField] private float turnSpeed;
 	[SerializeField] private float runSpeed;
 	private float walkSpeed;
 	private float verticalVelocity;
@@ -57,7 +58,10 @@ public class PlayerMovement : MonoBehaviour
 		lookingDirection.y = 0f;
 		lookingDirection.Normalize();
 
-		transform.forward = lookingDirection;
+		Quaternion desiredRotation = Quaternion.LookRotation(lookingDirection);
+		transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, turnSpeed * Time.deltaTime);
+
+		//transform.forward = lookingDirection;
 
 	}
 
