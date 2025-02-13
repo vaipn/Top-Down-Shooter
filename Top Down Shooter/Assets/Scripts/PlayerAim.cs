@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
@@ -10,6 +11,10 @@ public class PlayerAim : MonoBehaviour
     private PlayerControls controls;
 
     private Vector2 aimInput;
+
+	[Header("Aim visual - Laser")]
+	[SerializeField] private LineRenderer aimLaser;
+
 
 	[Header("Aim control")]
 	[SerializeField] private Transform aim;
@@ -41,8 +46,31 @@ public class PlayerAim : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.L))
 			isLockingToTarget = !isLockingToTarget;
 
+		UpdateAimLaser();
 		UpdateAimPosition();
 		UpdateCameraPosition();
+	}
+
+	private void UpdateAimLaser()
+	{
+
+		Transform gunPoint = player.weaponController.GunPoint();
+		Vector3 laserDirection = player.weaponController.BulletDirection();
+
+		float laserTipLength = 0.5f;
+		float laserDistance = 4f;
+
+		Vector3 endPoint = gunPoint.position + laserDirection * laserDistance;
+
+		if (Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, laserDistance))
+		{
+			endPoint = hit.point;
+			laserTipLength = 0;
+		}
+
+		aimLaser.SetPosition(0, gunPoint.position);
+		aimLaser.SetPosition(1, endPoint);
+		aimLaser.SetPosition(2, endPoint + laserDirection * laserTipLength);
 	}
 
 	public Transform TargetToLock()

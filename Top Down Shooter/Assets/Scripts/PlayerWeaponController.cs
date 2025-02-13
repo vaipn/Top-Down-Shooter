@@ -32,7 +32,7 @@ public class PlayerWeaponController : MonoBehaviour
 		animator.SetTrigger("Fire");
 	}
 
-	private Vector3 BulletDirection()
+	public Vector3 BulletDirection()
 	{
 		Vector3 direction = (aim.position - gunPoint.position).normalized;
 		
@@ -45,4 +45,6 @@ public class PlayerWeaponController : MonoBehaviour
 
 		return direction;
 	}
+
+	public Transform GunPoint() => gunPoint;
 }
