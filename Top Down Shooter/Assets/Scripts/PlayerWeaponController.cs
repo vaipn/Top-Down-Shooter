@@ -10,6 +10,8 @@ public class PlayerWeaponController : MonoBehaviour
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float bulletSpeed;
 	[SerializeField] private Transform gunPoint;
+	[SerializeField] private Transform weaponHolder;
+	[SerializeField] private Transform aim;
 
 	private void Start()
 	{
@@ -21,12 +23,24 @@ public class PlayerWeaponController : MonoBehaviour
 
 	private void Shoot()
 	{
-		GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
+		GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(BulletDirection()));
 
-		newBullet.GetComponent<Rigidbody>().velocity = gunPoint.forward * bulletSpeed * Time.deltaTime;
+		newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed * Time.deltaTime;
 
-		Destroy(newBullet, 10f);
+		Destroy(newBullet, 10);
 
 		animator.SetTrigger("Fire");
+	}
+
+	private Vector3 BulletDirection()
+	{
+		Vector3 direction = (aim.position - gunPoint.position).normalized;
+
+		direction.y = 0;
+
+		weaponHolder.LookAt(aim);
+		gunPoint.LookAt(aim);
+
+		return direction;
 	}
 }
