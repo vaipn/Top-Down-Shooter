@@ -11,7 +11,6 @@ public class PlayerWeaponController : MonoBehaviour
 	[SerializeField] private float bulletSpeed;
 	[SerializeField] private Transform gunPoint;
 	[SerializeField] private Transform weaponHolder;
-	[SerializeField] private Transform aim;
 
 	private void Start()
 	{
@@ -34,14 +33,16 @@ public class PlayerWeaponController : MonoBehaviour
 
 	public Vector3 BulletDirection()
 	{
+		Transform aim = player.aim.Aim();
 		Vector3 direction = (aim.position - gunPoint.position).normalized;
 		
 
 		if (!player.aim.CanAimPrecisely() && player.aim.TargetToLock() == null)
 			direction.y = 0;
 
-		weaponHolder.LookAt(aim);
-		gunPoint.LookAt(aim);
+		// TODO: Find a better place for these
+		//weaponHolder.LookAt(aim);
+		//gunPoint.LookAt(aim);
 
 		return direction;
 	}
