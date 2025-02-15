@@ -289,7 +289,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: d15c313f6bf63dd4a8b7ddd17e3300fb, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: e085d39d8971a474a9b29ee555097560, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1
