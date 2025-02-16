@@ -6800,6 +6800,13 @@ MonoBehaviour:
   bulletSpeed: 1500
   gunPoint: {fileID: 1854318178}
   weaponHolder: {fileID: 779303515}
+  weaponSlots:
+  - weaponType: 0
+    ammo: 21
+    maxAmmo: 21
+  - weaponType: 1
+    ammo: 6
+    maxAmmo: 6
 --- !u!114 &2005153927
 MonoBehaviour:
   m_ObjectHideFlags: 0
