@@ -40,12 +40,23 @@ public class PlayerWeaponController : MonoBehaviour
 		controls.Character.Fire.performed += context => Shoot();
 		controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
 		controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
+		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
 
 	}
 
 	private void EquipWeapon(int i)
 	{
 		currentWeapon = weaponSlots[i];
+	}
+
+	private void DropWeapon()
+	{
+		if (weaponSlots.Count <= 1)
+			return;
+
+		weaponSlots.Remove(currentWeapon);
+
+		currentWeapon = weaponSlots[0]; // weapon slots would have had only one element left
 	}
 
 	private void Shoot()
