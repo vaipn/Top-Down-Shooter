@@ -59,6 +59,17 @@ public class PlayerWeaponController : MonoBehaviour
 		currentWeapon = weaponSlots[0]; // weapon slots would have had only one element left
 	}
 
+	public void PickupWeapon(Weapon newWeapon)
+	{
+		if (weaponSlots.Count >= 2) // there should only be max of 2 weapons equipped
+		{
+			Debug.Log("No slots available");
+			return;
+		}
+
+		weaponSlots.Add(newWeapon);
+	}
+
 	private void Shoot()
 	{
 		if (currentWeapon.ammo <= 0)
