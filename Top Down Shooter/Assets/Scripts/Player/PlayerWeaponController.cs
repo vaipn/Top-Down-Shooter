@@ -32,18 +32,7 @@ public class PlayerWeaponController : MonoBehaviour
 		currentWeapon = weaponSlots[0];
 	}
 
-	private void AssignInputEvents()
-	{
-		PlayerControls controls = player.controls;
-
-
-		controls.Character.Fire.performed += context => Shoot();
-		controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
-		controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
-		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
-
-	}
-
+	#region Slots Management - Equip/Drop/Pickup weapon
 	private void EquipWeapon(int i)
 	{
 		currentWeapon = weaponSlots[i];
@@ -69,13 +58,12 @@ public class PlayerWeaponController : MonoBehaviour
 
 		weaponSlots.Add(newWeapon);
 	}
-
+	#endregion
 	private void Shoot()
 	{
-		if (currentWeapon.ammo <= 0)
+		if (!currentWeapon.CanShoot())
 			return;
 
-		currentWeapon.ammo--;
 
 		GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(BulletDirection()));
 
@@ -107,4 +95,18 @@ public class PlayerWeaponController : MonoBehaviour
 	}
 
 	public Transform GunPoint() => gunPoint;
+
+	#region Input Events
+	private void AssignInputEvents()
+	{
+		PlayerControls controls = player.controls;
+
+
+		controls.Character.Fire.performed += context => Shoot();
+		controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
+		controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
+		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
+
+	}
+	#endregion
 }
