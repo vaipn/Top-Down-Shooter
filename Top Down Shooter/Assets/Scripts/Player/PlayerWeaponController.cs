@@ -96,6 +96,8 @@ public class PlayerWeaponController : MonoBehaviour
 
 	public Transform GunPoint() => gunPoint;
 
+	public Weapon CurrentWeapon() => currentWeapon;
+
 	#region Input Events
 	private void AssignInputEvents()
 	{
@@ -106,6 +108,11 @@ public class PlayerWeaponController : MonoBehaviour
 		controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
 		controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
 		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
+		controls.Character.Reload.performed += context =>
+		{
+			if (currentWeapon.CanReload())
+				player.weaponVisuals.PlayReloadAnimation();
+		};
 
 	}
 	#endregion

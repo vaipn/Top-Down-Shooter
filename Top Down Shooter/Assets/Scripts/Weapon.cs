@@ -2,8 +2,9 @@
 public class Weapon
 {
     public WeaponType weaponType;
-    public int ammo;
-    public int maxAmmo;
+    public int bulletsInMagazine;
+	public int magazineCapacity;
+    public int totalReserveAmmo;
 
     public bool CanShoot()
 	{
@@ -12,13 +13,43 @@ public class Weapon
 
 	private bool HaveEnoughBullets()
 	{
-		if (ammo > 0)
+		if (bulletsInMagazine > 0)
 		{
-			ammo--;
+			bulletsInMagazine--;
 			return true;
 		}
 
 		return false;
+	}
+
+	public bool CanReload()
+	{
+		if (bulletsInMagazine == magazineCapacity)
+			return false;
+
+		if (totalReserveAmmo > 0)
+			return true;
+
+		return false;
+	}
+
+	public void RefillBullets()
+	{
+		if (weaponType == WeaponType.Revolver)
+			totalReserveAmmo += bulletsInMagazine; // keep bullets in magazine while reloading.
+												   // You don't throw unused magazine in a revolver away,
+												   // you just add more bullets to the ones in the magazine.
+
+		int bulletsToReload = magazineCapacity;
+
+		if (bulletsToReload > totalReserveAmmo)
+			bulletsToReload = totalReserveAmmo;
+
+		totalReserveAmmo -= bulletsToReload;
+		bulletsInMagazine = bulletsToReload;
+
+		if (totalReserveAmmo < 0)
+			totalReserveAmmo = 0;
 	}
 }
 

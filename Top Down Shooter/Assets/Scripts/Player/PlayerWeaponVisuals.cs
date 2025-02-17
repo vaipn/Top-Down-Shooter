@@ -42,12 +42,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 	{
 		WeaponSwitch();
 
-		if (Input.GetKeyDown(KeyCode.R) && !isGrabbingWeapon)
-		{
-			animator.SetTrigger("Reload");
-			ReduceRigWeight();
-		}
-
 		if (shouldIncreaseRigWeight)
 		{
 			rig.weight += rigWeightIncreaseRate * Time.deltaTime;
@@ -55,6 +49,15 @@ public class PlayerWeaponVisuals : MonoBehaviour
 			if (rig.weight >= 1)
 				shouldIncreaseRigWeight = false;
 		}
+	}
+
+	public void PlayReloadAnimation()
+	{
+		if (isGrabbingWeapon)
+			return;
+
+		animator.SetTrigger("Reload");
+		ReduceRigWeight();
 	}
 
 	private void ReduceRigWeight()
