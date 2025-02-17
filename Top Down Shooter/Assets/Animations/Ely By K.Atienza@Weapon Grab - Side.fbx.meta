@@ -71,6 +71,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.2265443
+        functionName: SwitchOnWeaponModelObject
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 8dc1970192c6ce448bcf63a2bb3c90fe, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

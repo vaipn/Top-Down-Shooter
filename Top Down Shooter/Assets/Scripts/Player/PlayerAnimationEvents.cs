@@ -31,4 +31,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 	{
 		weaponVisualController.FinishedGrabbingWeapon();
 	}
+
+	public void SwitchOnWeaponModelObject() => weaponVisualController.SwitchOnCurrentWeaponModelObject();
 }

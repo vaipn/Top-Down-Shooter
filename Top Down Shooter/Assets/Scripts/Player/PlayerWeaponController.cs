@@ -29,13 +29,16 @@ public class PlayerWeaponController : MonoBehaviour
 		AssignInputEvents();
 
 		//currentWeapon.ammo = currentWeapon.maxAmmo;
-		currentWeapon = weaponSlots[0];
+		//currentWeapon = weaponSlots[0];
 	}
 
 	#region Slots Management - Equip/Drop/Pickup weapon
 	private void EquipWeapon(int i)
 	{
 		currentWeapon = weaponSlots[i];
+
+		player.weaponVisuals.SwitchOffWeaponModelsObjects();
+		player.weaponVisuals.PlayWeaponEquipAnimation();
 	}
 
 	private void DropWeapon()
