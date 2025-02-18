@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable] // Makes class visible in the inspector
 public class Weapon
 {
@@ -6,6 +8,11 @@ public class Weapon
 	public int magazineCapacity;
     public int totalReserveAmmo;
 
+	[Range(1,2)]
+	public float reloadSpeed = 1;
+
+	[Range(1,2)]
+	public float equipSpeed = 1;
     public bool CanShoot()
 	{
 		return HaveEnoughBullets();

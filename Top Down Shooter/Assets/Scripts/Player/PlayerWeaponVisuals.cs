@@ -45,6 +45,9 @@ public class PlayerWeaponVisuals : MonoBehaviour
 		if (isEquipingWeapon)
 			return;
 
+		float reloadSpeed = player.weaponController.CurrentWeapon().reloadSpeed;
+
+		animator.SetFloat("Reload Speed", reloadSpeed);
 		animator.SetTrigger("Reload");
 		ReduceRigWeight();
 	}
@@ -53,9 +56,13 @@ public class PlayerWeaponVisuals : MonoBehaviour
 	{
 		EquipType equipType = CurrentWeaponModel().equipType;
 
+		float equippingSpeed = player.weaponController.CurrentWeapon().equipSpeed;
+
 		ReduceRigWeight();
-		animator.SetFloat("Weapon Equip Type", (float)equipType);
+
 		animator.SetTrigger("Equip Weapon");
+		animator.SetFloat("Weapon Equip Type", (float)equipType);
+		animator.SetFloat("Equip Speed", equippingSpeed);
 
 		SetIsEquipingWeaponTo(true);
 	}

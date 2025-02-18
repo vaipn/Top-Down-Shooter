@@ -28,17 +28,18 @@ public class PlayerWeaponController : MonoBehaviour
 
 		AssignInputEvents();
 
-		//currentWeapon.ammo = currentWeapon.maxAmmo;
-		//currentWeapon = weaponSlots[0];
+		Invoke("EquipStartingWeapon", 0.1f);
 	}
 
 	#region Slots Management - Equip/Drop/Pickup weapon
+	private void EquipStartingWeapon() => EquipWeapon(0);
 	private void EquipWeapon(int i)
 	{
 		currentWeapon = weaponSlots[i];
 
 		player.weaponVisuals.PlayWeaponEquipAnimation();
 	}
+
 
 	private void DropWeapon()
 	{
