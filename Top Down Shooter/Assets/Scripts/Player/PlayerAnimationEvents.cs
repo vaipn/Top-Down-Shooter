@@ -27,9 +27,9 @@ public class PlayerAnimationEvents : MonoBehaviour
 		weaponVisualController.ReturnRigWeightToOne();
 	}
 
-	public void WeaponGrabIsOver()
+	public void WeaponEquipIsOver()
 	{
-		weaponVisualController.FinishedGrabbingWeapon();
+		weaponVisualController.FinishedEquipingWeapon();
 	}
 
 	public void SwitchOnWeaponModelObject() => weaponVisualController.SwitchOnCurrentWeaponModelObject();

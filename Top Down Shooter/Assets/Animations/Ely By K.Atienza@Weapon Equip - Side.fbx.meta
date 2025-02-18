@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Weapon Grab - Side
+      name: Weapon Equip - Side
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -65,7 +65,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: WeaponGrabIsOver
+        functionName: WeaponEquipIsOver
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 8dc1970192c6ce448bcf63a2bb3c90fe, type: 3}
         floatParameter: 0

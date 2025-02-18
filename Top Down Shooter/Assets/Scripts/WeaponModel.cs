@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponModel : MonoBehaviour
 {
     public WeaponType weaponType;
-    public GrabType grabType;
+    public EquipType equipType;
     public HoldType holdType;
 
     public Transform gunPoint;
@@ -13,4 +13,4 @@ public class WeaponModel : MonoBehaviour
 }
 
 public enum HoldType { CommonHold = 1, LowHold, HighHold };
-public enum GrabType { SideGrab, BackGrab };
+public enum EquipType { SideEquip, BackEquip };
