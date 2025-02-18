@@ -69,15 +69,16 @@ public class PlayerWeaponController : MonoBehaviour
 			return;
 
 
-		GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(BulletDirection()));
+		GameObject newBullet = ObjectPool.instance.GetBulletFromQueue();
+		newBullet.transform.position = gunPoint.position;
+		newBullet.transform.rotation = Quaternion.LookRotation(BulletDirection());
+		
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
 
 		rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
 		rbNewBullet.velocity = BulletDirection() * bulletSpeed * Time.deltaTime;
-
-		Destroy(newBullet, 10);
 
 		animator.SetTrigger("Fire");
 	}

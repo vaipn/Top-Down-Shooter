@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 	{
 		CreateImpactFX(collision);
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
-		Destroy(gameObject);
+		ObjectPool.instance.ReturnBulletToQueue(gameObject);
 	}
 
 	private void CreateImpactFX(Collision collision)
