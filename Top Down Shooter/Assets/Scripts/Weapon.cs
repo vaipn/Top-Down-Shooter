@@ -4,6 +4,14 @@ using UnityEngine;
 public class Weapon
 {
     public WeaponType weaponType;
+
+	[Header("Shooting details")]
+	public ShootType shootType;
+	public float fireRate = 1; // bullets per second
+	private float lastShootTime;
+
+
+	[Header("Ammo details")]
     public int bulletsInMagazine;
 	public int magazineCapacity;
     public int totalReserveAmmo;
@@ -14,9 +22,6 @@ public class Weapon
 	[Range(1,2)]
 	public float equipSpeed = 1;
 
-	[Space]
-	public float fireRate = 1; // bullets per second
-	private float lastShootTime;
     public bool CanShoot()
 	{
 		if (HaveEnoughBullets() && ReadyToFire())
@@ -81,4 +86,10 @@ public enum WeaponType
     AutoRifle,
     ShotGun,
     Sniper
+}
+
+public enum ShootType
+{
+	Single,
+	Auto
 }

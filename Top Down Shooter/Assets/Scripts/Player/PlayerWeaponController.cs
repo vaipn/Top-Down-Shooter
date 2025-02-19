@@ -4,8 +4,11 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
 	private Player player;
+
+
 	[SerializeField] private Weapon currentWeapon;
 	private bool weaponReady;
+	private bool isShooting;
 	
 	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
@@ -26,6 +29,12 @@ public class PlayerWeaponController : MonoBehaviour
 		AssignInputEvents();
 
 		Invoke("EquipStartingWeapon", 0.1f);
+	}
+
+	private void Update()
+	{
+		if (isShooting)
+			Shoot();
 	}
 
 	#region Slots Management - Equip/Drop/Pickup/Ready weapon
@@ -72,6 +81,9 @@ public class PlayerWeaponController : MonoBehaviour
 
 		if (!currentWeapon.CanShoot())
 			return;
+
+		if (currentWeapon.shootType == ShootType.Single)
+			isShooting = false;
 
 
 		GameObject newBullet = ObjectPool.instance.GetBulletFromQueue();
@@ -126,7 +138,8 @@ public class PlayerWeaponController : MonoBehaviour
 		PlayerControls controls = player.controls;
 
 
-		controls.Character.Fire.performed += context => Shoot();
+		controls.Character.Fire.performed += context => isShooting = true;
+		controls.Character.Fire.canceled += context => isShooting = false;
 		controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
 		controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
 		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
