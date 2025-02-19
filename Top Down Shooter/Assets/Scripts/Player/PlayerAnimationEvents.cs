@@ -15,6 +15,8 @@ public class PlayerAnimationEvents : MonoBehaviour
 
 	public void ReloadIsOver()
 	{
+		weaponController.SetWeaponReady(true);
+
 		weaponVisualController.ReturnRigWeightToOne();
 		
 		//refill bullets
@@ -29,6 +31,7 @@ public class PlayerAnimationEvents : MonoBehaviour
 
 	public void WeaponEquipIsOver()
 	{
+		weaponController.SetWeaponReady(true);
 		weaponVisualController.FinishedEquipingWeapon();
 	}
 

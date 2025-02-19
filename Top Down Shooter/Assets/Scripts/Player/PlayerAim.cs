@@ -53,6 +53,10 @@ public class PlayerAim : MonoBehaviour
 
 	private void UpdateAimLaser()
 	{
+		aimLaser.enabled = player.weaponController.WeaponReady();
+
+		if (!aimLaser.enabled)
+			return;
 
 		Transform gunPoint = player.weaponController.GunPoint();
 		Vector3 laserDirection = player.weaponController.BulletDirection();

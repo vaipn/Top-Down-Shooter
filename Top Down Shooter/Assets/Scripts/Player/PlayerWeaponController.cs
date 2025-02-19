@@ -5,6 +5,7 @@ public class PlayerWeaponController : MonoBehaviour
 {
 	private Player player;
 	[SerializeField] private Weapon currentWeapon;
+	private bool weaponReady;
 	
 	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
@@ -31,10 +32,12 @@ public class PlayerWeaponController : MonoBehaviour
 		Invoke("EquipStartingWeapon", 0.1f);
 	}
 
-	#region Slots Management - Equip/Drop/Pickup weapon
+	#region Slots Management - Equip/Drop/Pickup/Ready weapon
 	private void EquipStartingWeapon() => EquipWeapon(0);
 	private void EquipWeapon(int i)
 	{
+		SetWeaponReady(false);
+
 		currentWeapon = weaponSlots[i];
 
 		player.weaponVisuals.PlayWeaponEquipAnimation();
@@ -62,6 +65,9 @@ public class PlayerWeaponController : MonoBehaviour
 		weaponSlots.Add(newWeapon);
 		player.weaponVisuals.SwitchOnBackupWeaponModelObject();
 	}
+
+	public void SetWeaponReady(bool ready) => weaponReady = ready;
+	public bool WeaponReady() => weaponReady;
 	#endregion
 	private void Shoot()
 	{
@@ -81,6 +87,11 @@ public class PlayerWeaponController : MonoBehaviour
 		rbNewBullet.velocity = BulletDirection() * bulletSpeed * Time.deltaTime;
 
 		animator.SetTrigger("Fire");
+	}
+	private void Reload()
+	{
+		SetWeaponReady(false);
+		player.weaponVisuals.PlayReloadAnimation();
 	}
 
 	public Vector3 BulletDirection()
@@ -127,7 +138,7 @@ public class PlayerWeaponController : MonoBehaviour
 		controls.Character.Reload.performed += context =>
 		{
 			if (currentWeapon.CanReload())
-				player.weaponVisuals.PlayReloadAnimation();
+				Reload();
 		};
 
 	}
