@@ -8,7 +8,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 	private Player player;
 
 	private Animator animator;
-	private bool isEquipingWeapon;
 
 
 	[SerializeField] private WeaponModel[] weaponModels;
@@ -42,8 +41,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
 	public void PlayReloadAnimation()
 	{
-		if (isEquipingWeapon)
-			return;
 
 		float reloadSpeed = player.weaponController.CurrentWeapon().reloadSpeed;
 
@@ -64,18 +61,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
 		animator.SetFloat("Weapon Equip Type", (float)equipType);
 		animator.SetFloat("Equip Speed", equippingSpeed);
 
-		SetIsEquipingWeaponTo(true);
-	}
-
-	public void FinishedEquipingWeapon()
-	{
-		SetIsEquipingWeaponTo(false);
-	}
-
-	private void SetIsEquipingWeaponTo(bool busy)
-	{
-		isEquipingWeapon = busy;
-		animator.SetBool("isEquipingWeapon", isEquipingWeapon);
 	}
 
 	public void SwitchOnCurrentWeaponModelObject()

@@ -32,7 +32,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 	public void WeaponEquipIsOver()
 	{
 		weaponController.SetWeaponReady(true);
-		weaponVisualController.FinishedEquipingWeapon();
 	}
 
 	public void SwitchOnWeaponModelObject() => weaponVisualController.SwitchOnCurrentWeaponModelObject();

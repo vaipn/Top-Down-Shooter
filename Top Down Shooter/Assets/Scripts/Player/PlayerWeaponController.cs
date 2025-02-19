@@ -70,6 +70,9 @@ public class PlayerWeaponController : MonoBehaviour
 	#endregion
 	private void Shoot()
 	{
+		if (!WeaponReady())
+			return;
+
 		if (!currentWeapon.CanShoot())
 			return;
 
@@ -102,10 +105,6 @@ public class PlayerWeaponController : MonoBehaviour
 		if (!player.aim.CanAimPrecisely() && player.aim.TargetToLock() == null)
 			direction.y = 0;
 
-		// TODO: Find a better place for these
-		//weaponHolder.LookAt(aim);
-		//gunPoint.LookAt(aim);
-
 		return direction;
 	}
 
@@ -136,7 +135,7 @@ public class PlayerWeaponController : MonoBehaviour
 		controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
 		controls.Character.Reload.performed += context =>
 		{
-			if (currentWeapon.CanReload())
+			if (currentWeapon.CanReload() && WeaponReady())
 				Reload();
 		};
 
