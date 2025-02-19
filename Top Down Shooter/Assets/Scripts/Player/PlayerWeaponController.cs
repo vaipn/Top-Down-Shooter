@@ -14,7 +14,6 @@ public class PlayerWeaponController : MonoBehaviour
 	[Header("Bullet details")]
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float bulletSpeed;
-	[SerializeField] private Transform gunPoint;
 
 
 	[SerializeField] private Transform weaponHolder;
@@ -76,7 +75,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 
 		GameObject newBullet = ObjectPool.instance.GetBulletFromQueue();
-		newBullet.transform.position = gunPoint.position;
+		newBullet.transform.position = GunPoint().position;
 		newBullet.transform.rotation = Quaternion.LookRotation(BulletDirection());
 		
 
@@ -97,7 +96,7 @@ public class PlayerWeaponController : MonoBehaviour
 	public Vector3 BulletDirection()
 	{
 		Transform aim = player.aim.Aim();
-		Vector3 direction = (aim.position - gunPoint.position).normalized;
+		Vector3 direction = (aim.position - GunPoint().position).normalized;
 		
 
 		if (!player.aim.CanAimPrecisely() && player.aim.TargetToLock() == null)
@@ -112,7 +111,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 	public bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-	public Transform GunPoint() => gunPoint;
+	public Transform GunPoint() => player.weaponVisuals.CurrentWeaponModel().gunPoint;
 
 	public Weapon CurrentWeapon() => currentWeapon;
 	public Weapon BackupWeapon()
