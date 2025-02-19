@@ -9,8 +9,6 @@ public class PlayerWeaponController : MonoBehaviour
 	
 	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
-	private Animator animator;
-
 	[Header("Bullet details")]
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float bulletSpeed;
@@ -24,7 +22,6 @@ public class PlayerWeaponController : MonoBehaviour
 	private void Start()
 	{
 		player = GetComponent<Player>();
-		animator = GetComponentInChildren<Animator>();
 
 		AssignInputEvents();
 
@@ -88,7 +85,7 @@ public class PlayerWeaponController : MonoBehaviour
 		rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
 		rbNewBullet.velocity = BulletDirection() * bulletSpeed * Time.deltaTime;
 
-		animator.SetTrigger("Fire");
+		player.weaponVisuals.PlayShootAnimation();
 	}
 	private void Reload()
 	{

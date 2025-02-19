@@ -48,7 +48,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 		animator.SetTrigger("Reload");
 		ReduceRigWeight();
 	}
-
+	public void PlayShootAnimation() => animator.SetTrigger("Fire");
 	public void PlayWeaponEquipAnimation()
 	{
 		EquipType equipType = CurrentWeaponModel().equipType;
