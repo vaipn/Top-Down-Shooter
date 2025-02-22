@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,11 @@ public class PlayerWeaponController : MonoBehaviour
 	{
 		if (isShooting)
 			Shoot();
+
+		if (Input.GetKeyUp(KeyCode.T))
+		{
+			currentWeapon.ToggleBurst();
+		}
 	}
 
 	#region Slots Management - Equip/Drop/Pickup/Ready weapon
@@ -74,6 +80,20 @@ public class PlayerWeaponController : MonoBehaviour
 	public void SetWeaponReady(bool ready) => weaponReady = ready;
 	public bool WeaponReady() => weaponReady;
 	#endregion
+
+	IEnumerator BurstShoot()
+	{
+		SetWeaponReady(false);
+
+		for (int i = 1;	i <= currentWeapon.bulletsPerShot; i++)
+		{
+			ShootSingleBullet();
+
+			yield return new WaitForSeconds(currentWeapon.burstFireDelay);
+		}
+
+		SetWeaponReady(true);
+	}
 	private void Shoot()
 	{
 		if (!WeaponReady())
@@ -85,11 +105,25 @@ public class PlayerWeaponController : MonoBehaviour
 		if (currentWeapon.shootType == ShootType.Single)
 			isShooting = false;
 
+		player.weaponVisuals.PlayShootAnimation();
+
+		if (currentWeapon.BurstActivated())
+		{
+			StartCoroutine(BurstShoot());
+			return;
+		}
+
+		ShootSingleBullet();
+	}
+
+	private void ShootSingleBullet()
+	{
+		currentWeapon.bulletsInMagazine--;
 
 		GameObject newBullet = ObjectPool.instance.GetBulletFromQueue();
 		newBullet.transform.position = GunPoint().position;
 		newBullet.transform.rotation = Quaternion.LookRotation(BulletDirection());
-		
+
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
@@ -97,9 +131,8 @@ public class PlayerWeaponController : MonoBehaviour
 
 		rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
 		rbNewBullet.velocity = bulletsDirection * bulletSpeed * Time.deltaTime;
-
-		player.weaponVisuals.PlayShootAnimation();
 	}
+
 	private void Reload()
 	{
 		SetWeaponReady(false);
