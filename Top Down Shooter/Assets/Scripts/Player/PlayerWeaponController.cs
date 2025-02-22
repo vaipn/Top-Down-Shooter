@@ -93,9 +93,10 @@ public class PlayerWeaponController : MonoBehaviour
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
+		Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 
 		rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
-		rbNewBullet.velocity = BulletDirection() * bulletSpeed * Time.deltaTime;
+		rbNewBullet.velocity = bulletsDirection * bulletSpeed * Time.deltaTime;
 
 		player.weaponVisuals.PlayShootAnimation();
 	}

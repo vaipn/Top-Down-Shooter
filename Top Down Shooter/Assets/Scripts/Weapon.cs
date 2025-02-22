@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable] // Makes class visible in the inspector
 public class Weapon
@@ -22,7 +23,44 @@ public class Weapon
 	[Range(1,2)]
 	public float equipSpeed = 1;
 
-    public bool CanShoot()
+	[Header("Spread")]
+	public float baseSpread;
+	public float currentSpread;
+	public float maximumSpread = 7;
+	public float spreadIncreaseRate = 0.15f;
+
+	private float lastSpreadUpdateTime;
+	private float spreadCooldown = 1;
+
+
+	#region Spread Methods
+	public Vector3 ApplySpread(Vector3 originalDirection)
+	{
+		UpdateSpread();
+
+		float randomizedValue = Random.Range(-currentSpread, currentSpread);
+
+		Quaternion spreadRotation = Quaternion.Euler(randomizedValue, randomizedValue, randomizedValue);
+
+		return spreadRotation * originalDirection;
+	}
+
+	public void IncreaseSpread()
+	{
+		currentSpread = Mathf.Clamp(currentSpread + spreadIncreaseRate, baseSpread, maximumSpread);
+	}
+
+	private void UpdateSpread()
+	{
+		if (Time.time > lastSpreadUpdateTime + spreadCooldown)
+			currentSpread = baseSpread;
+		else
+			IncreaseSpread();
+
+		lastSpreadUpdateTime = Time.time;
+	}
+	#endregion
+	public bool CanShoot()
 	{
 		if (HaveEnoughBullets() && ReadyToFire())
 		{
