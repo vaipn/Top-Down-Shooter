@@ -35,6 +35,9 @@ public class Weapon
 	[Range(2, 12)]
 	public float gunShotDistance;
 
+	[Range(3, 8)]
+	public float cameraDistance;
+
 	[Header("Spread")]
 	public float baseSpread;
 	private float currentSpread;
