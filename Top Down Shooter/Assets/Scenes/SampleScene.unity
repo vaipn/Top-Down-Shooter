@@ -3278,6 +3278,7 @@ MonoBehaviour:
     totalReserveAmmo: 0
     reloadSpeed: 1
     equipSpeed: 1
+    gunShotDistance: 4
     baseSpread: 0
     maximumSpread: 7
     spreadIncreaseRate: 0.15
@@ -4558,9 +4559,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 0.16862746}
       key1: {r: 1, g: 1, b: 1, a: 0.8627451}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0.08235294}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -7270,6 +7271,7 @@ MonoBehaviour:
     totalReserveAmmo: 0
     reloadSpeed: 1
     equipSpeed: 1
+    gunShotDistance: 4
     baseSpread: 0
     maximumSpread: 7
     spreadIncreaseRate: 0.15
@@ -7292,6 +7294,7 @@ MonoBehaviour:
     totalReserveAmmo: 30
     reloadSpeed: 1
     equipSpeed: 1
+    gunShotDistance: 3.5
     baseSpread: 15
     maximumSpread: 15
     spreadIncreaseRate: 0.15
@@ -7310,6 +7313,7 @@ MonoBehaviour:
     totalReserveAmmo: 108
     reloadSpeed: 1
     equipSpeed: 1
+    gunShotDistance: 4
     baseSpread: 1
     maximumSpread: 7
     spreadIncreaseRate: 0.15

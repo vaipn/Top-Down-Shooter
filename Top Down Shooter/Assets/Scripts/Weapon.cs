@@ -32,6 +32,9 @@ public class Weapon
 	[Range(1,2)]
 	public float equipSpeed = 1;
 
+	[Range(2, 12)]
+	public float gunShotDistance;
+
 	[Header("Spread")]
 	public float baseSpread;
 	private float currentSpread;
