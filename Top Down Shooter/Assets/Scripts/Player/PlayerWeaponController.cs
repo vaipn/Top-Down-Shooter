@@ -36,11 +36,6 @@ public class PlayerWeaponController : MonoBehaviour
 	{
 		if (isShooting)
 			Shoot();
-
-		if (Input.GetKeyUp(KeyCode.T))
-		{
-			currentWeapon.ToggleBurst();
-		}
 	}
 
 	#region Slots Management - Equip/Drop/Pickup/Ready weapon
@@ -187,6 +182,7 @@ public class PlayerWeaponController : MonoBehaviour
 			if (currentWeapon.CanReload() && WeaponReady())
 				Reload();
 		};
+		controls.Character.ToggleWeaponMode.performed += context => currentWeapon.ToggleBurst();
 
 	}
 	#endregion
