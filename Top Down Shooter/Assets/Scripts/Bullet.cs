@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
 	private void ReturnBulletToPoolIfNeeded()
 	{
 		if (trailRenderer.time < 0)
-			ObjectPool.instance.ReturnBulletToQueue(gameObject);
+			ReturnBulletToPool();
 	}
 
 	private void DisableBulletIfNeeded()
@@ -67,8 +67,10 @@ public class Bullet : MonoBehaviour
 	{
 		CreateImpactFX(collision);
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
-		ObjectPool.instance.ReturnBulletToQueue(gameObject);
+		ReturnBulletToPool();
 	}
+
+	private void ReturnBulletToPool() => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
 
 	private void CreateImpactFX(Collision collision)
 	{
@@ -76,9 +78,11 @@ public class Bullet : MonoBehaviour
 		{
 			ContactPoint contact = collision.contacts[0]; // first point of contact
 
-			GameObject newImpactFX = Instantiate(bulletImpactFX, contact.point, Quaternion.LookRotation(contact.normal));
+			GameObject newImpactFX = ObjectPool.instance.GetObjectFromPool(bulletImpactFX);
+			newImpactFX.transform.position = contact.point;
+			newImpactFX.transform.rotation = Quaternion.LookRotation(contact.normal);
 
-			Destroy(newImpactFX, 1f);
+			ObjectPool.instance.ReturnObjectToPoolWithDelay(newImpactFX, 1);
 		}
 	}
 }
