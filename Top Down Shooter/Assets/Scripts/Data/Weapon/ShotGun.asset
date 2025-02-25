@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 580315c4e91ed374fad334c1d3978530, type: 3}
-  m_Name: Pistol
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  weaponName: TVT F47
-  weaponType: 0
-  bulletsPerShot: 1
-  fireRate: 3
-  bulletsInMagazine: 20
-  magazineCapacity: 20
-  totalReserveAmmo: 99
+  weaponName: Pumper H-7
+  weaponType: 3
+  bulletsPerShot: 7
+  fireRate: 0.5
+  bulletsInMagazine: 14
+  magazineCapacity: 14
+  totalReserveAmmo: 140
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
   burstFireRate: 0
   burstFireDelay: 0.1
-  baseSpread: 0.25
-  maximumSpread: 2
+  baseSpread: 15
+  maximumSpread: 15
   spreadIncreaseRate: 0.15
   spreadCooldown: 1
   shootType: 0
-  reloadSpeed: 2
-  equipSpeed: 2
-  gunShotDistance: 6
+  reloadSpeed: 1
+  equipSpeed: 1
+  gunShotDistance: 4.5
   cameraDistance: 6

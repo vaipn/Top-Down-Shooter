@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 580315c4e91ed374fad334c1d3978530, type: 3}
-  m_Name: Pistol
+  m_Name: Revolver
   m_EditorClassIdentifier: 
-  weaponName: TVT F47
-  weaponType: 0
+  weaponName: Bolt X-12
+  weaponType: 1
   bulletsPerShot: 1
-  fireRate: 3
-  bulletsInMagazine: 20
-  magazineCapacity: 20
+  fireRate: 1.875
+  bulletsInMagazine: 12
+  magazineCapacity: 12
   totalReserveAmmo: 99
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
   burstFireRate: 0
   burstFireDelay: 0.1
-  baseSpread: 0.25
-  maximumSpread: 2
-  spreadIncreaseRate: 0.15
+  baseSpread: 0.2
+  maximumSpread: 2.5
+  spreadIncreaseRate: 0.3
   spreadCooldown: 1
   shootType: 0
-  reloadSpeed: 2
+  reloadSpeed: 1.5
   equipSpeed: 2
   gunShotDistance: 6
   cameraDistance: 6
