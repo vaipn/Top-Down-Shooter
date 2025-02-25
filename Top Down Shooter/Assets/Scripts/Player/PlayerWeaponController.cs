@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
 	private Player player;
+	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
-
+	[SerializeField] private WeaponData defaultWeaponData;
 	[SerializeField] private Weapon currentWeapon;
 	private bool weaponReady;
 	private bool isShooting;
 	
-	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
 	[Header("Bullet details")]
 	[SerializeField] private GameObject bulletPrefab;
@@ -39,7 +39,13 @@ public class PlayerWeaponController : MonoBehaviour
 	}
 
 	#region Slots Management - Equip/Drop/Pickup/Ready weapon
-	private void EquipStartingWeapon() => EquipWeapon(0);
+	private void EquipStartingWeapon()
+	{
+		weaponSlots[0] = new Weapon(defaultWeaponData);
+
+		EquipWeapon(0);
+	}
+
 	private void EquipWeapon(int i)
 	{
 		SetWeaponReady(false);

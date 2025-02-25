@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 280203576485290946, guid: 9e40ec3fafeed4f48b955e4be6793146, type: 3}
-  bulletPoolSize: 10
+  poolSize: 10
 --- !u!4 &641634080
 Transform:
   m_ObjectHideFlags: 0
@@ -7240,6 +7240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94bb925ef2b8c384884ef6fc566e4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultWeaponData: {fileID: 11400000, guid: 1f6d771849e1f5947a15ddd186bad81c, type: 2}
   currentWeapon:
     weaponType: 0
     shootType: 0

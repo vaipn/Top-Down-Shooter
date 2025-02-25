@@ -4,49 +4,72 @@ using UnityEngine.Rendering;
 [System.Serializable] // Makes class visible in the inspector
 public class Weapon
 {
-    public WeaponType weaponType;
-
-	[Header("Shooting details")]
-	public ShootType shootType;
-	public float defaultFireRate;
-	public float fireRate = 1; // bullets per second
-	public float bulletsPerShot;
+	#region Regular Mode Variables
+	public WeaponType weaponType;
+	private float defaultFireRate;
+	private float fireRate = 1; // bullets per second
+	public int bulletsPerShot { get; private set; }
 	private float lastShootTime;
+	#endregion
 
-	[Header("Burst details")]
-	public bool burstAvailable;
+	#region Burst mode variables
+	private bool burstAvailable;
 	public bool burstActive;
-	public int burstBulletsPerShot;
-	public float burstFireRate;
-	public float burstFireDelay;
-
+	private int burstBulletsPerShot;
+	private float burstFireRate;
+	public float burstFireDelay {  get; private set; }
+	#endregion
 
 	[Header("Ammo details")]
     public int bulletsInMagazine;
 	public int magazineCapacity;
     public int totalReserveAmmo;
 
-	[Range(1,2)]
-	public float reloadSpeed = 1;
+	#region Weapon generic info variables
+	public ShootType shootType;
+	public float reloadSpeed { get; private set; }
+	public float equipSpeed { get; private set; }
+	public float gunShotDistance { get; private set; }
+	public float cameraDistance { get; private set; }
+	#endregion
 
-	[Range(1,2)]
-	public float equipSpeed = 1;
-
-	[Range(2, 12)]
-	public float gunShotDistance;
-
-	[Range(3, 8)]
-	public float cameraDistance;
-
-	[Header("Spread")]
-	public float baseSpread;
+	#region Weapon spread variables
+	private float baseSpread;
 	private float currentSpread;
-	public float maximumSpread = 7;
-	public float spreadIncreaseRate = 0.15f;
+	private float maximumSpread = 7;
+	private float spreadIncreaseRate = 0.15f;
 
 	private float lastSpreadUpdateTime;
 	private float spreadCooldown = 1;
+	#endregion
+	public Weapon(WeaponData weaponData)
+	{
+		weaponType = weaponData.weaponType;
+		shootType = weaponData.shootType;
 
+		fireRate = weaponData.fireRate;
+		bulletsPerShot = weaponData.bulletsPerShot;
+
+		burstAvailable = weaponData.burstAvailable;
+		burstActive = weaponData.burstActive;
+		burstBulletsPerShot = weaponData.burstBulletsPerShot;
+		burstFireRate = weaponData.burstFireRate;
+		burstFireDelay = weaponData.burstFireDelay;
+
+
+		baseSpread = weaponData.baseSpread;
+		maximumSpread = weaponData.maximumSpread;
+		spreadIncreaseRate = weaponData.spreadIncreaseRate;
+		spreadCooldown = weaponData.spreadCooldown;
+
+
+		reloadSpeed = weaponData.reloadSpeed;
+		equipSpeed = weaponData.equipSpeed;
+		gunShotDistance = weaponData.gunShotDistance;
+		cameraDistance = weaponData.cameraDistance;
+
+		defaultFireRate = fireRate;
+	}
 
 	#region Spread Methods
 	public Vector3 ApplySpread(Vector3 originalDirection)
