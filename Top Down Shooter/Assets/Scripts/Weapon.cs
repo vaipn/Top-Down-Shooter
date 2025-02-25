@@ -4,10 +4,12 @@ using UnityEngine.Rendering;
 [System.Serializable] // Makes class visible in the inspector
 public class Weapon
 {
-	#region Regular Mode Variables
 	public WeaponType weaponType;
+
+	#region Regular Mode Variables
+	public ShootType shootType;
 	private float defaultFireRate;
-	private float fireRate = 1; // bullets per second
+	public float fireRate = 1; // bullets per second
 	public int bulletsPerShot { get; private set; }
 	private float lastShootTime;
 	#endregion
@@ -26,7 +28,6 @@ public class Weapon
     public int totalReserveAmmo;
 
 	#region Weapon generic info variables
-	public ShootType shootType;
 	public float reloadSpeed { get; private set; }
 	public float equipSpeed { get; private set; }
 	public float gunShotDistance { get; private set; }
@@ -45,10 +46,13 @@ public class Weapon
 	public Weapon(WeaponData weaponData)
 	{
 		weaponType = weaponData.weaponType;
-		shootType = weaponData.shootType;
 
 		fireRate = weaponData.fireRate;
 		bulletsPerShot = weaponData.bulletsPerShot;
+
+		bulletsInMagazine = weaponData.bulletsInMagazine;
+		magazineCapacity = weaponData.magazineCapacity;
+		totalReserveAmmo = weaponData.totalReserveAmmo;
 
 		burstAvailable = weaponData.burstAvailable;
 		burstActive = weaponData.burstActive;
@@ -63,6 +67,7 @@ public class Weapon
 		spreadCooldown = weaponData.spreadCooldown;
 
 
+		shootType = weaponData.shootType;
 		reloadSpeed = weaponData.reloadSpeed;
 		equipSpeed = weaponData.equipSpeed;
 		gunShotDistance = weaponData.gunShotDistance;

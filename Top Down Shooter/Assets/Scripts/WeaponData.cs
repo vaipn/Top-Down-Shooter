@@ -7,10 +7,16 @@ public class WeaponData : ScriptableObject
 {
 	public string weaponName;
 
+
 	[Header("Regular shot")]
 	public WeaponType weaponType;
 	public int bulletsPerShot = 1;
 	public float fireRate;
+
+	[Header("Ammo details")]
+	public int bulletsInMagazine;
+	public int magazineCapacity;
+	public int totalReserveAmmo;
 
 	[Header("Burst shot")]
 	public bool burstAvailable;
