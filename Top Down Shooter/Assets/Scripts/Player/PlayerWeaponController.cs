@@ -68,7 +68,7 @@ public class PlayerWeaponController : MonoBehaviour
 		EquipWeapon(0); // weapon slots would have had only one element left
 	}
 
-	public void PickupWeapon(Weapon newWeapon)
+	public void PickupWeapon(WeaponData newWeaponData)
 	{
 		if (weaponSlots.Count >= 2) // there should only be max of 2 weapons equipped
 		{
@@ -76,7 +76,7 @@ public class PlayerWeaponController : MonoBehaviour
 			return;
 		}
 
-		weaponSlots.Add(newWeapon);
+		weaponSlots.Add(new Weapon(newWeaponData));
 		player.weaponVisuals.SwitchOnBackupWeaponModelObject();
 	}
 
