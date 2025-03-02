@@ -456,7 +456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &164346063
 BoxCollider:
@@ -535,7 +534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &177051067
 BoxCollider:
@@ -2034,28 +2032,14 @@ GameObject:
   m_Component:
   - component: {fileID: 461629493}
   - component: {fileID: 461629492}
-  - component: {fileID: 461629491}
+  - component: {fileID: 461629494}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: AmmoBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &461629491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461629490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
-  highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &461629492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2087,12 +2071,25 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.06, y: 0.6, z: 1.1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.5, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 449427475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461629494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461629490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063a74cc6e6932e48a8d458e69a44484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!1 &481366265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,15 +3636,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926747621}
-  - component: {fileID: 926747620}
   - component: {fileID: 926747619}
+  - component: {fileID: 926747622}
   m_Layer: 0
   m_Name: Pickup - Revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &926747619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3669,19 +3666,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14609236, y: 0.1942147, z: 0.43559486}
   m_Center: {x: 0.013643414, y: -0.02330035, z: 0.04987207}
---- !u!114 &926747620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926747618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e41ead936323349a960cd100922515, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 67ee6b21ff258d640a10446120c26f1e, type: 2}
 --- !u!4 &926747621
 Transform:
   m_ObjectHideFlags: 0
@@ -3699,6 +3683,20 @@ Transform:
   - {fileID: 1251361020107107318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &926747622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926747618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57085fac71372064abf3237c779c939e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
+  weaponData: {fileID: 11400000, guid: 67ee6b21ff258d640a10446120c26f1e, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,7 +5233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &1318090328
 BoxCollider:
@@ -7269,7 +7266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &1779957379
 BoxCollider:
@@ -7833,7 +7829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba57cee8dbc870a41be46033d1283d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 961ee236fdeaefc40a2a71195c0a1773, type: 2}
 --- !u!65 &1962505207
 BoxCollider:

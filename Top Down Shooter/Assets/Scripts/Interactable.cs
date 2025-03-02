@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-	[SerializeField] private MeshRenderer meshRenderer;
+	private MeshRenderer meshRenderer;
 	private Material defaultMaterial;
 	[SerializeField] Material highlightMaterial;
 
@@ -24,7 +24,12 @@ public class Interactable : MonoBehaviour
 			meshRenderer.material = defaultMaterial;
 	}
 
-	private void OnTriggerEnter(Collider other)
+	public virtual void Interaction()
+	{
+		Debug.Log("Interacted with " + gameObject.name);
+	}
+
+	protected virtual void OnTriggerEnter(Collider other)
 	{
 		PlayerInteraction playerInteraction = other.GetComponent<PlayerInteraction>();
 
@@ -36,7 +41,7 @@ public class Interactable : MonoBehaviour
 		playerInteraction.UpdateClosestInteractable();
 	}
 
-	private void OnTriggerExit(Collider other)
+	protected virtual void OnTriggerExit(Collider other)
 	{
 		PlayerInteraction playerInteraction = other.GetComponent<PlayerInteraction>();
 
