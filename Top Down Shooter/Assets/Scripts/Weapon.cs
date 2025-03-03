@@ -108,7 +108,10 @@ public class Weapon
 	public bool BurstActivated()
 	{
 		if (weaponType == WeaponType.ShotGun)
+		{
+			burstFireDelay = 0;
 			return true;
+		}
 
 		return burstActive;
 	}
