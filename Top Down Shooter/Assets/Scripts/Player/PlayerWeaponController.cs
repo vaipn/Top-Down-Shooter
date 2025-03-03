@@ -70,14 +70,39 @@ public class PlayerWeaponController : MonoBehaviour
 
 	public void PickupWeapon(WeaponData newWeaponData)
 	{
-		if (weaponSlots.Count >= 2) // there should only be max of 2 weapons equipped
+		Weapon newWeapon = new Weapon(newWeaponData);
+
+		if (WeaponInSlots(newWeapon.weaponType) != null)
 		{
-			Debug.Log("No slots available");
+			WeaponInSlots(newWeapon.weaponType).totalReserveAmmo += newWeapon.bulletsInMagazine;
 			return;
 		}
 
-		weaponSlots.Add(new Weapon(newWeaponData));
+
+		if (weaponSlots.Count >= 2 && newWeapon.weaponType != currentWeapon.weaponType) // there should only be max of 2 weapons equipped
+		{
+			int weaponIndex = weaponSlots.IndexOf(currentWeapon);
+
+			player.weaponVisuals.SwitchOffWeaponModelsObjects();
+			weaponSlots[weaponIndex] = newWeapon;
+			EquipWeapon(weaponIndex);
+
+			return;
+		}
+
+		weaponSlots.Add(newWeapon);
 		player.weaponVisuals.SwitchOnBackupWeaponModelObject();
+	}
+
+	public Weapon WeaponInSlots(WeaponType weaponType)
+	{
+		foreach (Weapon weapon in weaponSlots)
+		{
+			if (weapon.weaponType == weaponType)
+				return weapon;
+		}
+
+		return null;
 	}
 
 	public void SetWeaponReady(bool ready) => weaponReady = ready;
