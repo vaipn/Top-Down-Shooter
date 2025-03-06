@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private List<Interactable> interactables;
+    private List<Interactable> interactables = new List<Interactable>();
 
     public Interactable closestInteractable;
     public float closestInteractableDistance;

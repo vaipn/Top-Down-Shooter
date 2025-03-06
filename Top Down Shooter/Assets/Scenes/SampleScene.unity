@@ -8749,7 +8749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59650a53ac3e074fa3e9caff72edb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactables: []
   closestInteractable: {fileID: 0}
   closestInteractableDistance: 0
 --- !u!1 &2014798428
