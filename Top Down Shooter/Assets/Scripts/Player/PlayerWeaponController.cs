@@ -23,6 +23,8 @@ public class PlayerWeaponController : MonoBehaviour
 	[Header("Inventory")]
 	[SerializeField] private List<Weapon> weaponSlots;
 
+	[SerializeField] private GameObject weaponPickupPrefab;
+
 	private void Start()
 	{
 		player = GetComponent<Player>();
@@ -91,8 +93,9 @@ public class PlayerWeaponController : MonoBehaviour
 
 			player.weaponVisuals.SwitchOffWeaponModelsObjects();
 			weaponSlots[weaponIndex] = newWeapon;
-			EquipWeapon(weaponIndex);
 
+			CreateWeaponOnTheGround();
+			EquipWeapon(weaponIndex);
 			return;
 		}
 
