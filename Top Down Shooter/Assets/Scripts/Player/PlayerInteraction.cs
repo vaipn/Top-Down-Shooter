@@ -19,6 +19,9 @@ public class PlayerInteraction : MonoBehaviour
 	private void InteractWithClosest()
     {
         closestInteractable?.Interaction();
+        interactables.Remove(closestInteractable);
+
+        UpdateClosestInteractable();
     }
 
     public void UpdateClosestInteractable()
