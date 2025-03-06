@@ -63,15 +63,21 @@ public class PlayerWeaponController : MonoBehaviour
 		if (HasOnlyOneWeapon())
 			return;
 
+		CreateWeaponOnTheGround();
+
 		weaponSlots.Remove(currentWeapon);
 
 		EquipWeapon(0); // weapon slots would have had only one element left
 	}
 
-	public void PickupWeapon(WeaponData newWeaponData)
+	private void CreateWeaponOnTheGround()
 	{
-		Weapon newWeapon = new Weapon(newWeaponData);
+		GameObject droppedWeapon = ObjectPool.instance.GetObjectFromPool(weaponPickupPrefab);
+		droppedWeapon.GetComponent<PickupWeapon>()?.SetupPickupWeapon(currentWeapon, transform);
+	}
 
+	public void PickupWeapon(Weapon newWeapon)
+	{
 		if (WeaponInSlots(newWeapon.weaponType) != null)
 		{
 			WeaponInSlots(newWeapon.weaponType).totalReserveAmmo += newWeapon.bulletsInMagazine;

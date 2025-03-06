@@ -43,6 +43,8 @@ public class Weapon
 	private float lastSpreadUpdateTime;
 	private float spreadCooldown = 1;
 	#endregion
+
+	public WeaponData weaponData {  get; private set; } //serves as default weapon data
 	public Weapon(WeaponData weaponData)
 	{
 		weaponType = weaponData.weaponType;
@@ -74,6 +76,7 @@ public class Weapon
 		cameraDistance = weaponData.cameraDistance;
 
 		defaultFireRate = fireRate;
+		this.weaponData = weaponData;
 	}
 
 	#region Spread Methods
