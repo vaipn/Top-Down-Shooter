@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public struct AmmoData
+{
+	public WeaponType weaponType;
+	[Range(10, 100)] public int minAmount;
+	[Range(10, 100)] public int maxAmount;
+}
+
 public class PickupAmmo : Interactable
 {
-	private PlayerWeaponController weaponController;
-
 	[SerializeField] private AmmoBoxType boxType;
-
-	[System.Serializable]
-	public struct AmmoData
-	{
-		public WeaponType weaponType;
-		[Range(10,100)] public int minAmount;
-		[Range(10,100)] public int maxAmount;
-	}
 
 	[SerializeField] private List<AmmoData> smallBoxAmmo;
 	[SerializeField] private List<AmmoData> bigBoxAmmo;
@@ -41,14 +40,6 @@ public class PickupAmmo : Interactable
 
 		Debug.Log("Added Ammo to weapon");
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
-	}
-
-	protected override void OnTriggerEnter(Collider other)
-	{
-		base.OnTriggerEnter(other);
-
-		if (weaponController == null)
-			weaponController = other.GetComponent<PlayerWeaponController>();
 	}
 	private int GetAmmoAmount(AmmoData ammoData)
 	{
