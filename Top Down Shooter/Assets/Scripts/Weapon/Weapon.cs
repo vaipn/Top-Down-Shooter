@@ -1,6 +1,21 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
+public enum WeaponType
+{
+	Pistol,
+	Revolver,
+	AutoRifle,
+	ShotGun,
+	Sniper
+}
+
+public enum ShootType
+{
+	Single,
+	Auto
+}
+
 [System.Serializable] // Makes class visible in the inspector
 public class Weapon
 {
@@ -185,19 +200,4 @@ public class Weapon
 			totalReserveAmmo = 0;
 	}
 	#endregion
-}
-
-public enum WeaponType
-{
-    Pistol,
-    Revolver,
-    AutoRifle,
-    ShotGun,
-    Sniper
-}
-
-public enum ShootType
-{
-	Single,
-	Auto
 }

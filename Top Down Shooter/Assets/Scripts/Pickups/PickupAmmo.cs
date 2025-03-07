@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AmmoBoxType { smallBox, bigBox };
 
 [System.Serializable]
 public struct AmmoData
@@ -70,4 +71,4 @@ public class PickupAmmo : Interactable
 		}
 	}
 }
-public enum AmmoBoxType { smallBox, bigBox };
+
