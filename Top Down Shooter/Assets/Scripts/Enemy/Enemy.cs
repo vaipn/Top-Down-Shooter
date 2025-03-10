@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 {
     public EnemyStateMachine stateMachine {  get; private set; }
+    public Transform playerTransform { get; private set; }
 
 
     [Header("Idle data")]
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     private int currentPatrolIndex;
 
     public float turnSpeed;
+    public float aggressionRange;
 
     public Animator anim {  get; private set; }
 
@@ -26,15 +28,16 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     {
         stateMachine = new EnemyStateMachine();
 
-        
-    }
+		agent = GetComponent<NavMeshAgent>();
+		anim = GetComponentInChildren<Animator>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+	}
 
     protected virtual void Start()
 	{
 		InitializePatrolPoints();
 
-		agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
+		
 	}
 
 	protected virtual void Update()
@@ -42,6 +45,14 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     }
 
+	private void OnDrawGizmos()
+	{
+		Gizmos.DrawWireSphere(transform.position, aggressionRange);
+	}
+
+    public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
+
+    public bool PlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
 
 	private void InitializePatrolPoints()
 	{
@@ -70,4 +81,6 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
         return Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
     }
+
+
 }
