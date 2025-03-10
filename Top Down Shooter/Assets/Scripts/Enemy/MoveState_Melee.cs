@@ -30,7 +30,7 @@ public class MoveState_Melee : EnemyState
 	{
 		base.Update();
 
-		if (enemy.agent.remainingDistance <= 1f)
+		if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
 			stateMachine.ChangeState(enemy.idleState);
 	}
 }
