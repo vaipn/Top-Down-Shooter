@@ -30,6 +30,8 @@ public class MoveState_Melee : EnemyState
 	{
 		base.Update();
 
+		enemy.transform.rotation = enemy.FaceTarget(destination);
+
 		if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
 			stateMachine.ChangeState(enemy.idleState);
 	}

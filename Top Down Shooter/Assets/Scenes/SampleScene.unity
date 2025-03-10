@@ -5757,6 +5757,7 @@ MonoBehaviour:
   - {fileID: 1722795780}
   - {fileID: 525418477}
   - {fileID: 2108565658}
+  turnSpeed: 0
 --- !u!195 &1115765280
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6427,6 +6428,7 @@ MonoBehaviour:
   - {fileID: 1613603260}
   - {fileID: 1106249066}
   - {fileID: 795166326}
+  turnSpeed: 5
 --- !u!4 &1224552510
 Transform:
   m_ObjectHideFlags: 0
