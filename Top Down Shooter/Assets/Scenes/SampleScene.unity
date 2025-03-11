@@ -5752,7 +5752,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 5
-  moveSpeed: 0
+  walkSpeed: 0
+  chaseSpeed: 0
   patrolPoints:
   - {fileID: 1722795780}
   - {fileID: 525418477}
@@ -6424,7 +6425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 4
-  moveSpeed: 0
+  walkSpeed: 1.5
+  chaseSpeed: 3.5
   patrolPoints:
   - {fileID: 1613603260}
   - {fileID: 1106249066}

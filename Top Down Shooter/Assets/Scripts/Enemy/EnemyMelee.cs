@@ -7,6 +7,7 @@ public class EnemyMelee : Enemy
     public IdleState_Melee idleState {  get; private set; }
     public MoveState_Melee moveState { get; private set; }
 	public RecoveryState_Melee recoveryState { get; private set; }
+	public ChaseState_Melee chaseState { get; private set; }
 
 	protected override void Awake()
 	{
@@ -15,6 +16,7 @@ public class EnemyMelee : Enemy
 		idleState = new IdleState_Melee(this, stateMachine, "Idle");
 		moveState = new MoveState_Melee(this, stateMachine, "Move");
 		recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
+		chaseState = new ChaseState_Melee(this, stateMachine, "Chase");
 	}
 
 	protected override void Start()

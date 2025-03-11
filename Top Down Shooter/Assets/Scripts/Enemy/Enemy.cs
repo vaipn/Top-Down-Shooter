@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public float idleTime;
 
     [Header("Move data")]
-    public float moveSpeed;
+    public float walkSpeed;
+    public float chaseSpeed;
 
     [SerializeField] private Transform[] patrolPoints;
     private int currentPatrolIndex;
