@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public Transform playerTransform { get; private set; }
 
 
+    [Header("Attack data")]
+    public float attackRange;
+
     [Header("Idle data")]
     public float idleTime;
 
@@ -49,12 +52,14 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, aggressionRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere (transform.position, attackRange);
 	}
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
     public bool PlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
-
+    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackRange;
 	private void InitializePatrolPoints()
 	{
 		foreach (Transform t in patrolPoints)
