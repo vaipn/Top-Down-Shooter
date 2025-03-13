@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     [Header("Attack data")]
     public float attackRange;
+    public float attackMoveSpeed;
 
     [Header("Idle data")]
     public float idleTime;
