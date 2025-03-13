@@ -22,6 +22,8 @@ public class AttackState_Melee : EnemyState
 			possibleStates[1] = enemy.chaseState;
 		}
 
+		enemy.HoldWeapon();
+
 		base.Enter();
 
 		enemy.agent.isStopped = true;
@@ -39,7 +41,10 @@ public class AttackState_Melee : EnemyState
 	{
 		base.Update();
 
-		enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackDirection, enemy.attackMoveSpeed * Time.deltaTime);
+		if (enemy.ManualMovementActive())
+			enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackDirection, enemy.attackMoveSpeed * Time.deltaTime);
+
+
 
 		if (triggerCalled)
 		{

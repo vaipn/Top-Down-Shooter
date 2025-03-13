@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     [Header("Move data")]
     public float walkSpeed;
     public float chaseSpeed;
+    private bool manualMovement;
 
     [SerializeField] private Transform[] patrolPoints;
     private int currentPatrolIndex;
@@ -56,7 +57,9 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere (transform.position, attackRange);
 	}
-
+    
+    public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
+    public bool ManualMovementActive() => manualMovement;
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
     public bool PlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;

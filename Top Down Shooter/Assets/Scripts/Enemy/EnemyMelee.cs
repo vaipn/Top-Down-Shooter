@@ -10,6 +10,9 @@ public class EnemyMelee : Enemy
 	public ChaseState_Melee chaseState { get; private set; }
 	public AttackState_Melee attackState { get; private set; }
 
+	[SerializeField] private Transform sheathedWeapon;
+	[SerializeField] private Transform heldWeapon;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -33,7 +36,11 @@ public class EnemyMelee : Enemy
 		base.Update();
 
 		stateMachine.currentState.Update();
+	}
 
-
+	public void HoldWeapon()
+	{
+		sheathedWeapon.gameObject.SetActive(false);
+		heldWeapon.gameObject.SetActive(true);
 	}
 }
