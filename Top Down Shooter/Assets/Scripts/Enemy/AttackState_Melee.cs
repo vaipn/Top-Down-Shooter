@@ -23,6 +23,7 @@ public class AttackState_Melee : EnemyState
 		attackMoveSpeed = enemy.attackData.attackMoveSpeed;
 		enemy.anim.SetFloat("AttackAnimationSpeed", enemy.attackData.animationSpeed);
 		enemy.anim.SetFloat("AttackIndex", enemy.attackData.attackIndex);
+		enemy.anim.SetFloat("SlashAttackIndex", Random.Range(0, 5));
 
 		//if (possibleStates[0] == null || possibleStates[1] == null)
 		//{
