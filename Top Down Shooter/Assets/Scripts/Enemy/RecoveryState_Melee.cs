@@ -14,12 +14,19 @@ public class RecoveryState_Melee : EnemyState
 	{
 		base.Enter();
 
+		if (!enemy.PlayerInAttackRange())
+			enemy.SheathWeapon();
+
 		enemy.agent.isStopped = true; //meant to fix bug where enemy still glides to its destination after entering this state
+
+		Debug.Log("I enter Recovery state");
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
+
+		Debug.Log("I exit Recovery state");
 	}
 
 	public override void Update()
@@ -29,6 +36,13 @@ public class RecoveryState_Melee : EnemyState
 		enemy.transform.rotation = enemy.FaceTarget(enemy.playerTransform.position);
 
 		if (triggerCalled)
-			stateMachine.ChangeState(enemy.chaseState);
+		{
+			if (enemy.PlayerInAttackRange())
+				stateMachine.ChangeState(enemy.attackState);
+			else
+				stateMachine.ChangeState(enemy.chaseState);
+		}
+
+			
 	}
 }

@@ -20,11 +20,15 @@ public class ChaseState_Melee : EnemyState
 		enemy.agent.speed = enemy.chaseSpeed;
 
 		enemy.agent.isStopped = false;
+
+		Debug.Log("I enter Chase state");
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
+
+		Debug.Log("I exit Chase state");
 	}
 
 	public override void Update()

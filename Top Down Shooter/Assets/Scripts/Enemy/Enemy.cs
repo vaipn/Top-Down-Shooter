@@ -9,22 +9,19 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public Transform playerTransform { get; private set; }
 
 
-    [Header("Attack data")]
-    public float attackRange;
-    public float attackMoveSpeed;
-
     [Header("Idle data")]
     public float idleTime;
 
     [Header("Move data")]
     public float walkSpeed;
     public float chaseSpeed;
+    public float turnSpeed;
     private bool manualMovement;
+    private bool manualRotation;
 
     [SerializeField] private Transform[] patrolPoints;
     private int currentPatrolIndex;
 
-    public float turnSpeed;
     public float aggressionRange;
 
     public Animator anim {  get; private set; }
@@ -51,19 +48,19 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     }
 
-	private void OnDrawGizmos()
+	protected virtual void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, aggressionRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere (transform.position, attackRange);
 	}
     
     public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
     public bool ManualMovementActive() => manualMovement;
+
+    public bool ActivateManualRotation(bool manualRotation) => this.manualRotation = manualRotation;
+    public bool ManualRotationActive() => manualRotation;
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
     public bool PlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
-    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackRange;
 	private void InitializePatrolPoints()
 	{
 		foreach (Transform t in patrolPoints)

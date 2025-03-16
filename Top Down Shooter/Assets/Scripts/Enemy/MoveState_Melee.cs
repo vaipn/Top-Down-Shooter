@@ -19,6 +19,8 @@ public class MoveState_Melee : EnemyState
 		destination = enemy.GetPatrolDestination();
 
 		enemy.agent.SetDestination(destination);
+
+		Debug.Log("I enter Move state");
 	}
 
 	public override void Exit()

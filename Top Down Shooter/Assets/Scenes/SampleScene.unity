@@ -5751,17 +5751,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903ad3a733e47f44f906a0cf67d60df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0
-  attackMoveSpeed: 0
   idleTime: 5
   walkSpeed: 0
   chaseSpeed: 0
+  turnSpeed: 0
   patrolPoints:
   - {fileID: 1722795780}
   - {fileID: 525418477}
   - {fileID: 2108565658}
-  turnSpeed: 0
   aggressionRange: 0
+  attackData:
+    attackRange: 0
+    attackMoveSpeed: 0
+    attackIndex: 0
+    animationSpeed: 0
   sheathedWeapon: {fileID: 0}
   heldWeapon: {fileID: 0}
 --- !u!195 &1115765280
@@ -6428,17 +6431,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903ad3a733e47f44f906a0cf67d60df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.5
-  attackMoveSpeed: 3.5
   idleTime: 4
   walkSpeed: 1.5
   chaseSpeed: 4
+  turnSpeed: 5
   patrolPoints:
   - {fileID: 1613603260}
   - {fileID: 1106249066}
   - {fileID: 795166326}
-  turnSpeed: 5
   aggressionRange: 4
+  attackData:
+    attackRange: 1
+    attackMoveSpeed: 0
+    attackIndex: 1
+    animationSpeed: 1.7
   sheathedWeapon: {fileID: 2644290749676551657}
   heldWeapon: {fileID: 2106395423}
 --- !u!4 &1224552510
