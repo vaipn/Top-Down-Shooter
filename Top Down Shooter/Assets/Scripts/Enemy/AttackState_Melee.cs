@@ -17,6 +17,9 @@ public class AttackState_Melee : EnemyState
 
 	public override void Enter()
 	{
+		base.Enter();
+		enemy.HoldWeapon();
+
 		attackMoveSpeed = enemy.attackData.attackMoveSpeed;
 		enemy.anim.SetFloat("AttackAnimationSpeed", enemy.attackData.animationSpeed);
 		enemy.anim.SetFloat("AttackIndex", enemy.attackData.attackIndex);
@@ -27,9 +30,7 @@ public class AttackState_Melee : EnemyState
 		//	possibleStates[1] = enemy.chaseState;
 		//}
 
-		enemy.HoldWeapon();
 
-		base.Enter();
 
 		enemy.agent.isStopped = true;
 		enemy.agent.velocity = Vector3.zero;
@@ -43,12 +44,18 @@ public class AttackState_Melee : EnemyState
 	{
 		base.Exit();
 
-		enemy.anim.SetFloat("RecoveryIndex", 0);
-
-		if (enemy.PlayerInAttackRange())
-			enemy.anim.SetFloat("RecoveryIndex", 1);
+		SetupNextAttack();
 
 		Debug.Log("I exit Attack state");
+	}
+
+	private void SetupNextAttack()
+	{
+		int recoveryIndex = PlayerClose() ? 1 : 0;
+
+		enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
+
+		enemy.attackData = UpdatedAttackData();
 	}
 
 	public override void Update()
@@ -75,5 +82,20 @@ public class AttackState_Melee : EnemyState
 			else
 				stateMachine.ChangeState(enemy.chaseState);
 		}
+	}
+
+	public bool PlayerClose() => Vector3.Distance(enemy.transform.position, enemy.playerTransform.position) <= 1;
+
+	private AttackData UpdatedAttackData()
+	{
+		List<AttackData> validAttacks = new List<AttackData>(enemy.attackList);
+
+		if (PlayerClose())
+			validAttacks.RemoveAll(parameters => parameters.attackType == AttackType_Melee.Charge); //remove all elements that is of attacktype type Charge
+
+
+		int randomIndex = Random.Range(0, validAttacks.Count);
+
+		return validAttacks[randomIndex];
 	}
 }
