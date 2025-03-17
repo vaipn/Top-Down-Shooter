@@ -21,6 +21,7 @@ public class EnemyMelee : Enemy
 	public RecoveryState_Melee recoveryState { get; private set; }
 	public ChaseState_Melee chaseState { get; private set; }
 	public AttackState_Melee attackState { get; private set; }
+	public DeadState_Melee deadState { get; private set; }
 
 
 	[Header("Attack data")]
@@ -39,6 +40,7 @@ public class EnemyMelee : Enemy
 		recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
 		chaseState = new ChaseState_Melee(this, stateMachine, "Chase");
 		attackState = new AttackState_Melee(this, stateMachine, "Attack");
+		deadState = new DeadState_Melee(this, stateMachine, "Idle"); // Idle anim is just a placeholder (ragdoll is used)
 	}
 
 	protected override void Start()
@@ -53,6 +55,10 @@ public class EnemyMelee : Enemy
 		base.Update();
 
 		stateMachine.currentState.Update();
+	}
+	public override void GetHit()
+	{
+		stateMachine.ChangeState(deadState);
 	}
 
 	public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackData.attackRange;

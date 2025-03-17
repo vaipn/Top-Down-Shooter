@@ -48,6 +48,11 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     }
 
+    public virtual void GetHit()
+    {
+        
+    }
+
 	protected virtual void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, aggressionRange);
