@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyRagdoll : MonoBehaviour
 {
     [SerializeField] private Transform ragdollParent;
-    [SerializeField] private Collider[] ragdollColliders;
-    [SerializeField] private Rigidbody[] ragdollRigidbodies;
+    private Collider[] ragdollColliders;
+    private Rigidbody[] ragdollRigidbodies;
 
 	private void Awake()
 	{
