@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 	private MeshRenderer meshRenderer;
 	private TrailRenderer trailRenderer;
 
+	public float impactForce;
 	private Vector3 startPosition;
 	private float flyDistance;
 	private bool bulletDisabled;
@@ -24,7 +25,7 @@ public class Bullet : MonoBehaviour
 		trailRenderer = GetComponent<TrailRenderer>();
 	}
 
-	public void BulletSetup(float flyDistance)
+	public void BulletSetup(float flyDistance, float impactForce)
 	{
 		bulletDisabled = false;
 		boxCollider.enabled = true;
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour
 		trailRenderer.time = 0.25f;
 		startPosition = transform.position;
 		this.flyDistance = flyDistance /*+ 0.5f*/; // +0.5 because of tipLength that is 0.5 
+		this.impactForce = impactForce;
 	}
 
 	private void Update()
@@ -68,7 +70,14 @@ public class Bullet : MonoBehaviour
 		Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 
 		if (enemy != null)
+		{
+			Vector3 force = rb.velocity.normalized * impactForce; // direction * impactForce
+			Rigidbody hitRigidbody = collision.collider.attachedRigidbody;
+
 			enemy.GetHit();
+			enemy.HitImpact(force, collision.contacts[0].point, hitRigidbody);
+
+		}
 
 
 		CreateImpactFX(collision);
