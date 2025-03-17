@@ -23,4 +23,12 @@ public class EnemyRagdoll : MonoBehaviour
 			rb.isKinematic = !active; // set ragdoll isKinematic to true when ragdoll is not active, but set isKinematic to false when ragdoll is active
 		}
 	}
+
+	public void CollidersActive(bool active)
+	{
+		foreach (Collider cd in ragdollColliders)
+		{
+			cd.enabled = active;
+		}
+	}
 }

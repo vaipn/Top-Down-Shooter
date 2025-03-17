@@ -6,6 +6,8 @@ public class DeadState_Melee : EnemyState
 {
 	private EnemyMelee enemy;
 	private EnemyRagdoll ragdoll;
+
+	private bool interactionDisabled;
 	public DeadState_Melee(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
 	{
 		enemy = enemyBase as EnemyMelee;
@@ -20,6 +22,10 @@ public class DeadState_Melee : EnemyState
 		enemy.agent.isStopped = true;
 
 		ragdoll.RagdollActive(true);
+
+		interactionDisabled = false;
+
+		stateTimer = 3f;
 	}
 
 	public override void Exit()
@@ -30,5 +36,13 @@ public class DeadState_Melee : EnemyState
 	public override void Update()
 	{
 		base.Update();
+
+		if (stateTimer < 0 && !interactionDisabled)
+		{
+			interactionDisabled = true;
+
+			ragdoll.RagdollActive(false);
+			ragdoll.CollidersActive(false);
+		}
 	}
 }
