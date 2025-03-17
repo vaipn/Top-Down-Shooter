@@ -5765,7 +5765,7 @@ MonoBehaviour:
     attackRange: 0
     attackMoveSpeed: 0
     attackIndex: 0
-    animationSpeed: 0
+    animationSpeed: 1
     attackType: 0
   attackList: []
   sheathedWeapon: {fileID: 0}
@@ -6415,6 +6415,7 @@ GameObject:
   - component: {fileID: 1224552510}
   - component: {fileID: 1224552509}
   - component: {fileID: 1224552511}
+  - component: {fileID: 1224552512}
   m_Layer: 0
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -6504,6 +6505,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1224552512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224552508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e151d3cbf04b64b8a33ba59cc1f542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollParent: {fileID: 7738249662459090751}
+  ragdollColliders: []
+  ragdollRigidbodies: []
 --- !u!4 &1228143405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5524434264981105291, guid: dcaceaeb6abf36542ad5998fd41865dc, type: 3}
