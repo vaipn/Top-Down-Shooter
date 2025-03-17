@@ -58,7 +58,11 @@ public class EnemyMelee : Enemy
 	}
 	public override void GetHit()
 	{
-		stateMachine.ChangeState(deadState);
+		base.GetHit();
+
+		if (healthPoint <= 0)
+			stateMachine.ChangeState(deadState);
+
 	}
 
 	public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackData.attackRange;
