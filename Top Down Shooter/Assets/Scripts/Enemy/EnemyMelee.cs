@@ -14,7 +14,7 @@ public struct AttackData
 	public AttackType_Melee attackType;
 }
 public enum AttackType_Melee { Close, Charge}
-public enum EnemyMelee_Type { Regular, Shield}
+public enum EnemyMelee_Type { Regular, Shield, Dodger}
 public class EnemyMelee : Enemy
 {
     public IdleState_Melee idleState {  get; private set; }
@@ -27,6 +27,8 @@ public class EnemyMelee : Enemy
 	[Header("Enemy Settings")]
 	public EnemyMelee_Type meleeType;
 	[SerializeField] private Transform shieldTransform;
+	public float dodgeCooldown;
+	private float lastTimeDodge;
 
 	[Header("Attack data")]
 	public AttackData attackData;
@@ -85,7 +87,20 @@ public class EnemyMelee : Enemy
 
 	public void ActivateDodgeRoll()
 	{
-		anim.SetTrigger("DodgeRoll");
+		if (meleeType != EnemyMelee_Type.Dodger)
+			return;
+
+		if (stateMachine.currentState != chaseState)
+			return;
+
+		if (Vector3.Distance(transform.position, playerTransform.position) < 2f)
+			return;
+
+		if (Time.time > lastTimeDodge + dodgeCooldown)
+		{
+			lastTimeDodge = Time.time;
+			anim.SetTrigger("DodgeRoll");
+		}
 	}
 	protected override void OnDrawGizmos()
 	{
