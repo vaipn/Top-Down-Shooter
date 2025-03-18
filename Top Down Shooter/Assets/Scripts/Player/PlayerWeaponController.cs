@@ -152,6 +152,7 @@ public class PlayerWeaponController : MonoBehaviour
 		}
 
 		ShootSingleBullet();
+		TriggerEnemyDodge();
 	}
 
 	private void ShootSingleBullet()
@@ -207,6 +208,24 @@ public class PlayerWeaponController : MonoBehaviour
 
 		return null;
 	}
+
+	private void TriggerEnemyDodge()
+	{
+		// check if enemy is in the way of bullet fired. if present, trigger dodgeRoll
+		Vector3 rayOrigin = GunPoint().position;
+		Vector3 rayDirection = BulletDirection();
+
+		if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
+		{
+			EnemyMelee enemyMelee = hit.collider.gameObject.GetComponentInParent<EnemyMelee>();
+
+			if (enemyMelee != null)
+			{
+				enemyMelee.ActivateDodgeRoll();
+			}
+		}
+	}
+
 	#region Input Events
 	private void AssignInputEvents()
 	{
