@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public Transform playerTransform { get; private set; }
 
 
-    [SerializeField] protected int healthPoint = 20;
+    [SerializeField] protected int healthPoint = 5;
 
     [Header("Idle data")]
     public float idleTime;
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public virtual void GetHit()
     {
-        healthPoint -= 5;
+        healthPoint--;
     }
 
     public virtual void HitImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
