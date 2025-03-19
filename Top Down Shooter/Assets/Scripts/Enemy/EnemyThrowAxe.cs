@@ -12,12 +12,17 @@ public class EnemyThrowAxe : MonoBehaviour
 
     public Vector3 direction;
 
+    private float timer = 1;
 
 	private void Update()
 	{
 		axeVisual.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
+        timer -= Time.deltaTime;
 
-        direction = player.position + Vector3.up - transform.position;
+        if (timer > 0)
+            direction = player.position + Vector3.up - transform.position;
+
+
         rb.velocity = direction.normalized * flySpeed;
 
         transform.forward = rb.velocity; // to make sure axe is facing player
