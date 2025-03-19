@@ -23,6 +23,7 @@ public class EnemyMelee : Enemy
 	public ChaseState_Melee chaseState { get; private set; }
 	public AttackState_Melee attackState { get; private set; }
 	public DeadState_Melee deadState { get; private set; }
+	public AbilityState_Melee abilityState { get; private set; }
 
 	[Header("Enemy Settings")]
 	public EnemyMelee_Type meleeType;
@@ -47,6 +48,7 @@ public class EnemyMelee : Enemy
 		chaseState = new ChaseState_Melee(this, stateMachine, "Chase");
 		attackState = new AttackState_Melee(this, stateMachine, "Attack");
 		deadState = new DeadState_Melee(this, stateMachine, "Idle"); // Idle anim is just a placeholder (ragdoll is used)
+		abilityState = new AbilityState_Melee(this, stateMachine, "AxeThrow");
 	}
 
 	protected override void Start()
@@ -63,6 +65,13 @@ public class EnemyMelee : Enemy
 		base.Update();
 
 		stateMachine.currentState.Update();
+	}
+
+	public void TriggerAbility()
+	{
+		walkSpeed = walkSpeed * 0.6f;
+		Debug.Log("Create Axe");
+		heldWeapon.gameObject.SetActive(false);
 	}
 
 	private void InitializeSpeciality()
