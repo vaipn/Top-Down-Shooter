@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     private bool manualRotation;
 
     [SerializeField] private Transform[] patrolPoints;
+    private Vector3[] patrolPointsPosition;
     private int currentPatrolIndex;
 
     public float aggressionRange;
@@ -101,13 +102,18 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     }
 	private void InitializePatrolPoints()
 	{
-		foreach (Transform t in patrolPoints)
-			t.parent = null;
+		patrolPointsPosition = new Vector3[patrolPoints.Length];
+
+        for (int i = 0; i < patrolPoints.Length; i++)
+        {
+            patrolPointsPosition[i] = patrolPoints[i].position;
+            patrolPoints[i].gameObject.SetActive(false);
+        }
 	}
 
 	public Vector3 GetPatrolDestination()
     {
-        Vector3 destination = patrolPoints[currentPatrolIndex].transform.position;
+        Vector3 destination = patrolPointsPosition[currentPatrolIndex];
         currentPatrolIndex++;
 
         if (currentPatrolIndex >= patrolPoints.Length)
