@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,27 +8,29 @@ public struct AttackData
 	public float attackRange;
 	public float attackMoveSpeed;
 	public float attackIndex;
-	[Range (1, 2)]
+	[Range(1, 2)]
 	public float animationSpeed;
 	public AttackType_Melee attackType;
 }
-public enum AttackType_Melee { Close, Charge}
-public enum EnemyMelee_Type { Regular, Shield, Dodger, AxeThrower}
+public enum AttackType_Melee { Close, Charge }
+public enum EnemyMelee_Type { Regular, Shield, Dodger, AxeThrower }
 public class EnemyMelee : Enemy
 {
-    public IdleState_Melee idleState {  get; private set; }
-    public MoveState_Melee moveState { get; private set; }
+	public IdleState_Melee idleState { get; private set; }
+	public MoveState_Melee moveState { get; private set; }
 	public RecoveryState_Melee recoveryState { get; private set; }
 	public ChaseState_Melee chaseState { get; private set; }
 	public AttackState_Melee attackState { get; private set; }
 	public DeadState_Melee deadState { get; private set; }
 	public AbilityState_Melee abilityState { get; private set; }
 
+	private AnimationClip[] clips;
+
 	[Header("Enemy Settings")]
 	public EnemyMelee_Type meleeType;
 	[SerializeField] private Transform shieldTransform;
 	public float dodgeCooldown;
-	private float lastTimeDodge;
+	private float lastTimeDodge = -10;
 
 	[Header("Axe throw ability")]
 	public GameObject axePrefab;
@@ -61,6 +62,8 @@ public class EnemyMelee : Enemy
 
 	protected override void Start()
 	{
+		clips = anim.runtimeAnimatorController.animationClips;
+
 		base.Start();
 
 		stateMachine.Initialize(idleState);
@@ -114,7 +117,9 @@ public class EnemyMelee : Enemy
 		if (Vector3.Distance(transform.position, playerTransform.position) < 2f)
 			return;
 
-		if (Time.time > lastTimeDodge + dodgeCooldown)
+		float dodgeAnimationDuration = GetAnimationClipDuration("Dodge Roll");
+
+		if (Time.time > lastTimeDodge + dodgeCooldown + dodgeAnimationDuration)
 		{
 			lastTimeDodge = Time.time;
 			anim.SetTrigger("DodgeRoll");
@@ -133,6 +138,19 @@ public class EnemyMelee : Enemy
 		}
 		return false;
 	}
+
+	private float GetAnimationClipDuration(string clipName)
+	{
+		foreach (AnimationClip clip in clips)
+		{
+			if (clip.name == clipName)
+				return clip.length;
+		}
+
+		Debug.Log(clipName + " animation not found");
+		return 0f;
+	}
+
 	protected override void OnDrawGizmos()
 	{
 		base.OnDrawGizmos();
