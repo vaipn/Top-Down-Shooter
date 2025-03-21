@@ -85,12 +85,19 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
         rb.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
     }
-	protected virtual void OnDrawGizmos()
+
+	public void FaceTarget(Vector3 target)
 	{
-		Gizmos.DrawWireSphere(transform.position, aggressionRange);
+		Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
+
+		Vector3 currentEulerAngles = transform.rotation.eulerAngles; //current rotation
+
+		float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime); // we only need to rotate on the y-axis
+
+		transform.rotation = Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
 	}
-    
-    public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
+	#region Animation Events
+	public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
     public bool ManualMovementActive() => manualMovement;
 
     public bool ActivateManualRotation(bool manualRotation) => this.manualRotation = manualRotation;
@@ -100,6 +107,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     {
         stateMachine.currentState.AbilityTrigger();
     }
+	#endregion
+	#region Patrol logic
 	private void InitializePatrolPoints()
 	{
 		patrolPointsPosition = new Vector3[patrolPoints.Length];
@@ -121,17 +130,10 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
         return destination;
     }
+	#endregion
 
-    public void FaceTarget(Vector3 target)
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
-
-        Vector3 currentEulerAngles = transform.rotation.eulerAngles; //current rotation
-
-        float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime); // we only need to rotate on the y-axis
-
-        transform.rotation = Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
-    }
-
-
+	protected virtual void OnDrawGizmos()
+	{
+		Gizmos.DrawWireSphere(transform.position, aggressionRange);
+	}
 }
