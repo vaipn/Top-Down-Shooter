@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         return destination;
     }
 
-    public Quaternion FaceTarget(Vector3 target)
+    public void FaceTarget(Vector3 target)
     {
         Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
 
@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
         float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime); // we only need to rotate on the y-axis
 
-        return Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
+        transform.rotation = Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
     }
 
 
