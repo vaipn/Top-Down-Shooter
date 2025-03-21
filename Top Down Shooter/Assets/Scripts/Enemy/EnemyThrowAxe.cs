@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemyThrowAxe : MonoBehaviour
 {
-    public Rigidbody rb;
-    public Transform axeVisual;
-    public Transform player;
-    public float flySpeed;
-    public float rotationSpeed;
+    [SerializeField] private GameObject impactFx;
+	[SerializeField] private Rigidbody rb;
+    [SerializeField] private Transform axeVisual;
 
-    public Vector3 direction;
 
+    private Vector3 direction;
+    private Transform player;
+    private float flySpeed;
+    private float rotationSpeed = 1600;
     private float timer = 1;
+
+    public void AxeSetup(float flySpeed, Transform player, float timer)
+    {
+        this.flySpeed = flySpeed;
+        this.player = player;
+        this.timer = timer;
+    }
 
 	private void Update()
 	{
@@ -26,5 +34,20 @@ public class EnemyThrowAxe : MonoBehaviour
         rb.velocity = direction.normalized * flySpeed;
 
         transform.forward = rb.velocity; // to make sure axe is facing player
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		Bullet bullet = other.GetComponent<Bullet>();
+        Player player = other.GetComponent<Player>();
+
+        if (bullet != null || player != null)
+        {
+            GameObject newFx = ObjectPool.instance.GetObjectFromPool(impactFx);
+            newFx.transform.position = transform.position;
+
+            ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
+            ObjectPool.instance.ReturnObjectToPoolWithDelay(newFx, 1);
+        }
 	}
 }
