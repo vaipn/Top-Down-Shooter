@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public float aggressionRange;
 
+    public bool inBattleMode {  get; private set; }
     public Animator anim {  get; private set; }
 
     public NavMeshAgent agent {  get; private set; }
@@ -48,6 +49,22 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	protected virtual void Update()
     {
 
+    }
+
+    protected bool ShouldEnterBattleMode()
+    {
+        bool inAgressionRange = Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
+
+        if (inAgressionRange && !inBattleMode)
+        {
+            return true;
+        }
+        return false;
+	}
+
+    public virtual void EnterBattleMode()
+    {
+        inBattleMode = true;
     }
 
     public virtual void GetHit()
@@ -81,7 +98,6 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     {
         stateMachine.currentState.AbilityTrigger();
     }
-    public bool PlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
 	private void InitializePatrolPoints()
 	{
 		foreach (Transform t in patrolPoints)
