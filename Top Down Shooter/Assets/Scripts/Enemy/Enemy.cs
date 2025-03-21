@@ -74,12 +74,12 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         healthPoint--;
     }
 
-    public virtual void HitImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    public virtual void DeathImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {
-        StartCoroutine(HitImpactCoroutine(force, hitPoint, rb));
+        StartCoroutine(DeathImpactCoroutine(force, hitPoint, rb));
     }
 
-    private IEnumerator HitImpactCoroutine(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    private IEnumerator DeathImpactCoroutine(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {
         yield return new WaitForSeconds(0.1f); // delay needed so it doesn't add force at the moment when it is enabling ragdoll (and setting some parameters - like isKinematic)
 
