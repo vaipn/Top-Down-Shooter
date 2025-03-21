@@ -16,6 +16,7 @@ public enum AttackType_Melee { Close, Charge }
 public enum EnemyMelee_Type { Regular, Shield, Dodger, AxeThrower }
 public class EnemyMelee : Enemy
 {
+	#region States
 	public IdleState_Melee idleState { get; private set; }
 	public MoveState_Melee moveState { get; private set; }
 	public RecoveryState_Melee recoveryState { get; private set; }
@@ -23,6 +24,7 @@ public class EnemyMelee : Enemy
 	public AttackState_Melee attackState { get; private set; }
 	public DeadState_Melee deadState { get; private set; }
 	public AbilityState_Melee abilityState { get; private set; }
+	#endregion
 
 	private AnimationClip[] clips;
 
