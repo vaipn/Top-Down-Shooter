@@ -83,6 +83,9 @@ public class EnemyMelee : Enemy
 
 	public override void EnterBattleMode()
 	{
+		if (inBattleMode)
+			return;
+
 		base.EnterBattleMode();
 
 		stateMachine.ChangeState(recoveryState);

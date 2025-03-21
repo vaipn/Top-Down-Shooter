@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public virtual void GetHit()
     {
+        EnterBattleMode(); // this is going to call the EnterBattleMode in EnemyMelee
         healthPoint--;
     }
 
