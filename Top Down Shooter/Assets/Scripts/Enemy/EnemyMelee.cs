@@ -26,6 +26,8 @@ public class EnemyMelee : Enemy
 	public AbilityState_Melee abilityState { get; private set; }
 	#endregion
 
+	private EnemyVisuals enemyVisuals;
+
 	private AnimationClip[] clips;
 
 	[Header("Enemy Settings")]
@@ -53,6 +55,8 @@ public class EnemyMelee : Enemy
 	{
 		base.Awake();
 
+		enemyVisuals = GetComponent<EnemyVisuals>();
+
 		idleState = new IdleState_Melee(this, stateMachine, "Idle");
 		moveState = new MoveState_Melee(this, stateMachine, "Move");
 		recoveryState = new RecoveryState_Melee(this, stateMachine, "Recovery");
@@ -71,6 +75,7 @@ public class EnemyMelee : Enemy
 		stateMachine.Initialize(idleState);
 
 		InitializeSpeciality();
+		enemyVisuals.SetupLook();
 	}
 
 	protected override void Update()
