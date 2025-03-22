@@ -108,10 +108,14 @@ public class EnemyMelee : Enemy
 
 	private void InitializeSpeciality()
 	{
+		if (meleeType == EnemyMelee_Type.AxeThrower)
+			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.Throw);
+
 		if (meleeType == EnemyMelee_Type.Shield)
 		{
 			anim.SetFloat("ChaseIndex", 1);
 			shieldTransform.gameObject.SetActive(true);
+			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.OneHand);
 		}
 	}
 
@@ -170,21 +174,21 @@ public class EnemyMelee : Enemy
 		Debug.Log(clipName + " animation not found");
 		return 0f;
 	}
+	public void HoldWeapon()
+	{
+		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(false);
+		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(true);
+	}
+	public void SheathWeapon()
+	{
+		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(true);
+		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
+	}
 
 	protected override void OnDrawGizmos()
 	{
 		base.OnDrawGizmos();
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.position, attackData.attackRange);
-	}
-	public void HoldWeapon()
-	{
-		sheathedWeapon.gameObject.SetActive(false);
-		heldWeapon.gameObject.SetActive(true);
-	}
-	public void SheathWeapon()
-	{
-		sheathedWeapon.gameObject.SetActive(true);
-		heldWeapon.gameObject.SetActive(false);
 	}
 }
