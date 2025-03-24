@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyMelee_WeaponType { OneHand, Throw}
-public enum EnemyMelee_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench}
+public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed}
+public enum EnemyMelee_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed}
 
 public class EnemyVisuals : MonoBehaviour
 {
@@ -30,6 +30,17 @@ public class EnemyVisuals : MonoBehaviour
 		sheathedWeaponModels = GetComponentsInChildren<EnemySheathedWeaponModel>(true);
 
 		CollectCorruptionCrystals();
+	}
+
+	private void CollectCorruptionCrystals()
+	{
+		EnemyCorruptionCrystal[] enemyCorruptionCrystals = GetComponentsInChildren<EnemyCorruptionCrystal>(true);
+		corruptionCrystals = new GameObject[enemyCorruptionCrystals.Length];
+
+		for (int i = 0; i < enemyCorruptionCrystals.Length; i++)
+		{
+			corruptionCrystals[i] = enemyCorruptionCrystals[i].gameObject;
+		}
 	}
 
 	public void SetupWeaponType(EnemyMelee_WeaponType type) => weaponType = type;
@@ -70,8 +81,9 @@ public class EnemyVisuals : MonoBehaviour
 			}
 		}
 
+		OverrideAnimatorControllerIfCan();
 		//currentHeldWeaponModel.gameObject.SetActive(true);
-		
+
 	}
 
 	private void SetupRandomColor()
@@ -108,14 +120,13 @@ public class EnemyVisuals : MonoBehaviour
 		}
 	}
 
-	private void CollectCorruptionCrystals()
+	private void OverrideAnimatorControllerIfCan()
 	{
-		EnemyCorruptionCrystal[] enemyCorruptionCrystals = GetComponentsInChildren<EnemyCorruptionCrystal>(true);
-		corruptionCrystals = new GameObject[enemyCorruptionCrystals.Length];
+		AnimatorOverrideController overrideController = currentHeldWeaponModel.overrideController;
 
-		for (int i = 0; i < enemyCorruptionCrystals.Length; i++)
+		if (overrideController != null)
 		{
-			corruptionCrystals[i] = enemyCorruptionCrystals[i].gameObject;
+			GetComponentInChildren<Animator>().runtimeAnimatorController = overrideController;
 		}
 	}
 }

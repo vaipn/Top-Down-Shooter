@@ -117,6 +117,11 @@ public class EnemyMelee : Enemy
 			shieldTransform.gameObject.SetActive(true);
 			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.OneHand);
 		}
+
+		if (meleeType == EnemyMelee_Type.Dodger)
+		{
+			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.Unarmed);
+		}
 	}
 
 	public override void GetHit()

@@ -6,4 +6,5 @@ public class EnemyHeldWeaponModel : MonoBehaviour
 {
     public EnemyMelee_WeaponType weaponType;
     public EnemyMelee_WeaponName weaponName;
+    public AnimatorOverrideController overrideController;
 }
