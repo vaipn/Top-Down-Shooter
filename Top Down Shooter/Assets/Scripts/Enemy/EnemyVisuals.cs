@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed}
+public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed, TwoHand}
 public enum EnemyMelee_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed}
 
 public class EnemyVisuals : MonoBehaviour
 {
+	[Header("Weapon visuals")]
+	[SerializeField] private EnemyMelee_WeaponType weaponType;
+	[SerializeField] private EnemyHeldWeaponModel[] heldWeaponModels;
+	[SerializeField] private EnemySheathedWeaponModel[] sheathedWeaponModels;
+
 	[Header("Color")]
 	[SerializeField] private Texture[] colorTextures;
 	[SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
@@ -14,11 +19,8 @@ public class EnemyVisuals : MonoBehaviour
 	[Header("Corruption crystal visuals")]
 	[SerializeField] private GameObject[] corruptionCrystals;
 	[SerializeField] private int corruptionAmount;
-
-	[Header("Weapon visuals")]
-	[SerializeField] private EnemyHeldWeaponModel[] heldWeaponModels;
-	[SerializeField] private EnemySheathedWeaponModel[] sheathedWeaponModels;
-	[SerializeField] private EnemyMelee_WeaponType weaponType;
+	
+	
 	public EnemyHeldWeaponModel currentHeldWeaponModel {  private set; get; }
 	public EnemySheathedWeaponModel currentSheathedWeaponModel { private set; get; }
 

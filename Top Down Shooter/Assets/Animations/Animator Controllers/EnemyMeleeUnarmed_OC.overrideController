@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyMeleeUnarmed_AC
+  m_Name: EnemyMeleeUnarmed_OC
   m_Controller: {fileID: 9100000, guid: 6307b4e79bccb154fb352e324d2647f1, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: -203655887218126122, guid: 0d168cbe6a068804c8aad2d35a76f10d, type: 3}

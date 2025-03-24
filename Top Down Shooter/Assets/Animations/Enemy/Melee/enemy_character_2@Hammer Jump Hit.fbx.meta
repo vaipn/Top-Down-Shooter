@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 948fcc04e8b1ac248b5fe6b42318f888
+guid: 701e4909db3117f4caaf9f72080f1bcb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mma Kick_1
+      name: Hammer Jump Hit
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -56,42 +56,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: StartManualRotation
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.25417057
-        functionName: StopManualRotation
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.88926774
-        functionName: StartManualRotation
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.98006696
-        functionName: StopManualRotation
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.99811107
-        functionName: AnimationTrigger
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -6576,6 +6576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb6b376bceb06048abf4242b9c831ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
+  heldWeaponModels: []
+  sheathedWeaponModels: []
   colorTextures:
   - {fileID: 2800000, guid: 0f4ccd0875976b74696ae24c7be60bae, type: 3}
   - {fileID: 2800000, guid: d41d9a5f8bf3c1e449e3ab0cf2a64830, type: 3}
@@ -6584,9 +6587,6 @@ MonoBehaviour:
   skinnedMeshRenderer: {fileID: 1773754653058135762}
   corruptionCrystals: []
   corruptionAmount: 3
-  heldWeaponModels: []
-  sheathedWeaponModels: []
-  weaponType: 0
 --- !u!4 &1228143405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5524434264981105291, guid: dcaceaeb6abf36542ad5998fd41865dc, type: 3}
@@ -24544,9 +24544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 3
   weaponName: 3
-  overrideController: {fileID: 0}
+  overrideController: {fileID: 22100000, guid: 5a7f204ddca543f499d087b45dd5a6d8, type: 2}
 --- !u!4 &8456876808468401948
 Transform:
   m_ObjectHideFlags: 0
