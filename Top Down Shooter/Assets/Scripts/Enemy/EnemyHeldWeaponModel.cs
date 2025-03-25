@@ -6,5 +6,14 @@ public class EnemyHeldWeaponModel : MonoBehaviour
 {
     public EnemyMelee_WeaponType weaponType;
     public EnemyMelee_WeaponName weaponName;
+
+
     public AnimatorOverrideController overrideController;
+    [SerializeField] private GameObject[] trailEffects;
+
+	public void EnableTrailEffect(bool enable)
+    {
+        foreach (var effect in trailEffects)
+            effect.SetActive(enable);
+    }
 }

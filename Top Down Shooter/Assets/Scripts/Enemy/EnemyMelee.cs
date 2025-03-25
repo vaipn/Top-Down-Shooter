@@ -26,7 +26,7 @@ public class EnemyMelee : Enemy
 	public AbilityState_Melee abilityState { get; private set; }
 	#endregion
 
-	private EnemyVisuals enemyVisuals;
+	public EnemyVisuals enemyVisuals { get; private set; }
 
 	private AnimationClip[] clips;
 

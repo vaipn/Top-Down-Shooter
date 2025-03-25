@@ -45,6 +45,11 @@ public class EnemyVisuals : MonoBehaviour
 		}
 	}
 
+	public void EnableWeaponTrail(bool enable)
+	{
+		currentHeldWeaponModel.EnableTrailEffect(enable);
+	}
+
 	public void SetupWeaponType(EnemyMelee_WeaponType type) => weaponType = type;
 	public void SetupLook()
 	{
