@@ -49,8 +49,9 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
 	protected virtual void Update()
     {
-
-    }
+		if (ShouldEnterBattleMode())
+			EnterBattleMode();
+	}
 
     protected bool ShouldEnterBattleMode()
     {

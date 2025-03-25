@@ -24331,7 +24331,7 @@ MonoBehaviour:
   - {fileID: 7668340376788117141}
   - {fileID: 221463633751410312}
   - {fileID: 4864044734824665765}
-  aggressionRange: 0
+  aggressionRange: 15
 --- !u!1 &7665913022902603874
 GameObject:
   m_ObjectHideFlags: 0
