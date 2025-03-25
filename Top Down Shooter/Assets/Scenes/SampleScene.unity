@@ -1755,6 +1755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 2
   weaponName: 5
+  weaponData: {fileID: 11400000, guid: 43458952bcb14e54985c7965cee04b83, type: 2}
   overrideController: {fileID: 22100000, guid: 91b288d5c5019f44ca414b3e4ffc66a7, type: 2}
   trailEffects:
   - {fileID: 543543128}
@@ -2861,6 +2862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 1
   weaponName: 0
+  weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects:
   - {fileID: 1313253337}
@@ -6840,7 +6842,7 @@ MonoBehaviour:
   - {fileID: 1106249066}
   - {fileID: 795166326}
   aggressionRange: 4
-  meleeType: 0
+  meleeType: 2
   shieldTransform: {fileID: 1352417280}
   dodgeCooldown: 3
   axePrefab: {fileID: 6848989787514965232, guid: e37068b423317b44f98aa24192da1d02, type: 3}
@@ -21481,6 +21483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   weaponName: 1
+  weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects:
   - {fileID: 2116046556}
@@ -23598,6 +23601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   weaponName: 4
+  weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects:
   - {fileID: 429209713}
@@ -24773,6 +24777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   weaponName: 2
+  weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects:
   - {fileID: 3719125}
@@ -25290,6 +25295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 3
   weaponName: 3
+  weaponData: {fileID: 0}
   overrideController: {fileID: 22100000, guid: 5a7f204ddca543f499d087b45dd5a6d8, type: 2}
   trailEffects:
   - {fileID: 1212419848}

@@ -7,6 +7,7 @@ public class EnemyHeldWeaponModel : MonoBehaviour
     public EnemyMelee_WeaponType weaponType;
     public EnemyMelee_WeaponName weaponName;
 
+    public EnemyMelee_WeaponData weaponData;
 
     public AnimatorOverrideController overrideController;
     [SerializeField] private GameObject[] trailEffects;
