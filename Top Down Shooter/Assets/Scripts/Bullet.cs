@@ -12,12 +12,12 @@ public class Bullet : MonoBehaviour
 	private MeshRenderer meshRenderer;
 	private TrailRenderer trailRenderer;
 
-	public float impactForce;
+	private float impactForce;
 	private Vector3 startPosition;
 	private float flyDistance;
 	private bool bulletDisabled;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 		boxCollider = GetComponent<BoxCollider>();
@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 		trailRenderer = GetComponent<TrailRenderer>();
 	}
 
-	public void BulletSetup(float flyDistance, float impactForce)
+	public void BulletSetup(float flyDistance = 100, float impactForce = 100)
 	{
 		bulletDisabled = false;
 		boxCollider.enabled = true;
@@ -36,20 +36,20 @@ public class Bullet : MonoBehaviour
 		this.impactForce = impactForce;
 	}
 
-	private void Update()
+	protected virtual void Update()
 	{
 		FadeTrailIfNeeded();
 		DisableBulletIfNeeded();
 		ReturnBulletToPoolIfNeeded();
 	}
 
-	private void ReturnBulletToPoolIfNeeded()
+	protected void ReturnBulletToPoolIfNeeded()
 	{
 		if (trailRenderer.time < 0)
 			ReturnBulletToPool();
 	}
 
-	private void DisableBulletIfNeeded()
+	protected void DisableBulletIfNeeded()
 	{
 		if (Vector3.Distance(startPosition, transform.position) > flyDistance && !bulletDisabled)
 		{
@@ -59,13 +59,13 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	private void FadeTrailIfNeeded()
+	protected void FadeTrailIfNeeded()
 	{
 		if (Vector3.Distance(startPosition, transform.position) > flyDistance - 1.5f)
 			trailRenderer.time -= 2 * Time.deltaTime;
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	protected virtual void OnCollisionEnter(Collision collision)
 	{
 		CreateImpactFX(collision);
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -92,9 +92,9 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	private void ReturnBulletToPool() => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
+	protected void ReturnBulletToPool() => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
 
-	private void CreateImpactFX(Collision collision)
+	protected void CreateImpactFX(Collision collision)
 	{
 		if (collision.contacts.Length > 0)
 		{
