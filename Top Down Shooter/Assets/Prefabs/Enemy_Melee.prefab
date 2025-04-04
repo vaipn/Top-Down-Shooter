@@ -3880,7 +3880,8 @@ MonoBehaviour:
   - {fileID: 7042368665320388525}
   - {fileID: 2389658879576089472}
   aggressionRange: 4
-  meleeType: 2
+  meleeType: 3
+  weaponType: 0
   shieldTransform: {fileID: 3645840972983696179}
   dodgeCooldown: 3
   axePrefab: {fileID: 6848989787514965232, guid: e37068b423317b44f98aa24192da1d02, type: 3}
@@ -3957,7 +3958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb6b376bceb06048abf4242b9c831ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
   heldWeaponModels: []
   sheathedWeaponModels: []
   colorTextures:
@@ -4065,7 +4065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  meleeWeaponType: 0
+  rangeWeaponType: 0
   weaponName: 1
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
@@ -5867,7 +5868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 3
+  meleeWeaponType: 3
+  rangeWeaponType: 0
   weaponName: 3
   weaponData: {fileID: 0}
   overrideController: {fileID: 22100000, guid: 5a7f204ddca543f499d087b45dd5a6d8, type: 2}
@@ -6710,7 +6712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  meleeWeaponType: 0
+  rangeWeaponType: 0
   weaponName: 2
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
@@ -6813,7 +6816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  meleeWeaponType: 0
+  rangeWeaponType: 0
   weaponName: 4
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
@@ -7583,7 +7587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  meleeWeaponType: 1
+  rangeWeaponType: 0
   weaponName: 0
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
@@ -8410,7 +8415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aba6e5e79e9e54c8164197519b1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
+  meleeWeaponType: 2
+  rangeWeaponType: 0
   weaponName: 5
   weaponData: {fileID: 11400000, guid: 43458952bcb14e54985c7965cee04b83, type: 2}
   overrideController: {fileID: 22100000, guid: 91b288d5c5019f44ca414b3e4ffc66a7, type: 2}

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed, TwoHand}
-public enum EnemyMelee_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed}
+public enum Enemy_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed, Pistol, Revolver, Shotgun, AutoRifle, Sniper}
+public enum EnemyRange_WeaponType { Pistol, Revolver, Shotgun, AutoRifle, Sniper}
 
 public class EnemyVisuals : MonoBehaviour
 {
 	[Header("Weapon visuals")]
-	[SerializeField] private EnemyMelee_WeaponType weaponType;
 	[SerializeField] private EnemyHeldWeaponModel[] heldWeaponModels;
 	[SerializeField] private EnemySheathedWeaponModel[] sheathedWeaponModels;
 
@@ -30,19 +30,19 @@ public class EnemyVisuals : MonoBehaviour
 
 		heldWeaponModels = GetComponentsInChildren<EnemyHeldWeaponModel>(true);
 		sheathedWeaponModels = GetComponentsInChildren<EnemySheathedWeaponModel>(true);
-
-		CollectCorruptionCrystals();
 	}
 
-	private void CollectCorruptionCrystals()
+	private GameObject[] CollectCorruptionCrystals()
 	{
 		EnemyCorruptionCrystal[] enemyCorruptionCrystals = GetComponentsInChildren<EnemyCorruptionCrystal>(true);
-		corruptionCrystals = new GameObject[enemyCorruptionCrystals.Length];
+		GameObject[] corruptionCrystals = new GameObject[enemyCorruptionCrystals.Length];
 
 		for (int i = 0; i < enemyCorruptionCrystals.Length; i++)
 		{
 			corruptionCrystals[i] = enemyCorruptionCrystals[i].gameObject;
 		}
+
+		return corruptionCrystals;
 	}
 
 	public void EnableWeaponTrail(bool enable)
@@ -50,7 +50,6 @@ public class EnemyVisuals : MonoBehaviour
 		currentHeldWeaponModel.EnableTrailEffect(enable);
 	}
 
-	public void SetupWeaponType(EnemyMelee_WeaponType type) => weaponType = type;
 	public void SetupLook()
 	{
 		SetupRandomColor();
@@ -67,30 +66,70 @@ public class EnemyVisuals : MonoBehaviour
 		foreach (var weaponModel in sheathedWeaponModels)
 			weaponModel.gameObject.SetActive(false);
 
-		List<EnemyHeldWeaponModel> filteredHeldWeaponModels = new List<EnemyHeldWeaponModel>();
 
-		foreach (var weaponModel in heldWeaponModels)
-		{
-			if (weaponModel.weaponType == weaponType)
-				filteredHeldWeaponModels.Add(weaponModel);
-		}
+		bool thisEnemyIsMelee = GetComponent<EnemyMelee>() != null;
+		bool thisEnemyIsRange = GetComponent<EnemyRange>() != null;
 
-		int randomIndex = Random.Range(0, filteredHeldWeaponModels.Count);
-
-		currentHeldWeaponModel = filteredHeldWeaponModels[randomIndex];
+		if (thisEnemyIsMelee)
+			currentHeldWeaponModel = FindMeleeWeaponModel();
+		if (thisEnemyIsRange)
+			currentHeldWeaponModel = FindRangeWeaponModel();
 
 		foreach (var weaponModel in sheathedWeaponModels)
 		{
-			if (weaponModel.weaponName == currentHeldWeaponModel.weaponName)
+			if (thisEnemyIsMelee)
 			{
-				currentSheathedWeaponModel = weaponModel;
-				currentSheathedWeaponModel.gameObject.SetActive(true);
+				if (weaponModel.weaponName == currentHeldWeaponModel.weaponName)
+				{
+					currentSheathedWeaponModel = weaponModel;
+					currentSheathedWeaponModel.gameObject.SetActive(true);
+				}
+			}
+			
+			else if (thisEnemyIsRange)
+			{
+				if (weaponModel.weaponName == currentHeldWeaponModel.weaponName)
+				{
+					currentSheathedWeaponModel = weaponModel;
+					currentSheathedWeaponModel.gameObject.SetActive(true);
+				}
 			}
 		}
 
 		OverrideAnimatorControllerIfCan();
 		//currentHeldWeaponModel.gameObject.SetActive(true);
 
+	}
+
+	private EnemyHeldWeaponModel FindRangeWeaponModel()
+	{
+		EnemyRangeWeaponModel[] weaponModels = GetComponentsInChildren<EnemyRangeWeaponModel>(true);
+		EnemyRange_WeaponType weaponType = GetComponent<EnemyRange>().weaponType;
+
+		foreach (var weaponModel in weaponModels)
+		{
+			if (weaponModel.weaponType == weaponType)
+				return weaponModel.gameObject.GetComponent<EnemyHeldWeaponModel>();
+		}
+
+		Debug.LogWarning("No range weapon model found");
+		return null;
+	}
+
+	private EnemyHeldWeaponModel FindMeleeWeaponModel()
+	{
+		EnemyMelee_WeaponType weaponType = GetComponent<EnemyMelee>().weaponType;
+		List<EnemyHeldWeaponModel> filteredHeldWeaponModels = new List<EnemyHeldWeaponModel>();
+
+		foreach (var weaponModel in heldWeaponModels)
+		{
+			if (weaponModel.meleeWeaponType == weaponType)
+				filteredHeldWeaponModels.Add(weaponModel);
+		}
+
+		int randomIndex = Random.Range(0, filteredHeldWeaponModels.Count);
+
+		return filteredHeldWeaponModels[randomIndex];
 	}
 
 	private void SetupRandomColor()
@@ -107,6 +146,7 @@ public class EnemyVisuals : MonoBehaviour
 	private void SetupRandomCorruption()
 	{
 		List<int> availableIndexes = new List<int>();
+		corruptionCrystals = CollectCorruptionCrystals();
 
 		for (int i = 0; i < corruptionCrystals.Length; i++)
 		{

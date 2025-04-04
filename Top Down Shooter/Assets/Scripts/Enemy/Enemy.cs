@@ -6,7 +6,9 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 {
     public EnemyStateMachine stateMachine {  get; private set; }
-    public Transform playerTransform { get; private set; }
+	public EnemyVisuals enemyVisuals { get; private set; }
+
+	public Transform playerTransform { get; private set; }
 
 
     [SerializeField] protected int healthPoint = 5;
@@ -34,6 +36,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
+
+		enemyVisuals = GetComponent<EnemyVisuals>();
 
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponentInChildren<Animator>();
@@ -132,6 +136,17 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         return destination;
     }
 	#endregion
+
+	public void HoldWeapon()
+	{
+		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(false);
+		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(true);
+	}
+	public void SheathWeapon()
+	{
+		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(true);
+		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
+	}
 
 	protected virtual void OnDrawGizmos()
 	{

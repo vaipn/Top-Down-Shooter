@@ -26,12 +26,11 @@ public class EnemyMelee : Enemy
 	public AbilityState_Melee abilityState { get; private set; }
 	#endregion
 
-	public EnemyVisuals enemyVisuals { get; private set; }
-
 	private AnimationClip[] clips;
 
 	[Header("Enemy Settings")]
 	public EnemyMelee_Type meleeType;
+	public EnemyMelee_WeaponType weaponType;
 	[SerializeField] private Transform shieldTransform;
 	public float dodgeCooldown;
 	private float lastTimeDodge = -10;
@@ -54,8 +53,6 @@ public class EnemyMelee : Enemy
 	protected override void Awake()
 	{
 		base.Awake();
-
-		enemyVisuals = GetComponent<EnemyVisuals>();
 
 		idleState = new IdleState_Melee(this, stateMachine, "Idle");
 		moveState = new MoveState_Melee(this, stateMachine, "Move");
@@ -119,18 +116,18 @@ public class EnemyMelee : Enemy
 	private void InitializeSpeciality()
 	{
 		if (meleeType == EnemyMelee_Type.AxeThrower)
-			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.Throw);
+			weaponType = EnemyMelee_WeaponType.Throw;
 
 		if (meleeType == EnemyMelee_Type.Shield)
 		{
 			anim.SetFloat("ChaseIndex", 1);
 			shieldTransform.gameObject.SetActive(true);
-			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.OneHand);
+			weaponType = EnemyMelee_WeaponType.OneHand;
 		}
 
 		if (meleeType == EnemyMelee_Type.Dodger)
 		{
-			enemyVisuals.SetupWeaponType(EnemyMelee_WeaponType.Unarmed);
+			weaponType = EnemyMelee_WeaponType.Unarmed;
 		}
 	}
 
@@ -188,16 +185,6 @@ public class EnemyMelee : Enemy
 
 		Debug.Log(clipName + " animation not found");
 		return 0f;
-	}
-	public void HoldWeapon()
-	{
-		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(false);
-		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(true);
-	}
-	public void SheathWeapon()
-	{
-		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(true);
-		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
 	}
 
 	protected override void OnDrawGizmos()

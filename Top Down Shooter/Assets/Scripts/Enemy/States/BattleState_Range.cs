@@ -16,6 +16,7 @@ public class BattleState_Range : EnemyState
 	public override void Enter()
 	{
 		base.Enter();
+		enemy.HoldWeapon();
 	}
 
 	public override void Exit()

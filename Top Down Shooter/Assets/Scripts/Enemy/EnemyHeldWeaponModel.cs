@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyHeldWeaponModel : MonoBehaviour
 {
-    public EnemyMelee_WeaponType weaponType;
-    public EnemyMelee_WeaponName weaponName;
+    public EnemyMelee_WeaponType meleeWeaponType;
+	public EnemyRange_WeaponType rangeWeaponType;
+	public Enemy_WeaponName weaponName;
+    
 
     public EnemyMelee_WeaponData weaponData;
 

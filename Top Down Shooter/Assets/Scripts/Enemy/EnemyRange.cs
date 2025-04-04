@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class EnemyRange : Enemy
 {
+	public EnemyRange_WeaponType weaponType;
+
+
+	public Transform weaponHolder;
+
 	public float fireRate = 1; // Bullets per second
 	public GameObject bulletPrefab;
 	public Transform gunPoint;
@@ -27,6 +32,7 @@ public class EnemyRange : Enemy
 		base.Start();
 
 		stateMachine.Initialize(idleState);
+		enemyVisuals.SetupLook();
 	}
 
 	protected override void Update()

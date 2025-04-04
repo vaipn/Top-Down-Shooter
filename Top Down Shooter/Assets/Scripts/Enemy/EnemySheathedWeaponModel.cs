@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EnemySheathedWeaponModel : MonoBehaviour
 {
-	public EnemyMelee_WeaponName weaponName;
+	public Enemy_WeaponName weaponName;
 }
