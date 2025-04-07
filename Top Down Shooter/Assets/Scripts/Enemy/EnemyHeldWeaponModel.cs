@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyRange_WeaponHoldType { Common, LowHold, HighHold}
 public class EnemyHeldWeaponModel : MonoBehaviour
 {
     public EnemyMelee_WeaponType meleeWeaponType;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed, TwoHand}
 public enum Enemy_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed, Pistol, Revolver, Shotgun, AutoRifle, Sniper}
@@ -19,8 +20,13 @@ public class EnemyVisuals : MonoBehaviour
 	[Header("Corruption crystal visuals")]
 	[SerializeField] private GameObject[] corruptionCrystals;
 	[SerializeField] private int corruptionAmount;
-	
-	
+
+
+	[Header("Rig references")]
+	[SerializeField] private Transform leftHandIK;
+	[SerializeField] private Transform leftElbowIK;
+	[SerializeField] private Rig rig;
+
 	public EnemyHeldWeaponModel currentHeldWeaponModel {  private set; get; }
 	public EnemySheathedWeaponModel currentSheathedWeaponModel { private set; get; }
 
@@ -111,6 +117,7 @@ public class EnemyVisuals : MonoBehaviour
 			if (weaponModel.weaponType == weaponType)
 			{
 				SwitchAnimationLayer(((int)weaponModel.weaponHoldType));
+				SetupLeftHandIK(weaponModel.leftHandTarget, weaponModel.leftElbowTarget);
 				return weaponModel.gameObject.GetComponent<EnemyHeldWeaponModel>();
 			}
 		}
@@ -189,5 +196,19 @@ public class EnemyVisuals : MonoBehaviour
 		}
 
 		animator.SetLayerWeight(layerIndex, 1);
+	}
+
+	public void EnableIK(bool enable)
+	{
+		rig.weight = enable ? 1 : 0;
+	}
+
+	private void SetupLeftHandIK(Transform leftHandTarget, Transform leftElbowTarget)
+	{
+		leftHandIK.localPosition = leftHandTarget.localPosition;
+		leftElbowIK.localPosition = leftElbowTarget.localPosition;
+
+		leftHandIK.localRotation = leftHandTarget.localRotation;
+		leftElbowIK.localRotation = leftElbowTarget.localRotation;
 	}
 }

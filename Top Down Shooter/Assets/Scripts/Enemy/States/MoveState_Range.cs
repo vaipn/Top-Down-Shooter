@@ -20,6 +20,8 @@ public class MoveState_Range : EnemyState
 		destination = enemy.GetPatrolDestination();
 
 		enemy.agent.SetDestination(destination);
+
+		enemy.HoldWeapon();
 	}
 
 	public override void Exit()
