@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemyRangeWeaponModel : MonoBehaviour
 {
     public EnemyRange_WeaponType weaponType;
+	public EnemyRange_WeaponHoldType weaponHoldType;
 }

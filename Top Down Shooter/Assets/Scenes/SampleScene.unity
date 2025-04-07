@@ -24694,7 +24694,7 @@ MonoBehaviour:
   - {fileID: 221463633751410312}
   - {fileID: 4864044734824665765}
   aggressionRange: 15
-  weaponType: 2
+  weaponType: 3
   weaponHolder: {fileID: 323475713851418685}
   fireRate: 10
   bulletPrefab: {fileID: 280203576485290946, guid: 0a03f7937d3676346b2fad0084192e17, type: 3}
@@ -25911,6 +25911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  weaponHoldType: 0
 --- !u!4 &8317914916871741967
 Transform:
   m_ObjectHideFlags: 0
@@ -26127,6 +26128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 4
+  weaponHoldType: 2
 --- !u!1 &8512965698496595725
 GameObject:
   m_ObjectHideFlags: 0
@@ -26411,6 +26413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
+  weaponHoldType: 0
 --- !u!114 &8695552308136920096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26720,6 +26723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
+  weaponHoldType: 0
 --- !u!4 &8828045208885373329
 Transform:
   m_ObjectHideFlags: 0
@@ -26906,6 +26910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
+  weaponHoldType: 1
 --- !u!1 &8934372666685905023
 GameObject:
   m_ObjectHideFlags: 0
