@@ -1,18 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyRange : Enemy
 {
+	[Header("Weapon details")]
 	public EnemyRange_WeaponType weaponType;
-
+	public EnemyRange_WeaponData weaponData;
+	[Space]
 
 	public Transform weaponHolder;
-
-	public float fireRate = 1; // Bullets per second
-	public GameObject bulletPrefab;
 	public Transform gunPoint;
-	public float bulletSpeed = 20;
-	public int bulletsToShoot = 5; // bullets to shoot before weapon goes on cooldown
-	public float weaponCooldown = 1.5f; // weapon cooldown after all bullets are shot
+	public GameObject bulletPrefab;
+
+	[SerializeField] List<EnemyRange_WeaponData> availableWeaponData;
 
 	public IdleState_Range idleState { get; private set; }
 	public MoveState_Range moveState { get; private set; }
@@ -33,6 +33,7 @@ public class EnemyRange : Enemy
 
 		stateMachine.Initialize(idleState);
 		enemyVisuals.SetupLook();
+		SetupWeapon();
 	}
 
 	protected override void Update()
@@ -65,7 +66,31 @@ public class EnemyRange : Enemy
 		newBullet.GetComponent<EnemyBullet>().BulletSetup();
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
-		rbNewBullet.mass = 20 / bulletSpeed;
-		rbNewBullet.velocity = bulletsDirection * bulletSpeed;
+
+		Vector3 bulletDirectionWithSpread = weaponData.ApplySpread(bulletsDirection);
+
+		rbNewBullet.mass = 20 / weaponData.bulletSpeed;
+		rbNewBullet.velocity = bulletDirectionWithSpread * weaponData.bulletSpeed;
+	}
+
+	private void SetupWeapon()
+	{
+		List<EnemyRange_WeaponData> filteredData = new List<EnemyRange_WeaponData>();
+
+		foreach (var weaponData in availableWeaponData)
+		{
+			if (weaponData.weaponType == weaponType)
+				filteredData.Add(weaponData);
+		}
+
+		if (filteredData.Count > 0)
+		{
+			int randomIndex = Random.Range(0, filteredData.Count);
+			weaponData = filteredData[randomIndex];
+		}
+		else
+			Debug.LogWarning("No available weapon data was found!");
+
+		gunPoint = enemyVisuals.currentHeldWeaponModel.GetComponent<EnemyRangeWeaponModel>().gunPoint;
 	}
 }
