@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class EnemyRange : Enemy
 {
+	[Header("Cover system")]
+	public bool canUseCovers = true;
+	public Transform lastCover;
+
+
 	[Header("Weapon details")]
 	public EnemyRange_WeaponType weaponType;
 	public EnemyRange_WeaponData weaponData;
@@ -17,6 +22,7 @@ public class EnemyRange : Enemy
 	public IdleState_Range idleState { get; private set; }
 	public MoveState_Range moveState { get; private set; }
 	public BattleState_Range battleState { get; private set; }
+	public RunToCoverState_Range runToCoverState { get; private set; }
 
 	protected override void Awake()
 	{
@@ -25,6 +31,7 @@ public class EnemyRange : Enemy
 		idleState = new IdleState_Range(this, stateMachine, "Idle");
 		moveState = new MoveState_Range(this, stateMachine, "Move");
 		battleState = new BattleState_Range(this, stateMachine, "Battle");
+		runToCoverState = new RunToCoverState_Range(this, stateMachine, "Cover");
 	}
 
 	protected override void Start()
@@ -50,7 +57,10 @@ public class EnemyRange : Enemy
 
 		base.EnterBattleMode();
 
-		stateMachine.ChangeState(battleState);
+		if (canUseCovers)
+			stateMachine.ChangeState(runToCoverState);
+		else
+			stateMachine.ChangeState(battleState);
 	}
 
 	public void FireSingleBullet()
