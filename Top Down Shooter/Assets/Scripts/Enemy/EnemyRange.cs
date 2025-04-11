@@ -6,6 +6,7 @@ public class EnemyRange : Enemy
 	[Header("Cover system")]
 	public bool canUseCovers = true;
 	public Transform lastCover;
+	public List<Cover> allCovers = new List<Cover>();
 
 
 	[Header("Weapon details")]
@@ -41,6 +42,8 @@ public class EnemyRange : Enemy
 		stateMachine.Initialize(idleState);
 		enemyVisuals.SetupLook();
 		SetupWeapon();
+
+		allCovers.AddRange(CollectNearbyCovers());
 	}
 
 	protected override void Update()
@@ -49,6 +52,25 @@ public class EnemyRange : Enemy
 
 		stateMachine.currentState.Update();
 	}
+
+	#region Cover System
+	private List<Cover> CollectNearbyCovers()
+	{
+		float coverDistanceToCheck = 30;
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, coverDistanceToCheck);
+		List<Cover> collectedCovers = new List<Cover>();
+
+		foreach (Collider collider in hitColliders)
+		{
+			Cover cover = collider.GetComponent<Cover>();
+
+            if (cover != null && collectedCovers.Contains(cover) == false)
+				collectedCovers.Add(cover);
+        }
+
+		return collectedCovers;
+	}
+	#endregion
 
 	public override void EnterBattleMode()
 	{
