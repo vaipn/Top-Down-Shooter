@@ -34,4 +34,6 @@ public class Cover : MonoBehaviour
 			coverPoints.Add (coverPoint);
 		}
 	}
+
+	public List<CoverPoint> GetCoverPoints() => coverPoints;
 }

@@ -5,7 +5,7 @@ public class EnemyRange : Enemy
 {
 	[Header("Cover system")]
 	public bool canUseCovers = true;
-	public Transform lastCover;
+	public CoverPoint lastCover;
 	public List<Cover> allCovers = new List<Cover>();
 
 
@@ -69,6 +69,36 @@ public class EnemyRange : Enemy
         }
 
 		return collectedCovers;
+	}
+
+	public Transform AttemptToFindCover()
+	{
+		List<CoverPoint> collectedCoverPoints = new List<CoverPoint>();
+
+		foreach (Cover cover in allCovers)
+		{
+			collectedCoverPoints.AddRange(cover.GetCoverPoints());
+		}
+
+		CoverPoint closestCoverPoint = null;
+		float closestDistance = float.MaxValue;
+
+		foreach (CoverPoint coverPoint in collectedCoverPoints)
+		{
+			float currentDistance = Vector3.Distance(transform.position, coverPoint.transform.position);
+			if (currentDistance < closestDistance)
+			{
+				closestCoverPoint = coverPoint;
+				closestDistance = currentDistance;
+			}
+		}
+
+		if (closestCoverPoint != null)
+		{
+			lastCover = closestCoverPoint;
+		}
+
+		return lastCover.transform;
 	}
 	#endregion
 

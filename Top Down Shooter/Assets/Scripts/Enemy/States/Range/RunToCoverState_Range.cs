@@ -19,7 +19,7 @@ public class RunToCoverState_Range : EnemyState
 		enemy.agent.isStopped = false;
 		enemy.agent.speed = enemy.chaseSpeed;
 
-		destination = enemy.lastCover.position;
+		destination = enemy.AttemptToFindCover().position;
 		enemy.agent.SetDestination(destination);
 	}
 
