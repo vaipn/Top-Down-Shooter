@@ -55,10 +55,38 @@ public class Cover : MonoBehaviour
 		if (coverPoint.occupied)
 			return false;
 
+		if (IsFutherestFromPlayer(coverPoint) == false)
+			return false;
+
+		if (IsCoverCloseToPlayer(coverPoint))
+			return false;
+
 		if (IsCoverBehindPlayer(coverPoint, enemyTransform))
 			return false;
 
+		if (IsCoverCloseToLastCover(coverPoint, enemyTransform))
+			return false;
+
 		return true;
+	}
+
+	private bool IsFutherestFromPlayer(CoverPoint coverPoint)
+	{
+		CoverPoint futherestPoint = null;
+		float futherestDistance = 0;
+
+		foreach (CoverPoint point in coverPoints)
+		{
+			float distance = Vector3.Distance(point.transform.position, playerTransform.transform.position);
+
+			if (distance > futherestDistance)
+			{
+				futherestDistance = distance;
+				futherestPoint = point;
+			}
+		}
+
+		return futherestPoint == coverPoint;
 	}
 
 	private bool IsCoverBehindPlayer(CoverPoint coverPoint, Transform enemyTransform)
@@ -68,4 +96,15 @@ public class Cover : MonoBehaviour
 
 		return distanceToPlayer < distanceToEnemy;
 	}
+
+	private bool IsCoverCloseToPlayer(CoverPoint coverPoint) => Vector3.Distance(coverPoint.transform.position, playerTransform.position) < 2;
+
+	private bool IsCoverCloseToLastCover(CoverPoint coverPoint, Transform enemyTransform)
+	{
+		CoverPoint lastCover = enemyTransform.GetComponent<EnemyRange>().lastCover;
+
+		return lastCover != null && Vector3.Distance(coverPoint.transform.position, lastCover.transform.position) < 3;
+	}
+
+	
 }
