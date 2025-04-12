@@ -3333,6 +3333,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 520478417195001740, guid: 384ce200f3b425f44b2cece5aa1af721, type: 3}
   m_PrefabInstance: {fileID: 2077564228}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &328952692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7529009752609574561, guid: 22e32350a88d5f24092b34161ed507bf, type: 3}
+  m_PrefabInstance: {fileID: 866415920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339099755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8194,6 +8199,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3992595150688122879, guid: 22e32350a88d5f24092b34161ed507bf, type: 3}
   m_PrefabInstance: {fileID: 866415920}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &846808067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328952692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a75c31cb53ec7d479fb0a64eccefd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coverPointPrefab: {fileID: 3792518821371700210, guid: 066824deee3e49b438b3c67d86c8784b, type: 3}
+  coverPoints: []
+  xOffset: 1
+  yOffset: 0.2
+  zOffset: 0.75
 --- !u!1 &849842360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8489,7 +8511,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7529009752609574561, guid: 22e32350a88d5f24092b34161ed507bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 846808067}
   m_SourcePrefab: {fileID: 100100000, guid: 22e32350a88d5f24092b34161ed507bf, type: 3}
 --- !u!1 &869637413
 GameObject:
@@ -16783,8 +16808,6 @@ MonoBehaviour:
   - {fileID: 722237514}
   aggressionRange: 10
   canUseCovers: 1
-  lastCover: {fileID: 0}
-  allCovers: []
   weaponType: 4
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 1493350974}
@@ -31708,8 +31731,6 @@ MonoBehaviour:
   - {fileID: 4864044734824665765}
   aggressionRange: 10
   canUseCovers: 1
-  lastCover: {fileID: 0}
-  allCovers: []
   weaponType: 4
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 323475713851418685}

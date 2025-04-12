@@ -15,11 +15,14 @@ public class RunToCoverState_Range : EnemyState
 	{
 		base.Enter();
 
+		destination = enemy.currentCover.transform.position;
+
+
 		enemy.enemyVisuals.EnableIK(true, false);
+
 		enemy.agent.isStopped = false;
 		enemy.agent.speed = enemy.chaseSpeed;
 
-		destination = enemy.AttemptToFindCover().position;
 		enemy.agent.SetDestination(destination);
 	}
 
