@@ -35,5 +35,23 @@ public class Cover : MonoBehaviour
 		}
 	}
 
-	public List<CoverPoint> GetCoverPoints() => coverPoints;
+	public List<CoverPoint> GetValidCoverPoints()
+	{
+		List<CoverPoint > validCoverPoints = new List<CoverPoint>();
+
+		foreach (CoverPoint coverPoint in coverPoints)
+		{
+			if (IsValidCoverPoint(coverPoint))
+				validCoverPoints.Add(coverPoint);
+		}
+		return validCoverPoints;
+	}
+
+	private bool IsValidCoverPoint(CoverPoint coverPoint)
+	{
+		if (coverPoint.occupied)
+			return false;
+
+		return true;
+	}
 }

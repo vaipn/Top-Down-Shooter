@@ -14491,7 +14491,7 @@ Transform:
   m_GameObject: {fileID: 6051208524045412930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34, y: 0, z: 4.6}
+  m_LocalPosition: {x: -1.71, y: 0, z: 0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22846,9 +22846,10 @@ MonoBehaviour:
   - {fileID: 7668340376788117141}
   - {fileID: 221463633751410312}
   - {fileID: 4864044734824665765}
-  aggressionRange: 3
+  aggressionRange: 10
   canUseCovers: 1
   lastCover: {fileID: 0}
+  allCovers: []
   weaponType: 4
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 323475713851418685}

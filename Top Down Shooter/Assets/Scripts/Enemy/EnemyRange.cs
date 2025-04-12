@@ -77,7 +77,7 @@ public class EnemyRange : Enemy
 
 		foreach (Cover cover in allCovers)
 		{
-			collectedCoverPoints.AddRange(cover.GetCoverPoints());
+			collectedCoverPoints.AddRange(cover.GetValidCoverPoints());
 		}
 
 		CoverPoint closestCoverPoint = null;
@@ -95,7 +95,9 @@ public class EnemyRange : Enemy
 
 		if (closestCoverPoint != null)
 		{
+			lastCover?.SetOccupied(false); // previous cover
 			lastCover = closestCoverPoint;
+			lastCover.SetOccupied(true); // newly assigned cover
 		}
 
 		return lastCover.transform;
