@@ -77,7 +77,7 @@ public class EnemyRange : Enemy
 
 		foreach (Cover cover in allCovers)
 		{
-			collectedCoverPoints.AddRange(cover.GetValidCoverPoints());
+			collectedCoverPoints.AddRange(cover.GetValidCoverPoints(transform));
 		}
 
 		CoverPoint closestCoverPoint = null;

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Cover : MonoBehaviour
 {
+	private Transform playerTransform;
+
     [Header("Cover points")]
     [SerializeField] private GameObject coverPointPrefab;
     [SerializeField] private List<CoverPoint> coverPoints = new List<CoverPoint>();
@@ -15,6 +17,7 @@ public class Cover : MonoBehaviour
 	private void Start()
 	{
         GenerateCoverPoints();
+		playerTransform = FindObjectOfType<Player>().transform;
 	}
 
 	private void GenerateCoverPoints()
@@ -35,23 +38,34 @@ public class Cover : MonoBehaviour
 		}
 	}
 
-	public List<CoverPoint> GetValidCoverPoints()
+	public List<CoverPoint> GetValidCoverPoints(Transform enemyTransform)
 	{
 		List<CoverPoint > validCoverPoints = new List<CoverPoint>();
 
 		foreach (CoverPoint coverPoint in coverPoints)
 		{
-			if (IsValidCoverPoint(coverPoint))
+			if (IsValidCoverPoint(coverPoint, enemyTransform))
 				validCoverPoints.Add(coverPoint);
 		}
 		return validCoverPoints;
 	}
 
-	private bool IsValidCoverPoint(CoverPoint coverPoint)
+	private bool IsValidCoverPoint(CoverPoint coverPoint, Transform enemyTransform)
 	{
 		if (coverPoint.occupied)
 			return false;
 
+		if (IsCoverBehindPlayer(coverPoint, enemyTransform))
+			return false;
+
 		return true;
+	}
+
+	private bool IsCoverBehindPlayer(CoverPoint coverPoint, Transform enemyTransform)
+	{
+		float distanceToPlayer = Vector3.Distance(coverPoint.transform.position, playerTransform.position);
+		float distanceToEnemy = Vector3.Distance(coverPoint.transform.position, enemyTransform.position);
+
+		return distanceToPlayer < distanceToEnemy;
 	}
 }
