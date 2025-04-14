@@ -22,6 +22,9 @@ public class BattleState_Range : EnemyState
 	{
 		base.Enter();
 
+		enemy.agent.isStopped = true;
+		enemy.agent.velocity = Vector3.zero;
+
 		bulletsPerShot = enemy.weaponData.bulletsToShoot;
 		weaponCooldown = enemy.weaponData.GetWeaponCooldown();
 
