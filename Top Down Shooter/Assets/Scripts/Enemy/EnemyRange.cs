@@ -8,6 +8,10 @@ public class EnemyRange : Enemy
 	[Header("Enemy perks")]
 	public CoverPerk coverPerk;
 
+	[Header("Advance perk")]
+	public float advanceSpeed;
+	public float advanceStoppingDistance;
+
 	[Header("Cover system")]
 	public float safeDistance;
 	public CoverPoint lastCover { get; private set; }
@@ -30,6 +34,7 @@ public class EnemyRange : Enemy
 	public MoveState_Range moveState { get; private set; }
 	public BattleState_Range battleState { get; private set; }
 	public RunToCoverState_Range runToCoverState { get; private set; }
+	public AdvanceToPlayerState_Range advanceToPlayerState { get; private set; }
 	#endregion
 
 	protected override void Awake()
@@ -40,6 +45,7 @@ public class EnemyRange : Enemy
 		moveState = new MoveState_Range(this, stateMachine, "Move");
 		battleState = new BattleState_Range(this, stateMachine, "Battle");
 		runToCoverState = new RunToCoverState_Range(this, stateMachine, "Cover");
+		advanceToPlayerState = new AdvanceToPlayerState_Range(this, stateMachine, "Advance");
 	}
 
 	protected override void Start()

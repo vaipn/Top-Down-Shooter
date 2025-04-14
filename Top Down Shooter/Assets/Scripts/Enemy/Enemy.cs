@@ -59,9 +59,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     protected bool ShouldEnterBattleMode()
     {
-        bool inAgressionRange = Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
-
-        if (inAgressionRange && !inBattleMode)
+        if (IsPlayerInAggressionRange() && !inBattleMode)
         {
             return true;
         }
@@ -147,6 +145,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(true);
 		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
 	}
+
+    public bool IsPlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
 
 	protected virtual void OnDrawGizmos()
 	{
