@@ -5,6 +5,7 @@ public class EnemyRange : Enemy
 {
 	[Header("Cover system")]
 	public bool canUseCovers = true;
+	public float safeDistance;
 	public CoverPoint lastCover { get; private set; }
 	public CoverPoint currentCover { get; private set; }
 

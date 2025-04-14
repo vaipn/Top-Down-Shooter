@@ -8282,8 +8282,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 39720043}
   - {fileID: 1159524330}
+  - {fileID: 39720043}
   - {fileID: 1648446628}
   - {fileID: 1514110271}
   - {fileID: 1384825558}
@@ -12103,7 +12103,6 @@ GameObject:
   - component: {fileID: 1159524333}
   - component: {fileID: 1159524332}
   - component: {fileID: 1159524331}
-  - component: {fileID: 1159524334}
   m_Layer: 7
   m_Name: Obstacle (1)
   m_TagString: Untagged
@@ -12197,23 +12196,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159524329}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1159524334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159524329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a75c31cb53ec7d479fb0a64eccefd49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coverPointPrefab: {fileID: 3792518821371700210, guid: 066824deee3e49b438b3c67d86c8784b, type: 3}
-  coverPoints: []
-  xOffset: 1
-  yOffset: 0.2
-  zOffset: 0.75
 --- !u!1 &1169790811
 GameObject:
   m_ObjectHideFlags: 0
@@ -17160,6 +17142,7 @@ MonoBehaviour:
   - {fileID: 722237514}
   aggressionRange: 10
   canUseCovers: 1
+  safeDistance: 2
   weaponType: 4
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 1493350974}
@@ -32083,6 +32066,7 @@ MonoBehaviour:
   - {fileID: 4864044734824665765}
   aggressionRange: 10
   canUseCovers: 1
+  safeDistance: 2
   weaponType: 4
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 323475713851418685}

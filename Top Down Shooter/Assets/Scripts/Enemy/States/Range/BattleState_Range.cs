@@ -66,7 +66,7 @@ public class BattleState_Range : EnemyState
 		{
 			coverCheckTimer = 0.5f; // check if should change cover when player is in sight every 0.5 secs.
 
-			if (IsPlayerInClearSight())
+			if (IsPlayerInClearSight() || IsPlayerClose())
 			{
 				if (enemy.CanGetCover())
 					stateMachine.ChangeState(enemy.runToCoverState);
@@ -75,6 +75,11 @@ public class BattleState_Range : EnemyState
 	}
 
 	#region Cover system region
+
+	private bool IsPlayerClose()
+	{
+		return Vector3.Distance(enemy.transform.position, enemy.playerTransform.position) < enemy.safeDistance;
+	}
 
 	private bool IsPlayerInClearSight()
 	{
