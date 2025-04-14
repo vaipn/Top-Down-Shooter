@@ -60,6 +60,9 @@ public class BattleState_Range : EnemyState
 
 	private void ChangeCoverIfShould()
 	{
+		if (enemy.coverPerk != CoverPerk.CanTakeAndChangeCover)
+			return;
+
 		coverCheckTimer -= Time.deltaTime;
 
 		if (coverCheckTimer < 0)
