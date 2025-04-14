@@ -38,6 +38,13 @@ public class BattleState_Range : EnemyState
 	{
 		base.Update();
 
+		if (IsPlayerInClearSight())
+		{
+			if (enemy.CanGetCover())
+				stateMachine.ChangeState(enemy.runToCoverState);
+		}
+
+
 		enemy.FaceTarget(enemy.playerTransform.position);
 
 		if (WeaponOutOfBullets())
@@ -55,6 +62,26 @@ public class BattleState_Range : EnemyState
 		}
 	}
 
+	#region Cover system region
+
+	private bool IsPlayerInClearSight()
+	{
+		Vector3 rayLevel = enemy.transform.position + Vector3.up * 0.4f;
+		Vector3 directionToPlayer = enemy.playerTransform.position - rayLevel;
+		float distanceToPlayer = directionToPlayer.magnitude;
+
+		if (Physics.Raycast(rayLevel, directionToPlayer.normalized, out RaycastHit hit, distanceToPlayer))
+		{
+			Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
+			return hit.collider.gameObject.GetComponentInParent<Player>();
+		}
+
+		return false;
+	}
+
+	#endregion
+
+	#region Weapon region
 	private void ResetWeapon()
 	{
 		bulletsShot = 0;
@@ -74,4 +101,5 @@ public class BattleState_Range : EnemyState
 		lastTimeShot = Time.time;
 		bulletsShot++;
 	}
+	#endregion
 }

@@ -5,8 +5,8 @@ public class EnemyRange : Enemy
 {
 	[Header("Cover system")]
 	public bool canUseCovers = true;
-	public CoverPoint lastCover {  get; private set; }
-	public CoverPoint currentCover {  get; private set; }
+	public CoverPoint lastCover { get; private set; }
+	public CoverPoint currentCover { get; private set; }
 
 
 	[Header("Weapon details")]
@@ -64,9 +64,9 @@ public class EnemyRange : Enemy
 		{
 			Cover cover = collider.GetComponent<Cover>();
 
-            if (cover != null && collectedCovers.Contains(cover) == false)
+			if (cover != null && collectedCovers.Contains(cover) == false)
 				collectedCovers.Add(cover);
-        }
+		}
 
 		return collectedCovers;
 	}
