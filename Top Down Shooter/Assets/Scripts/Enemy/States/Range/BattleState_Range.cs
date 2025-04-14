@@ -11,6 +11,8 @@ public class BattleState_Range : EnemyState
 
 	private int bulletsPerShot;
 	private float weaponCooldown;
+
+	private float coverCheckTimer;
 	public BattleState_Range(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
 	{
 		enemy = enemyBase as EnemyRange;
@@ -37,13 +39,7 @@ public class BattleState_Range : EnemyState
 	public override void Update()
 	{
 		base.Update();
-
-		if (IsPlayerInClearSight())
-		{
-			if (enemy.CanGetCover())
-				stateMachine.ChangeState(enemy.runToCoverState);
-		}
-
+		ChangeCoverIfShould();
 
 		enemy.FaceTarget(enemy.playerTransform.position);
 
@@ -59,6 +55,22 @@ public class BattleState_Range : EnemyState
 		if (CanShoot())
 		{
 			Shoot();
+		}
+	}
+
+	private void ChangeCoverIfShould()
+	{
+		coverCheckTimer -= Time.deltaTime;
+
+		if (coverCheckTimer < 0)
+		{
+			coverCheckTimer = 0.5f; // check if should change cover when player is in sight every 0.5 secs.
+
+			if (IsPlayerInClearSight())
+			{
+				if (enemy.CanGetCover())
+					stateMachine.ChangeState(enemy.runToCoverState);
+			}
 		}
 	}
 
