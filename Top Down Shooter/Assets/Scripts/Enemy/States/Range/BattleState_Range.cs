@@ -43,13 +43,16 @@ public class BattleState_Range : EnemyState
 	{
 		base.Update();
 
+		if (enemy.IsSeeingPlayer())
+			enemy.FaceTarget(enemy.aim.position);
+			
+
 		if (enemy.IsPlayerInAggressionRange() == false)
 			stateMachine.ChangeState(enemy.advanceToPlayerState);
 
 
 		ChangeCoverIfShould();
 
-		enemy.FaceTarget(enemy.playerTransform.position);
 
 		if (WeaponOutOfBullets())
 		{

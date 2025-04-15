@@ -26,11 +26,17 @@ public class AdvanceToPlayerState_Range : EnemyState
 		base.Update();
 
 		playerPos = enemy.playerTransform.position;
+		enemy.UpdateAimPosition();
 
 		enemy.agent.SetDestination(playerPos);
 		enemy.FaceTarget(enemy.agent.steeringTarget);
 
-		if (Vector3.Distance(enemy.transform.position, playerPos) < enemy.advanceStoppingDistance)
+		if (CanEnterBattleState())
 			stateMachine.ChangeState(enemy.battleState);
+	}
+
+	private bool CanEnterBattleState()
+	{
+		return Vector3.Distance(enemy.transform.position, playerPos) < enemy.advanceStoppingDistance && enemy.IsSeeingPlayer();
 	}
 }

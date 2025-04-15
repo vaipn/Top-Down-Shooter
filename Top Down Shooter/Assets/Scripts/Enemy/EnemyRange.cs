@@ -21,13 +21,20 @@ public class EnemyRange : Enemy
 	[Header("Weapon details")]
 	public EnemyRange_WeaponType weaponType;
 	public EnemyRange_WeaponData weaponData;
-	[Space]
 
+	[Space]
 	public Transform weaponHolder;
 	public Transform gunPoint;
 	public GameObject bulletPrefab;
 
 	[SerializeField] List<EnemyRange_WeaponData> availableWeaponData;
+
+	[Header("Aim details")]
+	public float slowAim = 4;
+	public float fastAim = 20;
+	public Transform aim;
+	public Transform playersBody;
+	public LayerMask whatToIgnore;
 
 	#region States
 	public IdleState_Range idleState { get; private set; }
@@ -51,6 +58,9 @@ public class EnemyRange : Enemy
 	protected override void Start()
 	{
 		base.Start();
+
+		playersBody = playerTransform.GetComponent<Player>().playerBody;
+		aim.parent = null;
 
 		stateMachine.Initialize(idleState);
 		enemyVisuals.SetupLook();
@@ -150,7 +160,7 @@ public class EnemyRange : Enemy
 	{
 		anim.SetTrigger("Shoot");
 
-		Vector3 bulletsDirection = ((playerTransform.position + Vector3.up) - gunPoint.position).normalized;
+		Vector3 bulletsDirection = (aim.position - gunPoint.position).normalized;
 
 		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab);
 		newBullet.transform.position = gunPoint.position;
@@ -186,4 +196,36 @@ public class EnemyRange : Enemy
 
 		gunPoint = enemyVisuals.currentHeldWeaponModel.GetComponent<EnemyRangeWeaponModel>().gunPoint;
 	}
+
+	#region Enemy's aiming system
+	public void UpdateAimPosition()
+	{
+		float aimSpeed = IsAimOnPlayer() ? fastAim : slowAim;
+		aim.position = Vector3.MoveTowards(aim.position, playersBody.position, aimSpeed * Time.deltaTime);
+	}
+
+	public bool IsAimOnPlayer()
+	{
+		float distanceAimToPlayer = Vector3.Distance(aim.position, playerTransform.position);
+
+		return distanceAimToPlayer < 2;
+	}
+
+	public bool IsSeeingPlayer()
+	{
+		Vector3 enemyPosition = transform.position + Vector3.up;
+		Vector3 directionToPlayer = playersBody.position - enemyPosition;
+
+		if (Physics.Raycast(enemyPosition, directionToPlayer.normalized, out RaycastHit hit, Mathf.Infinity, ~whatToIgnore))
+		{
+			if (hit.transform.root == playerTransform.root)
+			{
+				UpdateAimPosition();
+				return true;
+			}
+		}
+
+		return false;
+	}
+	#endregion
 }
