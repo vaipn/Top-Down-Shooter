@@ -69,6 +69,7 @@ public class BattleState_Range : EnemyState
 		}
 	}
 
+	#region Cover system region
 	private void ChangeCoverIfShould()
 	{
 		if (enemy.coverPerk != CoverPerk.CanTakeAndChangeCover)
@@ -80,7 +81,7 @@ public class BattleState_Range : EnemyState
 		{
 			coverCheckTimer = 0.5f; // check if should change cover when player is in sight every 0.5 secs.
 
-			if (IsPlayerInClearSight() || IsPlayerClose())
+			if (ReadyToChangeCover())
 			{
 				if (enemy.CanGetCover())
 					stateMachine.ChangeState(enemy.runToCoverState);
@@ -88,7 +89,13 @@ public class BattleState_Range : EnemyState
 		}
 	}
 
-	#region Cover system region
+	private bool ReadyToChangeCover()
+	{
+		bool inDanger = IsPlayerInClearSight() || IsPlayerClose();
+		bool advanceTimeIsOver = Time.time > enemy.advanceToPlayerState.lastTimeAdvanced + enemy.advanceTime;
+
+		return inDanger && advanceTimeIsOver;
+	}
 
 	private bool IsPlayerClose()
 	{

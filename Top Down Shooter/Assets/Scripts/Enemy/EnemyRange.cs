@@ -11,6 +11,7 @@ public class EnemyRange : Enemy
 	[Header("Advance perk")]
 	public float advanceSpeed;
 	public float advanceStoppingDistance;
+	public float advanceTime = 2.5f;
 
 	[Header("Cover system")]
 	public float safeDistance;
