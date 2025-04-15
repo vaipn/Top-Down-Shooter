@@ -14,6 +14,7 @@ public class EnemyRange : Enemy
 	public float advanceTime = 2.5f;
 
 	[Header("Cover system")]
+	public float minCoverTime;
 	public float safeDistance;
 	public CoverPoint lastCover { get; private set; }
 	public CoverPoint currentCover { get; private set; }

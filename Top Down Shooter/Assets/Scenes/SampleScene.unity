@@ -23316,9 +23316,11 @@ MonoBehaviour:
   - {fileID: 221463633751410312}
   - {fileID: 4864044734824665765}
   aggressionRange: 6
-  coverPerk: 0
+  coverPerk: 2
   advanceSpeed: 3
   advanceStoppingDistance: 4
+  advanceTime: 2.5
+  minCoverTime: 3
   safeDistance: 2
   weaponType: 3
   weaponData: {fileID: 0}

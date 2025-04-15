@@ -47,7 +47,7 @@ public class BattleState_Range : EnemyState
 			enemy.FaceTarget(enemy.aim.position);
 			
 
-		if (enemy.IsPlayerInAggressionRange() == false)
+		if (enemy.IsPlayerInAggressionRange() == false && ReadyToLeaveCover())
 			stateMachine.ChangeState(enemy.advanceToPlayerState);
 
 
@@ -70,6 +70,12 @@ public class BattleState_Range : EnemyState
 	}
 
 	#region Cover system region
+
+	private bool ReadyToLeaveCover()
+	{
+		return Time.time > enemy.minCoverTime + enemy.runToCoverState.lastTimeTookCover;
+	}
+
 	private void ChangeCoverIfShould()
 	{
 		if (enemy.coverPerk != CoverPerk.CanTakeAndChangeCover)
