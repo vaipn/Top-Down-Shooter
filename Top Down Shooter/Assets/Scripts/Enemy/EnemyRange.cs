@@ -84,6 +84,7 @@ public class EnemyRange : Enemy
 	{
 		if (IsUnstoppable())
 		{
+			advanceSpeed = 1;
 			anim.SetFloat("AdvanceAnimIndex", 1);
 		}
 	}
