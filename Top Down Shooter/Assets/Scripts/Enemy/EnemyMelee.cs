@@ -71,7 +71,7 @@ public class EnemyMelee : Enemy
 
 		stateMachine.Initialize(idleState);
 
-		InitializeSpeciality();
+		InitializePerk();
 		enemyVisuals.SetupLook();
 		UpdateAttackData();
 	}
@@ -113,7 +113,7 @@ public class EnemyMelee : Enemy
 		}
 	}
 
-	private void InitializeSpeciality()
+	protected override void InitializePerk()
 	{
 		if (meleeType == EnemyMelee_Type.AxeThrower)
 			weaponType = EnemyMelee_WeaponType.Throw;

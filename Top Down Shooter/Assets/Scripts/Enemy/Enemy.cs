@@ -57,6 +57,11 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 			EnterBattleMode();
 	}
 
+    protected virtual void InitializePerk()
+    {
+
+    }
+
     protected bool ShouldEnterBattleMode()
     {
         if (IsPlayerInAggressionRange() && !inBattleMode)
