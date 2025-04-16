@@ -23317,7 +23317,9 @@ MonoBehaviour:
   - {fileID: 4864044734824665765}
   aggressionRange: 5
   coverPerk: 0
-  unstoppablePerk: 1
+  unstoppablePerk: 0
+  grenadePerk: 1
+  grenadeCooldown: 5
   advanceSpeed: 3
   advanceStoppingDistance: 4
   advanceDuration: 2.5

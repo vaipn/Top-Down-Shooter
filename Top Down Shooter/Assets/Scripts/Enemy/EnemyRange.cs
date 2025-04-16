@@ -3,12 +3,17 @@ using UnityEngine;
 
 public enum CoverPerk { Unavailable, CanTakeCover, CanTakeAndChangeCover}
 public enum UnstoppablePerk { Unavailable, Unstoppable}
-
+public enum GrenadePerk { Unavailable, CanThrowGrenade}
 public class EnemyRange : Enemy
 {
 	[Header("Enemy perks")]
 	public CoverPerk coverPerk;
 	public UnstoppablePerk unstoppablePerk;
+	public GrenadePerk grenadePerk;
+
+	[Header("Grenade perk")]
+	public float grenadeCooldown;
+	private float lastTimeGrenadeThrown = -10;
 
 	[Header("Advance perk")]
 	public float advanceSpeed;
@@ -47,6 +52,7 @@ public class EnemyRange : Enemy
 	public BattleState_Range battleState { get; private set; }
 	public RunToCoverState_Range runToCoverState { get; private set; }
 	public AdvanceToPlayerState_Range advanceToPlayerState { get; private set; }
+	public ThrowGrenadeState_Range throwGrenadeState { get; private set; }
 	#endregion
 
 	protected override void Awake()
@@ -58,6 +64,7 @@ public class EnemyRange : Enemy
 		battleState = new BattleState_Range(this, stateMachine, "Battle");
 		runToCoverState = new RunToCoverState_Range(this, stateMachine, "Cover");
 		advanceToPlayerState = new AdvanceToPlayerState_Range(this, stateMachine, "Advance");
+		throwGrenadeState = new ThrowGrenadeState_Range(this, stateMachine, "ThrowGrenade");
 	}
 
 	protected override void Start()
@@ -79,6 +86,26 @@ public class EnemyRange : Enemy
 		base.Update();
 
 		stateMachine.currentState.Update();
+	}
+
+	public bool CanThrowGrenade()
+	{
+		if (grenadePerk == GrenadePerk.Unavailable)
+			return false;
+
+		if (Vector3.Distance(playerTransform.position, transform.position) < safeDistance)
+			return false; // player too close, don't throw grenade
+
+		if (Time.time > lastTimeGrenadeThrown + grenadeCooldown)
+			return true;
+
+		return false;
+	}
+
+	public void ThrowGrenade()
+	{
+		lastTimeGrenadeThrown = Time.time;
+		Debug.Log("Throwing Grenade!");
 	}
 
 	protected override void InitializePerk()
