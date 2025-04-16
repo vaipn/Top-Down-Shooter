@@ -23,6 +23,7 @@ public class EnemyRange : Enemy
 
 
 	[Header("Weapon details")]
+	public float attackDelay;
 	public EnemyRange_WeaponType weaponType;
 	public EnemyRange_WeaponData weaponData;
 

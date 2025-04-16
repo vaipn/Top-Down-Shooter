@@ -23318,11 +23318,12 @@ MonoBehaviour:
   aggressionRange: 5
   coverPerk: 0
   unstoppablePerk: 1
-  advanceSpeed: 1
+  advanceSpeed: 3
   advanceStoppingDistance: 4
   advanceDuration: 2.5
   minCoverTime: 4
   safeDistance: 2
+  attackDelay: 1
   weaponType: 3
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 323475713851418685}

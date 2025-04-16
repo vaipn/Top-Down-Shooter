@@ -31,6 +31,8 @@ public class BattleState_Range : EnemyState
 		enemy.HoldWeapon();
 
 		enemy.enemyVisuals.EnableIK(true, true);
+
+		stateTimer = enemy.attackDelay;
 	}
 
 	public override void Exit()
@@ -51,6 +53,8 @@ public class BattleState_Range : EnemyState
 
 		ChangeCoverIfShould();
 
+		if (stateTimer > 0)
+			return;
 
 		if (WeaponOutOfBullets())
 		{
