@@ -12532,6 +12532,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1827525475723096268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1986604124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1986604125}
+  m_Layer: 11
+  m_Name: Grenade Start Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986604125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986604124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7602019330571161952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988491546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2542148989589011472, guid: 384ce200f3b425f44b2cece5aa1af721, type: 3}
@@ -24280,6 +24311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1986604125}
   - {fileID: 699626578}
   - {fileID: 88914059}
   - {fileID: 323475713851418685}
@@ -24376,7 +24408,10 @@ MonoBehaviour:
   coverPerk: 0
   unstoppablePerk: 0
   grenadePerk: 1
+  grenadePrefab: {fileID: 4334186090342610340, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+  timeToReachTarget: 1.2
   grenadeCooldown: 5
+  grenadeStartPoint: {fileID: 1986604125}
   advanceSpeed: 3
   advanceStoppingDistance: 4
   advanceDuration: 2.5
@@ -26117,6 +26152,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &8907790917121428887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240831265999571744, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334186090342610340, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+      propertyPath: m_Name
+      value: Enemy's Grenade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
 --- !u!1 &8927427896618534531
 GameObject:
   m_ObjectHideFlags: 0
@@ -26558,3 +26650,4 @@ SceneRoots:
   - {fileID: 1246984716}
   - {fileID: 67285889}
   - {fileID: 1642976324765043179}
+  - {fileID: 8907790917121428887}
