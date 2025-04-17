@@ -14,6 +14,8 @@ public class EnemyRange : Enemy
 	[Header("Grenade perk")]
 	public GameObject grenadePrefab;
 	public float timeToReachTarget = 1.2f;
+	public float timeToExplode = 0.75f;
+	public float impactPower;
 	public float grenadeCooldown;
 	private float lastTimeGrenadeThrown = -10;
 	[SerializeField] private Transform grenadeStartPoint;
@@ -113,7 +115,7 @@ public class EnemyRange : Enemy
 		newGrenade.transform.position = grenadeStartPoint.position;
 
 		EnemyGrenade grenadeScript = newGrenade.GetComponent<EnemyGrenade>();
-		grenadeScript.SetupGrenade(playerTransform.position, timeToReachTarget);
+		grenadeScript.SetupGrenade(playerTransform.position, timeToReachTarget, timeToExplode, impactPower);
 	}
 
 	protected override void InitializePerk()
