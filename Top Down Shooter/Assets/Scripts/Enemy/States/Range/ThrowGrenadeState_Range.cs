@@ -13,13 +13,19 @@ public class ThrowGrenadeState_Range : EnemyState
 	public override void Enter()
 	{
 		base.Enter();
+
+		enemy.DisableHeldWeapon();
+		enemy.enemyVisuals.EnableIK(false, false);
+		enemy.enemyVisuals.EnableSecondaryWeaponModel(true);
 	}
 
 	public override void Update()
 	{
 		base.Update();
 
-		enemy.FaceTarget(enemy.playerTransform.position);
+		Vector3 playerPos = enemy.playerTransform.position + Vector3.up;
+		enemy.FaceTarget(playerPos);
+		enemy.aim.position = playerPos;
 
 		if (triggerCalled)
 			stateMachine.ChangeState(enemy.battleState);
@@ -30,5 +36,10 @@ public class ThrowGrenadeState_Range : EnemyState
 		base.AbilityTrigger();
 
 		enemy.ThrowGrenade();
+	}
+	public override void Exit()
+	{
+		base.Exit();
+		enemy.enemyVisuals.EnableSecondaryWeaponModel(false);
 	}
 }

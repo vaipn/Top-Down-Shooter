@@ -150,7 +150,10 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 		enemyVisuals.currentSheathedWeaponModel.gameObject.SetActive(true);
 		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
 	}
-
+    public void DisableHeldWeapon()
+    {
+		enemyVisuals.currentHeldWeaponModel.gameObject.SetActive(false);
+	}
     public bool IsPlayerInAggressionRange() => Vector3.Distance(transform.position, playerTransform.position) < aggressionRange;
 
 	protected virtual void OnDrawGizmos()

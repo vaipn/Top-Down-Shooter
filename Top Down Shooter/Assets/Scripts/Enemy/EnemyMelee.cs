@@ -47,8 +47,8 @@ public class EnemyMelee : Enemy
 	public EnemyMeleeAttackData attackData;
 	public List<EnemyMeleeAttackData> attackList;
 
-	[SerializeField] private Transform sheathedWeapon;
-	[SerializeField] private Transform heldWeapon;
+	[SerializeField] private Transform sheathedWeapon;//TODO: remove. don't think it is needed
+	[SerializeField] private Transform heldWeapon;//TODO: remove. don't think it is needed
 
 	protected override void Awake()
 	{
@@ -98,7 +98,7 @@ public class EnemyMelee : Enemy
 		base.AbilityTrigger();
 
 		walkSpeed = walkSpeed * 0.6f;
-		heldWeapon.gameObject.SetActive(false);
+		SheathWeapon();
 	}
 
 	public void UpdateAttackData()

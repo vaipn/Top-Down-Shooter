@@ -28,6 +28,9 @@ public class EnemyVisuals : MonoBehaviour
 	[SerializeField] private TwoBoneIKConstraint leftHandIKConstraint;
 	[SerializeField] private MultiAimConstraint weaponAimConstraint;
 
+	private float leftHandTargetWeight;
+	private float weaponAimTargetWeight;
+	private float rigChangeRate;
 	public EnemyHeldWeaponModel currentHeldWeaponModel {  private set; get; }
 	public EnemySheathedWeaponModel currentSheathedWeaponModel { private set; get; }
 
@@ -38,7 +41,16 @@ public class EnemyVisuals : MonoBehaviour
 		heldWeaponModels = GetComponentsInChildren<EnemyHeldWeaponModel>(true);
 		sheathedWeaponModels = GetComponentsInChildren<EnemySheathedWeaponModel>(true);
 	}
+	private void Update()
+	{
+		leftHandIKConstraint.weight = AdjustIKWeight(leftHandIKConstraint.weight, leftHandTargetWeight);
+		weaponAimConstraint.weight = AdjustIKWeight(weaponAimConstraint.weight, weaponAimTargetWeight);
+	}
 
+	public void EnableSecondaryWeaponModel(bool active)
+	{
+		FindSecondaryWeaponModel()?.SetActive(active);
+	}
 	private GameObject[] CollectCorruptionCrystals()
 	{
 		EnemyCorruptionCrystal[] enemyCorruptionCrystals = GetComponentsInChildren<EnemyCorruptionCrystal>(true);
@@ -143,6 +155,19 @@ public class EnemyVisuals : MonoBehaviour
 		return filteredHeldWeaponModels[randomIndex];
 	}
 
+	private GameObject FindSecondaryWeaponModel()
+	{
+		EnemySecondaryRangeWeaponModel[] weaponModels = GetComponentsInChildren<EnemySecondaryRangeWeaponModel>(true);
+		EnemyRange_WeaponType weaponType = GetComponentInParent<EnemyRange>().weaponType;
+
+		foreach (var weaponModel in weaponModels)
+		{
+			if (weaponModel.weaponType == weaponType)
+				return weaponModel.gameObject;
+		}
+
+		return null;
+	}
 	private void SetupRandomColor()
 	{
 		int randomIndex = Random.Range(0, colorTextures.Length);
@@ -199,11 +224,12 @@ public class EnemyVisuals : MonoBehaviour
 		animator.SetLayerWeight(layerIndex, 1);
 	}
 
-	public void EnableIK(bool enableLeftHand, bool enableAim)
+	public void EnableIK(bool enableLeftHand, bool enableAim, float changeRate = 10)
 	{
 		//rig.weight = enable ? 1 : 0;
-		leftHandIKConstraint.weight = enableLeftHand ? 1 : 0;
-		weaponAimConstraint.weight = enableAim ? 1 : 0;
+		rigChangeRate = changeRate;
+		leftHandTargetWeight = enableLeftHand ? 1 : 0;
+		weaponAimTargetWeight = enableAim ? 1 : 0;
 	}
 
 	private void SetupLeftHandIK(Transform leftHandTarget, Transform leftElbowTarget)
@@ -213,5 +239,15 @@ public class EnemyVisuals : MonoBehaviour
 
 		leftHandIK.localRotation = leftHandTarget.localRotation;
 		leftElbowIK.localRotation = leftElbowTarget.localRotation;
+	}
+
+	private float AdjustIKWeight(float currentWeight, float targetWeight)
+	{
+		if (Mathf.Abs(currentWeight - targetWeight) > 0.05f)
+		{
+			return Mathf.Lerp(currentWeight, targetWeight, rigChangeRate * Time.deltaTime);
+		}
+		else
+			return targetWeight;
 	}
 }
