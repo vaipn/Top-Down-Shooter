@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowGrenadeState_Range : EnemyState
 {
 	private EnemyRange enemy;
+
+	public bool finishedThrowingGrenade { get; private set; }
 	public ThrowGrenadeState_Range(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
 	{
 		enemy = enemyBase as EnemyRange;
@@ -14,9 +14,12 @@ public class ThrowGrenadeState_Range : EnemyState
 	{
 		base.Enter();
 
+		finishedThrowingGrenade = false;
+
 		enemy.DisableHeldWeapon();
 		enemy.enemyVisuals.EnableIK(false, false);
 		enemy.enemyVisuals.EnableSecondaryWeaponModel(true);
+		enemy.enemyVisuals.EnableGrenadeModel(true);
 	}
 
 	public override void Update()
@@ -34,7 +37,7 @@ public class ThrowGrenadeState_Range : EnemyState
 	public override void AbilityTrigger()
 	{
 		base.AbilityTrigger();
-
+		finishedThrowingGrenade = true;
 		enemy.ThrowGrenade();
 	}
 	public override void Exit()

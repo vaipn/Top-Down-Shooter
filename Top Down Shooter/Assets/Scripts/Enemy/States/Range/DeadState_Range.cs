@@ -15,6 +15,9 @@ public class DeadState_Range : EnemyState
 	{
 		base.Enter();
 
+		if (enemy.throwGrenadeState.finishedThrowingGrenade == false)
+			enemy.ThrowGrenade();
+
 		enemy.anim.enabled = false;
 		enemy.agent.isStopped = true;
 

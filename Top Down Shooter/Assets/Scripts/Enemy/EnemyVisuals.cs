@@ -34,6 +34,8 @@ public class EnemyVisuals : MonoBehaviour
 	public EnemyHeldWeaponModel currentHeldWeaponModel {  private set; get; }
 	public EnemySheathedWeaponModel currentSheathedWeaponModel { private set; get; }
 
+	public GameObject grenadeModel;
+
 	private void Awake()
 	{
 		//InvokeRepeating(nameof(SetupLook), 1, 2);
@@ -46,6 +48,8 @@ public class EnemyVisuals : MonoBehaviour
 		leftHandIKConstraint.weight = AdjustIKWeight(leftHandIKConstraint.weight, leftHandTargetWeight);
 		weaponAimConstraint.weight = AdjustIKWeight(weaponAimConstraint.weight, weaponAimTargetWeight);
 	}
+
+	public void EnableGrenadeModel(bool active) => grenadeModel?.SetActive(active);
 
 	public void EnableSecondaryWeaponModel(bool active)
 	{

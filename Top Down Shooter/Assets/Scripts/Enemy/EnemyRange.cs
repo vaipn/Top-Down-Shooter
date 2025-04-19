@@ -118,11 +118,20 @@ public class EnemyRange : Enemy
 	public void ThrowGrenade()
 	{
 		lastTimeGrenadeThrown = Time.time;
-		
+
+		enemyVisuals.EnableGrenadeModel(false);
+
 		GameObject newGrenade = ObjectPool.instance.GetObjectFromPool(grenadePrefab);
 		newGrenade.transform.position = grenadeStartPoint.position;
 
 		EnemyGrenade grenadeScript = newGrenade.GetComponent<EnemyGrenade>();
+
+		if (stateMachine.currentState == deadState)
+		{
+			grenadeScript.SetupGrenade(transform.position, 1, timeToExplode, impactPower);
+			return;
+		}
+
 		grenadeScript.SetupGrenade(playerTransform.position, timeToReachTarget, timeToExplode, impactPower);
 	}
 
