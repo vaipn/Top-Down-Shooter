@@ -114,7 +114,7 @@ public class EnemyVisuals : MonoBehaviour
 				if (weaponModel.weaponName == currentHeldWeaponModel.weaponName)
 				{
 					currentSheathedWeaponModel = weaponModel;
-					currentSheathedWeaponModel.gameObject.SetActive(true);
+					//currentSheathedWeaponModel.gameObject.SetActive(true);
 				}
 			}
 		}

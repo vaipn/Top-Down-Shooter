@@ -14,7 +14,10 @@ public class IdleState_Range : EnemyState
 	public override void Enter()
 	{
 		base.Enter();
+		enemy.HoldWeapon();
+		enemy.anim.SetFloat("IdleAnimIndex", Random.Range(0, 3));
 
+		//enemy.enemyVisuals.EnableIK(true, false);
 		stateTimer = enemy.idleTime;
 	}
 

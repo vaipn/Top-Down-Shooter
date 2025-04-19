@@ -83,8 +83,9 @@ public class EnemyRange : Enemy
 
 		InitializePerk();
 
-		stateMachine.Initialize(idleState);
 		enemyVisuals.SetupLook();
+		stateMachine.Initialize(idleState);
+		
 		SetupWeapon();
 	}
 
