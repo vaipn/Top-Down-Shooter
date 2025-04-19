@@ -30,6 +30,8 @@ public class Bullet : MonoBehaviour
 		bulletDisabled = false;
 		boxCollider.enabled = true;
 		meshRenderer.enabled = true;
+
+		trailRenderer.Clear();
 		trailRenderer.time = 0.25f;
 		startPosition = transform.position;
 		this.flyDistance = flyDistance /*+ 0.5f*/; // +0.5 because of tipLength that is 0.5 
