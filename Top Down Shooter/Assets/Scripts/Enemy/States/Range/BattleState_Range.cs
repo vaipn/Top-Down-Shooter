@@ -115,7 +115,7 @@ public class BattleState_Range : EnemyState
 		{
 			coverCheckTimer = 0.5f; // check if should change cover when player is in sight every 0.5 secs.
 
-			if (ReadyToChangeCover())
+			if (ReadyToChangeCover() && ReadyToLeaveCover())
 			{
 				if (enemy.CanGetCover())
 					stateMachine.ChangeState(enemy.runToCoverState);
