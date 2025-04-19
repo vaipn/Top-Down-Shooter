@@ -174,7 +174,12 @@ public class EnemyMelee : Enemy
 		}
 		return false;
 	}
+	public void ThrowAxe()
+	{
+		GameObject newAxe = ObjectPool.instance.GetObjectFromPool(axePrefab, axeStartPoint);
 
+		newAxe.GetComponent<EnemyThrowAxe>().AxeSetup(axeFlySpeed, playerTransform, axeAimTimer);
+	}
 	private float GetAnimationClipDuration(string clipName)
 	{
 		foreach (AnimationClip clip in clips)

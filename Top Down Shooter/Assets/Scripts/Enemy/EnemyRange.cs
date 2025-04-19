@@ -122,8 +122,7 @@ public class EnemyRange : Enemy
 
 		enemyVisuals.EnableGrenadeModel(false);
 
-		GameObject newGrenade = ObjectPool.instance.GetObjectFromPool(grenadePrefab);
-		newGrenade.transform.position = grenadeStartPoint.position;
+		GameObject newGrenade = ObjectPool.instance.GetObjectFromPool(grenadePrefab, grenadeStartPoint);
 
 		EnemyGrenade grenadeScript = newGrenade.GetComponent<EnemyGrenade>();
 
@@ -233,8 +232,7 @@ public class EnemyRange : Enemy
 
 		Vector3 bulletsDirection = (aim.position - gunPoint.position).normalized;
 
-		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab);
-		newBullet.transform.position = gunPoint.position;
+		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab, gunPoint);
 		newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
 
 		newBullet.GetComponent<EnemyBullet>().BulletSetup();

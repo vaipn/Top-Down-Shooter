@@ -67,7 +67,7 @@ public class Bullet : MonoBehaviour
 
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
-		CreateImpactFX(collision);
+		CreateImpactFX();
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
 		ReturnBulletToPool();
 
@@ -94,17 +94,9 @@ public class Bullet : MonoBehaviour
 
 	protected void ReturnBulletToPool() => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
 
-	protected void CreateImpactFX(Collision collision)
+	protected void CreateImpactFX()
 	{
-		if (collision.contacts.Length > 0)
-		{
-			ContactPoint contact = collision.contacts[0]; // first point of contact
-
-			GameObject newImpactFX = ObjectPool.instance.GetObjectFromPool(bulletImpactFX);
-			newImpactFX.transform.position = contact.point;
-			newImpactFX.transform.rotation = Quaternion.LookRotation(contact.normal);
-
-			ObjectPool.instance.ReturnObjectToPoolWithDelay(newImpactFX, 1);
-		}
+		GameObject newImpactFX = ObjectPool.instance.GetObjectFromPool(bulletImpactFX, transform);
+		ObjectPool.instance.ReturnObjectToPoolWithDelay(newImpactFX, 1);
 	}
 }
