@@ -24395,7 +24395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c30ce116f9b514c877ffcf3969fee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 5
+  healthPoint: 2
   idleTime: 2
   walkSpeed: 1.5
   chaseSpeed: 4

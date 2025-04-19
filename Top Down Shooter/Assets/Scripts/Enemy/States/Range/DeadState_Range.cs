@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadState_Melee : EnemyState
+public class DeadState_Range : EnemyState
 {
-	private EnemyMelee enemy;
-
+	private EnemyRange enemy;
 	private bool interactionDisabled;
-	public DeadState_Melee(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+	public DeadState_Range(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
 	{
-		enemy = enemyBase as EnemyMelee;
+		enemy = enemyBase as EnemyRange;
 	}
 
 	public override void Enter()
@@ -24,11 +23,6 @@ public class DeadState_Melee : EnemyState
 		interactionDisabled = false;
 
 		stateTimer = 3f;
-	}
-
-	public override void Exit()
-	{
-		base.Exit();
 	}
 
 	public override void Update()

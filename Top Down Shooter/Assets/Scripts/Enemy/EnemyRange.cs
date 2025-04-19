@@ -58,6 +58,7 @@ public class EnemyRange : Enemy
 	public RunToCoverState_Range runToCoverState { get; private set; }
 	public AdvanceToPlayerState_Range advanceToPlayerState { get; private set; }
 	public ThrowGrenadeState_Range throwGrenadeState { get; private set; }
+	public DeadState_Range deadState { get; private set; }
 	#endregion
 
 	protected override void Awake()
@@ -70,6 +71,7 @@ public class EnemyRange : Enemy
 		runToCoverState = new RunToCoverState_Range(this, stateMachine, "Cover");
 		advanceToPlayerState = new AdvanceToPlayerState_Range(this, stateMachine, "Advance");
 		throwGrenadeState = new ThrowGrenadeState_Range(this, stateMachine, "ThrowGrenade");
+		deadState = new DeadState_Range(this, stateMachine, "Idle"); //idle is placeholder, we using ragdoll.
 	}
 
 	protected override void Start()
@@ -92,7 +94,13 @@ public class EnemyRange : Enemy
 
 		stateMachine.currentState.Update();
 	}
+	public override void GetHit()
+	{
+		base.GetHit();
 
+		if (healthPoint <= 0 && stateMachine.currentState != deadState)
+			stateMachine.ChangeState(deadState);
+	}
 	public bool CanThrowGrenade()
 	{
 		if (grenadePerk == GrenadePerk.Unavailable)

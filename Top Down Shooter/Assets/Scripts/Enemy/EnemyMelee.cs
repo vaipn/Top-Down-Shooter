@@ -135,7 +135,7 @@ public class EnemyMelee : Enemy
 	{
 		base.GetHit();
 
-		if (healthPoint <= 0)
+		if (healthPoint <= 0 && stateMachine.currentState != deadState)
 			stateMachine.ChangeState(deadState);
 
 	}
