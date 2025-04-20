@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 {
     public EnemyStateMachine stateMachine {  get; private set; }
