@@ -98,11 +98,14 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         rb.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
     }
 
-	public void FaceTarget(Vector3 target)
+	public void FaceTarget(Vector3 target, float turnSpeed = 0)
 	{
 		Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
 
 		Vector3 currentEulerAngles = transform.rotation.eulerAngles; //current rotation
+
+        if (turnSpeed == 0)
+            turnSpeed = this.turnSpeed;
 
 		float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime); // we only need to rotate on the y-axis
 

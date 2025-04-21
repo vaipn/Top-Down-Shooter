@@ -2052,6 +2052,12 @@ MonoBehaviour:
   - {fileID: 4325325864323991261}
   aggressionRange: 15
   attackRange: 1.35
+  jumpAttackCooldown: 10
+  travelTimeToTarget: 1
+  minJumpDistanceRequired: 4
+  whatToIgnore:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &6867977670870119867
 GameObject:
   m_ObjectHideFlags: 0
