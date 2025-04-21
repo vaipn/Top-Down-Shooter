@@ -21,6 +21,9 @@ public class IdleState_Boss : EnemyState
 	{
 		base.Update();
 
+		if (enemy.inBattleMode && enemy.PlayerInAttackRange())
+			stateMachine.ChangeState(enemy.attackState);
+
 		if (stateTimer < 0)
 			stateMachine.ChangeState(enemy.moveState);
 	}

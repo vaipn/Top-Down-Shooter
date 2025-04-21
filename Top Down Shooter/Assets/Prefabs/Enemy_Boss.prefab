@@ -593,6 +593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2692502056996831091}
   - component: {fileID: 2372027145977107614}
+  - component: {fileID: 3866357765270633171}
   m_Layer: 0
   m_Name: character_boss
   m_TagString: Untagged
@@ -638,6 +639,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3866357765270633171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006482111221783616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2049779683009270616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,14 +2043,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 5
   idleTime: 3
-  walkSpeed: 2
+  walkSpeed: 1.35
   chaseSpeed: 3
   turnSpeed: 8
   patrolPoints:
   - {fileID: 8176246059420410984}
   - {fileID: 6076329955047245984}
   - {fileID: 4325325864323991261}
-  aggressionRange: 0
+  aggressionRange: 15
+  attackRange: 1.35
 --- !u!1 &6867977670870119867
 GameObject:
   m_ObjectHideFlags: 0

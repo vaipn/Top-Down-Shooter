@@ -17,6 +17,7 @@ public class MoveState_Boss : EnemyState
 		base.Enter();
 
 		enemy.agent.speed = enemy.walkSpeed;
+		enemy.agent.isStopped = false;
 
 		destination = enemy.GetPatrolDestination();
 
@@ -34,7 +35,21 @@ public class MoveState_Boss : EnemyState
 
 		enemy.FaceTarget(enemy.agent.steeringTarget);
 
-		if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
-			stateMachine.ChangeState(enemy.idleState);
+		if (enemy.inBattleMode)
+		{
+			Vector3 playerPos = enemy.playerTransform.position;
+
+			enemy.agent.SetDestination(playerPos);
+
+			if (enemy.PlayerInAttackRange())
+				stateMachine.ChangeState(enemy.attackState);
+		}
+		else
+		{
+			if (Vector3.Distance(enemy.transform.position, destination) < 0.25f)
+				stateMachine.ChangeState(enemy.idleState);
+		}
+
+		
 	}
 }
