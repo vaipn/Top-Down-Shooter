@@ -26,7 +26,7 @@ public class AbilityState_Boss : EnemyState
 
 		enemy.FaceTarget(enemy.playerTransform.position);
 
-		if (stateTimer < 0)
+		if (stateTimer < 0 && enemy.flameThrowActive)
 			enemy.ActivateFlameThrower(false);
 
 		if (triggerCalled)

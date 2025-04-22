@@ -7,7 +7,9 @@ public class EnemyBoss : Enemy
 	public float attackRange;
 
 	[Header("Flame Throw Ability")]
+	public ParticleSystem flameThrower;
 	public float flameThrowDuration;
+	public bool flameThrowActive {  get; private set; }
 
 	[Header("Jump attack")]
 	public float jumpAttackCooldown = 5;
@@ -63,13 +65,25 @@ public class EnemyBoss : Enemy
 
 	public void ActivateFlameThrower(bool activate)
 	{
+		flameThrowActive = activate;
+
 		if (!activate)
 		{
 			anim.SetTrigger("StopFlameThrower");
+			flameThrower.Stop();
 			Debug.Log("Flame stopped");
 			return;
 		}
 		Debug.Log("Flame activated");
+
+		var mainModule = flameThrower.main;
+		var childModule = flameThrower.transform.GetChild(0).GetComponent<ParticleSystem>().main;
+
+		mainModule.duration = flameThrowDuration;
+		childModule.duration = flameThrowDuration;
+
+		flameThrower.Clear();
+		flameThrower.Play();
 	}
 
 	public bool CanDoJumpAttack()
