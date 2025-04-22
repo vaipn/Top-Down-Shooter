@@ -6,6 +6,9 @@ public class EnemyBoss : Enemy
 {
 	public float attackRange;
 
+	[Header("Flame Throw Ability")]
+	public float flameThrowDuration;
+
 	[Header("Jump attack")]
 	public float jumpAttackCooldown = 5;
 	private float lastTimeJumped;
@@ -17,6 +20,7 @@ public class EnemyBoss : Enemy
 	public MoveState_Boss moveState { get; private set; }
 	public AttackState_Boss attackState { get; private set; }
 	public JumpAttackState_Boss jumpAttackState { get; private set; }
+	public AbilityState_Boss abilityState { get; private set; }
 
 	protected override void Awake()
 	{
@@ -26,6 +30,7 @@ public class EnemyBoss : Enemy
 		moveState = new MoveState_Boss(this, stateMachine, "Move");
 		attackState = new AttackState_Boss(this, stateMachine, "Attack");
 		jumpAttackState = new JumpAttackState_Boss(this, stateMachine, "JumpAttack");
+		abilityState = new AbilityState_Boss(this, stateMachine, "FlameAbility");
 	}
 
 	protected override void Start()
@@ -39,6 +44,9 @@ public class EnemyBoss : Enemy
 	{
 		base.Update();
 
+		if (Input.GetKeyDown(KeyCode.V))
+			stateMachine.ChangeState(abilityState);
+
 		stateMachine.currentState.Update();
 
 		if (ShouldEnterBattleMode())
@@ -47,11 +55,22 @@ public class EnemyBoss : Enemy
 
 	public override void EnterBattleMode()
 	{
-		base.EnterBattleMode();
-		stateMachine.ChangeState(moveState);
+		//base.EnterBattleMode();
+		//stateMachine.ChangeState(moveState);
 	}
 
 	public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackRange;
+
+	public void ActivateFlameThrower(bool activate)
+	{
+		if (!activate)
+		{
+			anim.SetTrigger("StopFlameThrower");
+			Debug.Log("Flame stopped");
+			return;
+		}
+		Debug.Log("Flame activated");
+	}
 
 	public bool CanDoJumpAttack()
 	{

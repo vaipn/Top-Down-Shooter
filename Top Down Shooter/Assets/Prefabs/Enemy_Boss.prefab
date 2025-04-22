@@ -2052,6 +2052,7 @@ MonoBehaviour:
   - {fileID: 4325325864323991261}
   aggressionRange: 15
   attackRange: 1.35
+  flameThrowDuration: 3
   jumpAttackCooldown: 10
   travelTimeToTarget: 1
   minJumpDistanceRequired: 4
