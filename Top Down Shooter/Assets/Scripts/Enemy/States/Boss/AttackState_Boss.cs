@@ -19,11 +19,16 @@ public class AttackState_Boss : EnemyState
 		enemy.anim.SetFloat("AttackAnimIndex", Random.Range(0, 2));
 
 		enemy.agent.isStopped = true;
+
+		stateTimer = 1f;
 	}
 
 	public override void Update()
 	{
 		base.Update();
+
+		if (stateTimer > 0)
+			enemy.FaceTarget(enemy.playerTransform.position, 20);
 
 		if (triggerCalled)
 		{
