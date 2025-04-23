@@ -32,7 +32,11 @@ public class AbilityState_Boss : EnemyState
 		if (triggerCalled)
 			stateMachine.ChangeState(enemy.moveState);
 	}
-
+	public override void Exit()
+	{
+		base.Exit();
+		enemy.SetAbilityOnCooldown();
+	}
 	public override void AbilityTrigger()
 	{
 		base.AbilityTrigger();

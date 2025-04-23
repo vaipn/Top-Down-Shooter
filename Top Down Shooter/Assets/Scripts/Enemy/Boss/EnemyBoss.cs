@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EnemyBoss : Enemy
 {
+	[Header("Boss details")]
+	public float actionCooldown = 10;
 	public float attackRange;
 
 	[Header("Flame Throw Ability")]
 	public ParticleSystem flameThrower;
 	public float flameThrowDuration;
+	public float abilityCooldown;
+	private float lastTimeUsedAbility;
 	public bool flameThrowActive {  get; private set; }
 
 	[Header("Jump attack")]
@@ -46,9 +50,6 @@ public class EnemyBoss : Enemy
 	{
 		base.Update();
 
-		if (Input.GetKeyDown(KeyCode.V))
-			stateMachine.ChangeState(abilityState);
-
 		stateMachine.currentState.Update();
 
 		if (ShouldEnterBattleMode())
@@ -57,8 +58,8 @@ public class EnemyBoss : Enemy
 
 	public override void EnterBattleMode()
 	{
-		//base.EnterBattleMode();
-		//stateMachine.ChangeState(moveState);
+		base.EnterBattleMode();
+		stateMachine.ChangeState(moveState);
 	}
 
 	public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackRange;
@@ -86,6 +87,18 @@ public class EnemyBoss : Enemy
 		flameThrower.Play();
 	}
 
+	public bool CanDoAbility()
+	{
+		if (Time.time > lastTimeUsedAbility + abilityCooldown)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public void SetAbilityOnCooldown() => lastTimeUsedAbility = Time.time;
+
 	public bool CanDoJumpAttack()
 	{
 		float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
@@ -95,11 +108,12 @@ public class EnemyBoss : Enemy
 
 		if (Time.time > lastTimeJumped + jumpAttackCooldown && IsPlayerInClearSight())
 		{
-			lastTimeJumped = Time.time;
 			return true;
 		}
 		return false;
 	}
+
+	public void SetJumpAttackOnCooldown() => lastTimeJumped = Time.time;
 
 	public bool IsPlayerInClearSight()
 	{

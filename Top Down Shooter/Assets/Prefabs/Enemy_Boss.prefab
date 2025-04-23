@@ -16499,10 +16499,12 @@ MonoBehaviour:
   - {fileID: 6076329955047245984}
   - {fileID: 4325325864323991261}
   aggressionRange: 15
+  actionCooldown: 5
   attackRange: 1.35
   flameThrower: {fileID: 1088884589302816120}
   flameThrowDuration: 3
-  jumpAttackCooldown: 10
+  abilityCooldown: 7
+  jumpAttackCooldown: 6
   travelTimeToTarget: 1
   minJumpDistanceRequired: 4
   whatToIgnore:
@@ -17665,7 +17667,7 @@ Transform:
   m_GameObject: {fileID: 9044878517959458547}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.97, y: 0.15, z: 3.27}
+  m_LocalPosition: {x: 7.01, y: 0.15, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
