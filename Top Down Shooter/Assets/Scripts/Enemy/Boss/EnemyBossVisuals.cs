@@ -6,17 +6,21 @@ public class EnemyBossVisuals : MonoBehaviour
 {
     private EnemyBoss enemy;
 
+	[SerializeField] private ParticleSystem landingZoneFx;
+
+	[Header("Batteries")]
     [SerializeField] private GameObject[] batteries;
 	[SerializeField] private float initialBatteryScaleY = 0.2f;
-
 	private float dischargeSpeed;
 	private float rechargeSpeed;
-
 	private bool isRecharging;
 
 	private void Awake()
 	{
 		enemy = GetComponent<EnemyBoss>();
+
+		landingZoneFx.transform.parent = null;
+		landingZoneFx.Stop();
 	}
 	private void Start()
 	{
@@ -26,6 +30,18 @@ public class EnemyBossVisuals : MonoBehaviour
 	private void Update()
 	{
 		UpdateBatteriesScale();
+	}
+
+	public void PlaceLandingZone(Vector3 target)
+	{
+		landingZoneFx.transform.position = target;
+		
+		landingZoneFx.Clear();
+
+		var mainModule = landingZoneFx.main;
+		mainModule.startLifetime = enemy.travelTimeToTarget * 2; 
+
+		landingZoneFx.Play();
 	}
 
 	private void UpdateBatteriesScale()
