@@ -36,10 +36,12 @@ public class AbilityState_Boss : EnemyState
 	{
 		base.Exit();
 		enemy.SetAbilityOnCooldown();
+		enemy.bossVisuals.ResetBatteries();
 	}
 	public override void AbilityTrigger()
 	{
 		base.AbilityTrigger();
 		enemy.ActivateFlameThrower(true);
+		enemy.bossVisuals.DischargeBatteries();
 	}
 }
