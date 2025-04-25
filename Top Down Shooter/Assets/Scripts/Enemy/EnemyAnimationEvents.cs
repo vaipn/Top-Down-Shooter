@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAnimationEvents : MonoBehaviour
 {
     private Enemy enemy;
+	private EnemyBoss enemyBoss;
 
 	private void Awake()
 	{
@@ -19,4 +20,11 @@ public class EnemyAnimationEvents : MonoBehaviour
 	public void StopManualRotation() => enemy.ActivateManualRotation(false);
 	public void AbilityEvent() => enemy.AbilityTrigger();
 	public void EnableIK() => enemy.enemyVisuals.EnableIK(true, true, 1.5f);
+	public void BossJumpImpact()
+	{
+		if (enemyBoss == null)
+			enemyBoss = GetComponentInParent<EnemyBoss>();
+
+		enemyBoss.JumpImpact();
+	}
 }

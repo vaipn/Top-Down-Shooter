@@ -20,6 +20,9 @@ public class EnemyBoss : Enemy
 	private float lastTimeJumped;
 	public float travelTimeToTarget = 1;
 	public float minJumpDistanceRequired;
+	public float impactRadius = 2.5f;
+	public float impactPower = 5;
+	[SerializeField] private float upforceModifier = 10;
 	[Space]
 	[SerializeField] private LayerMask whatToIgnore;
 	public IdleState_Boss idleState {  get; private set; }
@@ -101,6 +104,19 @@ public class EnemyBoss : Enemy
 	}
 
 	public void SetAbilityOnCooldown() => lastTimeUsedAbility = Time.time;
+
+	public void JumpImpact()
+	{
+		Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
+
+		foreach (Collider collider in colliders)
+		{
+			Rigidbody rb = collider.GetComponent<Rigidbody>();
+
+			if (rb != null)
+				rb.AddExplosionForce(impactPower, transform.position, impactRadius, upforceModifier, ForceMode.Impulse);
+		}
+	}
 
 	public bool CanDoJumpAttack()
 	{
