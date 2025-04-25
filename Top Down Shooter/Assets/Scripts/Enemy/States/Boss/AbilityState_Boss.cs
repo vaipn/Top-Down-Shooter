@@ -37,6 +37,7 @@ public class AbilityState_Boss : EnemyState
 		base.Exit();
 		enemy.SetAbilityOnCooldown();
 		enemy.bossVisuals.ResetBatteries();
+		enemy.bossVisuals.EnableWeaponTrails(false);
 	}
 	public override void AbilityTrigger()
 	{

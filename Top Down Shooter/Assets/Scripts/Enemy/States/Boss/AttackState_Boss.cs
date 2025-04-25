@@ -20,6 +20,8 @@ public class AttackState_Boss : EnemyState
 
 		enemy.agent.isStopped = true;
 
+		enemy.bossVisuals.EnableWeaponTrails(true);
+
 		stateTimer = 1f;
 	}
 
@@ -43,5 +45,7 @@ public class AttackState_Boss : EnemyState
 	{
 		base.Exit();
 		lastTimeAttacked = Time.time;
+
+		enemy.bossVisuals.EnableWeaponTrails(false);
 	}
 }
