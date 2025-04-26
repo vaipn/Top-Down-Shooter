@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
 
+public enum BossWeaponType { Fist, Hammer}
+
 public class EnemyBoss : Enemy
 {
 	[Header("Boss details")]
+	public BossWeaponType bossWeaponType;
 	public float actionCooldown = 10;
 	public float attackRange;
 
@@ -23,6 +26,7 @@ public class EnemyBoss : Enemy
 	public float minJumpDistanceRequired;
 	public float impactRadius = 2.5f;
 	public float impactPower = 5;
+	public Transform impactPoint;
 	[SerializeField] private float upforceModifier = 10;
 	[Space]
 	[SerializeField] private LayerMask whatToIgnore;
@@ -44,7 +48,7 @@ public class EnemyBoss : Enemy
 		moveState = new MoveState_Boss(this, stateMachine, "Move");
 		attackState = new AttackState_Boss(this, stateMachine, "Attack");
 		jumpAttackState = new JumpAttackState_Boss(this, stateMachine, "JumpAttack");
-		abilityState = new AbilityState_Boss(this, stateMachine, "FlameAbility");
+		abilityState = new AbilityState_Boss(this, stateMachine, "Ability");
 		deadState = new DeadState_Boss(this, stateMachine, "Idle"); //idle is just a placeholder, ragdoll is used.
 	}
 
@@ -121,7 +125,12 @@ public class EnemyBoss : Enemy
 
 	public void JumpImpact()
 	{
-		Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
+		Transform impactPoint = this.impactPoint;
+
+		if (impactPoint == null)
+			impactPoint = transform;
+
+		Collider[] colliders = Physics.OverlapSphere(impactPoint.position, impactRadius);
 
 		foreach (Collider collider in colliders)
 		{
