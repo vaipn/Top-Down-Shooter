@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class EnemyBoss : Enemy
@@ -30,6 +31,7 @@ public class EnemyBoss : Enemy
 	public AttackState_Boss attackState { get; private set; }
 	public JumpAttackState_Boss jumpAttackState { get; private set; }
 	public AbilityState_Boss abilityState { get; private set; }
+	public DeadState_Boss deadState { get; private set; }
 
 	public EnemyBossVisuals bossVisuals { get; private set; }
 	protected override void Awake()
@@ -43,6 +45,7 @@ public class EnemyBoss : Enemy
 		attackState = new AttackState_Boss(this, stateMachine, "Attack");
 		jumpAttackState = new JumpAttackState_Boss(this, stateMachine, "JumpAttack");
 		abilityState = new AbilityState_Boss(this, stateMachine, "FlameAbility");
+		deadState = new DeadState_Boss(this, stateMachine, "Idle"); //idle is just a placeholder, ragdoll is used.
 	}
 
 	protected override void Start()
@@ -60,6 +63,14 @@ public class EnemyBoss : Enemy
 
 		if (ShouldEnterBattleMode())
 			EnterBattleMode();
+	}
+
+	public override void GetHit()
+	{
+		base.GetHit();
+
+		if (healthPoint <= 0 && stateMachine.currentState != deadState)
+			stateMachine.ChangeState(deadState);
 	}
 
 	public override void EnterBattleMode()
