@@ -75,6 +75,9 @@ public class EnemyBoss : Enemy
 
 	public override void EnterBattleMode()
 	{
+		if (inBattleMode)
+			return;
+
 		base.EnterBattleMode();
 		stateMachine.ChangeState(moveState);
 	}
