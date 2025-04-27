@@ -23635,7 +23635,7 @@ MonoBehaviour:
   bossWeaponType: 1
   actionCooldown: 1
   attackRange: 1.35
-  abilityCooldown: 4
+  abilityCooldown: 2
   minAbilityDistance: 2.25
   flameThrower: {fileID: 8107586462908248980}
   flameThrowDuration: 3
