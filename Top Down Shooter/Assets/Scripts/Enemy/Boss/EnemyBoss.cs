@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
 
-public enum BossWeaponType { Fist, Hammer}
+public enum BossWeaponType { FlameThrower, Hammer}
 
 public class EnemyBoss : Enemy
 {
@@ -12,12 +12,18 @@ public class EnemyBoss : Enemy
 	public float actionCooldown = 10;
 	public float attackRange;
 
-	[Header("Flame Throw Ability")]
-	public ParticleSystem flameThrower;
-	public float flameThrowDuration;
+	[Header("Ability")]
 	public float abilityCooldown;
 	private float lastTimeUsedAbility;
+	public float minAbilityDistance;
+
+	[Header("Flame Throw")]
+	public ParticleSystem flameThrower;
+	public float flameThrowDuration;
 	public bool flameThrowActive {  get; private set; }
+
+	[Header("Hammer")]
+	public GameObject hammerFxPrefab;
 
 	[Header("Jump attack")]
 	public float jumpAttackCooldown = 5;
@@ -111,8 +117,20 @@ public class EnemyBoss : Enemy
 		flameThrower.Play();
 	}
 
+	public void ActivateHammer()
+	{
+		GameObject newHammerFx = ObjectPool.instance.GetObjectFromPool(hammerFxPrefab, impactPoint);
+
+		ObjectPool.instance.ReturnObjectToPoolWithDelay(newHammerFx, 1);
+	}
+
 	public bool CanDoAbility()
 	{
+		bool playerWithinDistance = Vector3.Distance(transform.position, playerTransform.position) < minAbilityDistance;
+
+		if (!playerWithinDistance)
+			return false;
+
 		if (Time.time > lastTimeUsedAbility + abilityCooldown)
 		{
 			return true;

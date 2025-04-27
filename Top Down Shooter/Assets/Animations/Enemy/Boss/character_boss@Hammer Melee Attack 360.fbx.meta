@@ -57,8 +57,36 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.30280685
+        functionName: AbilityEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.31348535
+        functionName: AbilityEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.32574394
+        functionName: AbilityEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9986876
         functionName: AnimationTrigger
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3410915
+        functionName: AbilityEvent
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
         floatParameter: 0
