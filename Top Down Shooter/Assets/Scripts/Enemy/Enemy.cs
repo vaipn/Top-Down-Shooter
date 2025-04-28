@@ -36,12 +36,15 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public NavMeshAgent agent {  get; private set; }
 
 	public EnemyRagdoll ragdoll { get; private set; }
+
+    public EnemyHealth health { get; private set; }
 	protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
 
         ragdoll = GetComponent<EnemyRagdoll>();
 		enemyVisuals = GetComponent<EnemyVisuals>();
+        health = GetComponent<EnemyHealth>();
 
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponentInChildren<Animator>();
@@ -82,12 +85,23 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public virtual void GetHit()
     {
+        health.ReduceHealth();
+
+        if (health.ShouldDie())
+            Die(); // this is going to call the Die that overrides the virtual Die in this script
+
         EnterBattleMode(); // this is going to call the EnterBattleMode in EnemyMelee
     }
 
-    public virtual void DeathImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    public virtual void Die()
     {
-        StartCoroutine(DeathImpactCoroutine(force, hitPoint, rb));
+
+    }
+
+    public virtual void BulletImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    {
+        if (health.ShouldDie())
+            StartCoroutine(DeathImpactCoroutine(force, hitPoint, rb));
     }
 
     private IEnumerator DeathImpactCoroutine(Vector3 force, Vector3 hitPoint, Rigidbody rb)

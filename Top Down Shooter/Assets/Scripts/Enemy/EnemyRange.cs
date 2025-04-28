@@ -95,11 +95,12 @@ public class EnemyRange : Enemy
 
 		stateMachine.currentState.Update();
 	}
-	public override void GetHit()
-	{
-		base.GetHit();
 
-		if (healthPoint <= 0 && stateMachine.currentState != deadState)
+	public override void Die()
+	{
+		base.Die();
+
+		if (stateMachine.currentState != deadState)
 			stateMachine.ChangeState(deadState);
 	}
 	public bool CanThrowGrenade()

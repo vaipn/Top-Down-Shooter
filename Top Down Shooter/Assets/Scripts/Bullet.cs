@@ -76,7 +76,6 @@ public class Bullet : MonoBehaviour
 		IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
 		damagable?.TakeDamage();
 
-		Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 		EnemyShield shield = collision.gameObject.GetComponent<EnemyShield>();
 
 		if (shield != null)
@@ -85,14 +84,19 @@ public class Bullet : MonoBehaviour
 			return;
 		}
 
+		ApplyBulletImpactToEnemy(collision);
+	}
+
+	private void ApplyBulletImpactToEnemy(Collision collision)
+	{
+		Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+
 		if (enemy != null)
 		{
 			Vector3 force = rb.velocity.normalized * impactForce; // direction * impactForce
 			Rigidbody hitRigidbody = collision.collider.attachedRigidbody;
 
-			enemy.GetHit();
-			enemy.DeathImpact(force, collision.contacts[0].point, hitRigidbody);
-
+			enemy.BulletImpact(force, collision.contacts[0].point, hitRigidbody);
 		}
 	}
 
