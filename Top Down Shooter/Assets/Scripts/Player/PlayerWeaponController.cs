@@ -7,6 +7,8 @@ public class PlayerWeaponController : MonoBehaviour
 	private Player player;
 	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
 
+	[SerializeField] private LayerMask whatIsAlly;
+	[Space]
 	[SerializeField] private WeaponData defaultWeaponData;
 	[SerializeField] private Weapon currentWeapon;
 	private bool weaponReady;
@@ -166,7 +168,7 @@ public class PlayerWeaponController : MonoBehaviour
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
 		Bullet bulletScript = newBullet.GetComponent<Bullet>();
-		bulletScript.BulletSetup(currentWeapon.gunShotDistance, bulletImpactForce);
+		bulletScript.BulletSetup(whatIsAlly, currentWeapon.gunShotDistance, bulletImpactForce);
 
 		Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 

@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
 	private float flyDistance;
 	private bool bulletDisabled;
 
+	private LayerMask allyLayerMask;
+
 	protected virtual void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -25,7 +27,7 @@ public class Bullet : MonoBehaviour
 		trailRenderer = GetComponent<TrailRenderer>();
 	}
 
-	public void BulletSetup(float flyDistance = 100, float impactForce = 100)
+	public void BulletSetup(LayerMask allyLayerMask, float flyDistance = 100, float impactForce = 100)
 	{
 		bulletDisabled = false;
 		boxCollider.enabled = true;
@@ -36,6 +38,7 @@ public class Bullet : MonoBehaviour
 		startPosition = transform.position;
 		this.flyDistance = flyDistance /*+ 0.5f*/; // +0.5 because of tipLength that is 0.5 
 		this.impactForce = impactForce;
+		this.allyLayerMask = allyLayerMask;
 	}
 
 	protected virtual void Update()
@@ -69,6 +72,17 @@ public class Bullet : MonoBehaviour
 
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
+		if (!FriendlyFire())
+		{
+			if ((allyLayerMask.value & (1 << collision.gameObject.layer)) > 0) // if the layer of the object the bullet collided with, is included in the layer(s) in the layerMask.
+			{
+				ReturnBulletToPool(10);
+				return;
+			}
+
+		}
+
+
 		CreateImpactFX();
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
 		ReturnBulletToPool();
@@ -100,11 +114,13 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	protected void ReturnBulletToPool() => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
+	protected void ReturnBulletToPool(float delay = 0.001f) => ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject, delay);
 
 	protected void CreateImpactFX()
 	{
 		GameObject newImpactFX = ObjectPool.instance.GetObjectFromPool(bulletImpactFX, transform);
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(newImpactFX, 1);
 	}
+
+	private bool FriendlyFire() => GameManager.instance.friendlyFire;
 }

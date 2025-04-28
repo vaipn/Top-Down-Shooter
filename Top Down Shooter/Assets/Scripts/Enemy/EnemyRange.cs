@@ -236,7 +236,7 @@ public class EnemyRange : Enemy
 		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab, gunPoint);
 		newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
 
-		newBullet.GetComponent<Bullet>().BulletSetup();
+		newBullet.GetComponent<Bullet>().BulletSetup(whatIsAlly);
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 

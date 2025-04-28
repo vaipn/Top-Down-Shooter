@@ -8013,7 +8013,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c30ce116f9b514c877ffcf3969fee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 1
+  whatIsAlly:
+    serializedVersion: 2
+    m_Bits: 2048
+  healthPoint: 5
   idleTime: 5
   walkSpeed: 1.5
   chaseSpeed: 4
@@ -8025,7 +8028,7 @@ MonoBehaviour:
   aggressionRange: 10
   coverPerk: 0
   unstoppablePerk: 0
-  grenadePerk: 1
+  grenadePerk: 0
   grenadePrefab: {fileID: 4334186090342610340, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
   timeToReachTarget: 1.2
   timeToExplode: 0.75
@@ -8038,7 +8041,7 @@ MonoBehaviour:
   minCoverTime: 4
   safeDistance: 2
   attackDelay: 1
-  weaponType: 4
+  weaponType: 2
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 3666232959900237121}
   gunPoint: {fileID: 0}
