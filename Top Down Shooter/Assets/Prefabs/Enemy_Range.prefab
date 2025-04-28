@@ -7911,6 +7911,7 @@ GameObject:
   - component: {fileID: 711660018750278557}
   - component: {fileID: 4595815384366455674}
   - component: {fileID: 361151926848101213}
+  - component: {fileID: 6171531259403495389}
   m_Layer: 11
   m_Name: Enemy_Range
   m_TagString: Untagged
@@ -8041,7 +8042,7 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   weaponHolder: {fileID: 3666232959900237121}
   gunPoint: {fileID: 0}
-  bulletPrefab: {fileID: 280203576485290946, guid: 0a03f7937d3676346b2fad0084192e17, type: 3}
+  bulletPrefab: {fileID: 280203576485290946, guid: 9e40ec3fafeed4f48b955e4be6793146, type: 3}
   availableWeaponData:
   - {fileID: 11400000, guid: a98ff09d65390f549a5129bf42183105, type: 2}
   - {fileID: 11400000, guid: 872161af5c7c2a4499fc979a8609da80, type: 2}
@@ -8055,6 +8056,20 @@ MonoBehaviour:
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &6171531259403495389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666484301437568405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 0
 --- !u!1 &6763556269474422521
 GameObject:
   m_ObjectHideFlags: 0
