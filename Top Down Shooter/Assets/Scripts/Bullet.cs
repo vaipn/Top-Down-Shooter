@@ -73,6 +73,8 @@ public class Bullet : MonoBehaviour
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
 		ReturnBulletToPool();
 
+		IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
+		damagable?.TakeDamage();
 
 		Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 		EnemyShield shield = collision.gameObject.GetComponent<EnemyShield>();

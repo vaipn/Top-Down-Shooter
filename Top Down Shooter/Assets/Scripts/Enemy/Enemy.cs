@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	public Transform playerTransform { get; private set; }
 
 
-    [SerializeField] protected int healthPoint = 5;
+    public int healthPoint = 5;
 
     [Header("Idle data")]
     public float idleTime;
@@ -83,7 +83,6 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public virtual void GetHit()
     {
         EnterBattleMode(); // this is going to call the EnterBattleMode in EnemyMelee
-        healthPoint--;
     }
 
     public virtual void DeathImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
