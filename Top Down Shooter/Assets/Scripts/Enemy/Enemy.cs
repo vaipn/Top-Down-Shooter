@@ -36,14 +36,14 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public NavMeshAgent agent {  get; private set; }
 
-	public EnemyRagdoll ragdoll { get; private set; }
+	public Ragdoll ragdoll { get; private set; }
 
     public EnemyHealth health { get; private set; }
 	protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
 
-        ragdoll = GetComponent<EnemyRagdoll>();
+        ragdoll = GetComponent<Ragdoll>();
 		enemyVisuals = GetComponent<EnemyVisuals>();
         health = GetComponent<EnemyHealth>();
 

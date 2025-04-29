@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRagdoll : MonoBehaviour
+public class Ragdoll : MonoBehaviour
 {
     [SerializeField] private Transform ragdollParent;
     private Collider[] ragdollColliders;
