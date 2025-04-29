@@ -129,11 +129,11 @@ public class EnemyRange : Enemy
 
 		if (stateMachine.currentState == deadState)
 		{
-			grenadeScript.SetupGrenade(transform.position, 1, timeToExplode, impactPower);
+			grenadeScript.SetupGrenade(whatIsAlly, transform.position, 1, timeToExplode, impactPower);
 			return;
 		}
 
-		grenadeScript.SetupGrenade(playerTransform.position, timeToReachTarget, timeToExplode, impactPower);
+		grenadeScript.SetupGrenade(whatIsAlly, playerTransform.position, timeToReachTarget, timeToExplode, impactPower);
 	}
 
 	protected override void InitializePerk()
