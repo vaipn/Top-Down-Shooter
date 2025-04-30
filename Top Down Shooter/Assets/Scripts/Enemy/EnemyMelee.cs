@@ -131,15 +131,14 @@ public class EnemyMelee : Enemy
 		}
 	}
 
-	public override void GetHit()
+	public override void Die()
 	{
-		base.GetHit();
+		base.Die();
 
-		if (healthPoint <= 0 && stateMachine.currentState != deadState)
-			stateMachine.ChangeState(deadState);
-
+		if (stateMachine.currentState != deadState)
+			stateMachine.ChangeState(deadState); 
+			
 	}
-
 	public bool PlayerInAttackRange() => Vector3.Distance(transform.position, playerTransform.position) < attackData.attackRange;
 
 	public void ActivateDodgeRoll()

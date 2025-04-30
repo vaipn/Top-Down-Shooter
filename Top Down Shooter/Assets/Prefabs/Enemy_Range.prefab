@@ -8028,7 +8028,7 @@ MonoBehaviour:
   aggressionRange: 10
   coverPerk: 0
   unstoppablePerk: 0
-  grenadePerk: 0
+  grenadePerk: 1
   grenadePrefab: {fileID: 4334186090342610340, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
   timeToReachTarget: 1.2
   timeToExplode: 0.75
@@ -8071,7 +8071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 5
   currentHealth: 0
 --- !u!1 &6763556269474422521
 GameObject:
@@ -9954,7 +9954,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7601837753904819352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
