@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	public Transform playerTransform { get; private set; }
 
     public LayerMask whatIsAlly;
+    public LayerMask whatIsPlayer;
 
     public int healthPoint = 5;
 

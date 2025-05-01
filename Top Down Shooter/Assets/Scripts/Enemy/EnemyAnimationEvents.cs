@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyAnimationEvents : MonoBehaviour
 {
     private Enemy enemy;
+	private EnemyMelee enemyMelee;
 	private EnemyBoss enemyBoss;
 
 	private void Awake()
 	{
 		enemy = GetComponentInParent<Enemy>();
+		enemyMelee = GetComponentInParent<EnemyMelee>();
 	}
 
 	public void AnimationTrigger() => enemy.AnimationTrigger();
@@ -27,4 +29,6 @@ public class EnemyAnimationEvents : MonoBehaviour
 
 		enemyBoss.JumpImpact();
 	}
+	public void BeginMeleeAttackCheck() => enemyMelee?.EnableAttackCheck(true);
+	public void FinishMeleeAttackCheck() => enemyMelee?.EnableAttackCheck(false);
 }

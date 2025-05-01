@@ -71,8 +71,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.52158123
+        functionName: BeginMeleeAttackCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.58256453
         functionName: StopManualMovement
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5904776
+        functionName: FinishMeleeAttackCheck
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
         floatParameter: 0

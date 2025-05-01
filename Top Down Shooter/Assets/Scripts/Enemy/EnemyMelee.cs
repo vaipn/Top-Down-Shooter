@@ -46,6 +46,8 @@ public class EnemyMelee : Enemy
 	[Header("Attack data")]
 	public EnemyMeleeAttackData attackData;
 	public List<EnemyMeleeAttackData> attackList;
+	public EnemyHeldWeaponModel currentWeapon;
+	private bool isAttackReady;
 
 	[SerializeField] private Transform sheathedWeapon;//TODO: remove. don't think it is needed
 	[SerializeField] private Transform heldWeapon;//TODO: remove. don't think it is needed
@@ -81,7 +83,37 @@ public class EnemyMelee : Enemy
 		base.Update();
 
 		stateMachine.currentState.Update();
+
+		
+		AttackCheck();
 	}
+
+	public void AttackCheck()
+	{
+		if (!isAttackReady)
+			return;
+
+		foreach (Transform attackPoint in currentWeapon.damagePoints)
+		{
+			Collider[] detectedHits = Physics.OverlapSphere(attackPoint.position, currentWeapon.attackRadius, whatIsPlayer);
+
+			for (int i = 0; i < detectedHits.Length; i++)
+			{
+				IDamagable damagable = detectedHits[i].GetComponent<IDamagable>();
+
+				if (damagable != null)
+				{
+					damagable.TakeDamage();
+					isAttackReady = false;
+					return;
+				}
+
+			}
+			
+		}
+	}
+
+	public void EnableAttackCheck(bool enable) => isAttackReady = enable;
 
 	public override void EnterBattleMode()
 	{
@@ -103,7 +135,7 @@ public class EnemyMelee : Enemy
 
 	public void UpdateAttackData()
 	{
-		EnemyHeldWeaponModel currentWeapon = enemyVisuals.currentHeldWeaponModel;
+		currentWeapon = enemyVisuals.currentHeldWeaponModel;
 
 		if (currentWeapon.weaponData != null)
 		{
