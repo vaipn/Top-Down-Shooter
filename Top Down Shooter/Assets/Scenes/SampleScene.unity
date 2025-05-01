@@ -7280,6 +7280,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: meleeAttackFx
+      value: 
+      objectReference: {fileID: 6297392922744394597, guid: eb6447232bba91a43b93f7aa5636a7e2, type: 3}
+    - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
       propertyPath: whatIsPlayer.m_Bits
       value: 256
       objectReference: {fileID: 0}

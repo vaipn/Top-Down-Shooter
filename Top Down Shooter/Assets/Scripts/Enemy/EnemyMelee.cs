@@ -48,6 +48,8 @@ public class EnemyMelee : Enemy
 	public List<EnemyMeleeAttackData> attackList;
 	public EnemyHeldWeaponModel currentWeapon;
 	private bool isAttackReady;
+	[Space]
+	[SerializeField] private GameObject meleeAttackFx;
 
 	[SerializeField] private Transform sheathedWeapon;//TODO: remove. don't think it is needed
 	[SerializeField] private Transform heldWeapon;//TODO: remove. don't think it is needed
@@ -105,6 +107,8 @@ public class EnemyMelee : Enemy
 				{
 					damagable.TakeDamage();
 					isAttackReady = false;
+					GameObject newAttackFx = ObjectPool.instance.GetObjectFromPool(meleeAttackFx, attackPoint);
+					ObjectPool.instance.ReturnObjectToPoolWithDelay(newAttackFx, 1);
 					return;
 				}
 
