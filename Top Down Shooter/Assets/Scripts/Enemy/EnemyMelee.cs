@@ -203,14 +203,14 @@ public class EnemyMelee : Enemy
 			return false;
 
 		if (Time.time > lastTimeAxeThrown + axeThrowCooldown)
-		{
-			lastTimeAxeThrown = Time.time;
 			return true;
-		}
+
 		return false;
 	}
 	public void ThrowAxe()
 	{
+		lastTimeAxeThrown = Time.time;
+
 		GameObject newAxe = ObjectPool.instance.GetObjectFromPool(axePrefab, axeStartPoint);
 
 		newAxe.GetComponent<EnemyThrowAxe>().AxeSetup(axeFlySpeed, playerTransform, axeAimTimer);

@@ -30,24 +30,22 @@ public class EnemyThrowAxe : MonoBehaviour
         if (timer > 0)
             direction = player.position + Vector3.up - transform.position;
 
-
-        rb.velocity = direction.normalized * flySpeed;
-
         transform.forward = rb.velocity; // to make sure axe is facing player
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void FixedUpdate()
 	{
-		Bullet bullet = other.GetComponent<Bullet>();
-        Player player = other.GetComponent<Player>();
+        rb.velocity = direction.normalized * flySpeed;
+	}
 
-        if (bullet != null || player != null)
-        {
-            GameObject newFx = ObjectPool.instance.GetObjectFromPool(impactFx, transform);
-            //newFx.transform.position = transform.position;
+	private void OnCollisionEnter(Collision collision)
+	{
+        IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
+        damagable?.TakeDamage();
 
-            ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
-            ObjectPool.instance.ReturnObjectToPoolWithDelay(newFx, 1);
-        }
+		GameObject newFx = ObjectPool.instance.GetObjectFromPool(impactFx, transform);
+
+		ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
+		ObjectPool.instance.ReturnObjectToPoolWithDelay(newFx, 1);
 	}
 }
