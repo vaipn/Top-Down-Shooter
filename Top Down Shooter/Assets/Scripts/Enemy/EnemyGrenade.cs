@@ -57,14 +57,19 @@ public class EnemyGrenade : MonoBehaviour
 
 		foreach (Collider collider in colliders)
 		{
-			if (!IsTargetValid(collider))
-				continue;
+			IDamagable damagable = collider.GetComponent<IDamagable>();
 
-			GameObject rootEntity = collider.transform.root.gameObject;
-			if (uniqueEntities.Add(rootEntity) == false)
-				continue;
+			if (damagable != null)
+			{
+				if (!IsTargetValid(collider))
+					continue;
 
-			ApplyDamageTo(collider);
+				GameObject rootEntity = collider.transform.root.gameObject;
+				if (uniqueEntities.Add(rootEntity) == false)
+					continue;
+
+				damagable.TakeDamage();
+			}
 
 			ApplyExplosionForceTo(collider);
 		}
@@ -78,11 +83,6 @@ public class EnemyGrenade : MonoBehaviour
 			rb.AddExplosionForce(impactPower, transform.position, impactRadius, explosionUpwardsMultiplier, ForceMode.Impulse);
 	}
 
-	private static void ApplyDamageTo(Collider collider)
-	{
-		IDamagable damagable = collider.GetComponent<IDamagable>();
-		damagable?.TakeDamage();
-	}
 
 	private void PlayExplosionEffect()
 	{
