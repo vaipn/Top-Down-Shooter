@@ -53,6 +53,9 @@ public class PlayerWeaponController : MonoBehaviour
 
 	private void EquipWeapon(int i)
 	{
+		if (i > 0 && weaponSlots.Count == 1)
+			return;
+
 		SetWeaponReady(false);
 
 		currentWeapon = weaponSlots[i];
