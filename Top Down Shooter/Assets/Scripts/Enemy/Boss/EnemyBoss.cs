@@ -75,11 +75,11 @@ public class EnemyBoss : Enemy
 			EnterBattleMode();
 	}
 
-	public override void GetHit()
+	public override void Die()
 	{
-		base.GetHit();
+		base.Die();
 
-		if (healthPoint <= 0 && stateMachine.currentState != deadState)
+		if (stateMachine.currentState != deadState)
 			stateMachine.ChangeState(deadState);
 	}
 
