@@ -64,6 +64,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.1787971
+        functionName: BeginMeleeAttackCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.19416633
         functionName: StopManualRotation
         data: 
@@ -71,8 +78,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9980282
-        functionName: AnimationTrigger
+      - time: 0.3534679
+        functionName: FinishMeleeAttackCheck
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
         floatParameter: 0
@@ -87,6 +94,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.9769443
         functionName: StopManualRotation
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9980282
+        functionName: AnimationTrigger
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 38ec065c67e28e04590227adcf1a7866, type: 3}
         floatParameter: 0

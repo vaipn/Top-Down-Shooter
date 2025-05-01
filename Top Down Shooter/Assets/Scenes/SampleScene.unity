@@ -7247,6 +7247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 3554324078106123111, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3597554501458728577, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7269,7 +7273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
       propertyPath: meleeType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
       propertyPath: weaponType
