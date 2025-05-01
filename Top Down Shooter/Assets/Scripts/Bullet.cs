@@ -82,21 +82,12 @@ public class Bullet : MonoBehaviour
 
 		}
 
-
 		CreateImpactFX();
 		//rb.constraints = RigidbodyConstraints.FreezeAll;
 		ReturnBulletToPool();
 
 		IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
 		damagable?.TakeDamage();
-
-		EnemyShield shield = collision.gameObject.GetComponent<EnemyShield>();
-
-		if (shield != null)
-		{
-			shield.ReduceDurability();
-			return;
-		}
 
 		ApplyBulletImpactToEnemy(collision);
 	}

@@ -31,7 +31,12 @@ public class EnemyMelee : Enemy
 	[Header("Enemy Settings")]
 	public EnemyMelee_Type meleeType;
 	public EnemyMelee_WeaponType weaponType;
+
+	[Header("Shield")]
 	[SerializeField] private Transform shieldTransform;
+	public int shieldDurability;
+
+	[Header("Dodge")]
 	public float dodgeCooldown;
 	private float lastTimeDodge = -10;
 
