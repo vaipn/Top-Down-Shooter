@@ -20,6 +20,7 @@ public class EnemyBoss : Enemy
 	[Header("Flame Throw")]
 	public ParticleSystem flameThrower;
 	public float flameThrowDuration;
+	public float flameDamageCooldown;
 	public bool flameThrowActive {  get; private set; }
 
 	[Header("Hammer")]
