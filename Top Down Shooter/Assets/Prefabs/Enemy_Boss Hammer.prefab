@@ -23800,6 +23800,10 @@ MonoBehaviour:
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
+  damagePoints:
+  - {fileID: 6283070973361520539}
+  damageRadius: 0.5
+  meleeAttackFx: {fileID: 6297392922744394597, guid: bc6989694705c8148b65c7c3e708618c, type: 3}
 --- !u!114 &2649857815059385971
 MonoBehaviour:
   m_ObjectHideFlags: 0

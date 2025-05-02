@@ -36,6 +36,11 @@ public class EnemyBoss : Enemy
 	[SerializeField] private float upforceModifier = 10;
 	[Space]
 	[SerializeField] private LayerMask whatToIgnore;
+
+	[Header("Simple attack")]
+	[SerializeField] private Transform[] damagePoints;
+	[SerializeField] private float damageRadius;
+	[SerializeField] private GameObject meleeAttackFx;
 	public IdleState_Boss idleState {  get; private set; }
 	public MoveState_Boss moveState { get; private set; }
 	public AttackState_Boss attackState { get; private set; }
@@ -73,6 +78,8 @@ public class EnemyBoss : Enemy
 
 		if (ShouldEnterBattleMode())
 			EnterBattleMode();
+
+		MeleeAttackCheck(damagePoints, damageRadius, meleeAttackFx);
 	}
 
 	public override void Die()
@@ -207,5 +214,13 @@ public class EnemyBoss : Enemy
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
+
+		if (damagePoints.Length > 0)
+		{
+			foreach (var damagePoint in damagePoints)
+			{
+				Gizmos.DrawWireSphere(damagePoint.position, damageRadius);
+			}
+		}
 	}
 }

@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public float aggressionRange;
 
+    protected bool isMeleeAttackReady;
     public bool inBattleMode {  get; private set; }
     public Animator anim {  get; private set; }
 
@@ -100,7 +101,35 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     }
 
-    public virtual void BulletImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+	public void EnableMeleeAttackCheck(bool enable) => isMeleeAttackReady = enable;
+
+	public virtual void MeleeAttackCheck(Transform[] damagePoints, float attackCheckRadius, GameObject fx)
+	{
+		if (!isMeleeAttackReady)
+			return;
+
+		foreach (Transform attackPoint in damagePoints)
+		{
+			Collider[] detectedHits = Physics.OverlapSphere(attackPoint.position, attackCheckRadius, whatIsPlayer);
+
+			for (int i = 0; i < detectedHits.Length; i++)
+			{
+				IDamagable damagable = detectedHits[i].GetComponent<IDamagable>();
+
+				if (damagable != null)
+				{
+					damagable.TakeDamage();
+					isMeleeAttackReady = false;
+					GameObject newAttackFx = ObjectPool.instance.GetObjectFromPool(fx, attackPoint);
+					ObjectPool.instance.ReturnObjectToPoolWithDelay(newAttackFx, 1);
+					return;
+				}
+
+			}
+
+		}
+	}
+	public virtual void BulletImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {
         if (health.ShouldDie())
             StartCoroutine(DeathImpactCoroutine(force, hitPoint, rb));

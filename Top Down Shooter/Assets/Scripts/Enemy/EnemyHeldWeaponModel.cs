@@ -14,7 +14,7 @@ public class EnemyHeldWeaponModel : MonoBehaviour
     public AnimatorOverrideController overrideController;
     [SerializeField] private GameObject[] trailEffects;
 
-    [Header("Damage attributes")]
+    [Header("Melee Damage attributes")]
     public Transform[] damagePoints;
     public float attackRadius;
 
