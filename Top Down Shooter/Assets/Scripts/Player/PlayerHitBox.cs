@@ -18,7 +18,5 @@ public class PlayerHitBox : HitBox
 		base.TakeDamage();
 
 		player.health.ReduceHealth();
-
-		Debug.Log("Player taken damage");
 	}
 }

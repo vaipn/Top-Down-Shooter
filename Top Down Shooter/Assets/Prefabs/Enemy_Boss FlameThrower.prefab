@@ -17831,6 +17831,7 @@ MonoBehaviour:
   flameThrowDuration: 3
   flameDamageCooldown: 0.5
   hammerFxPrefab: {fileID: 0}
+  hammerAbiltyDamageRadius: 0
   jumpAttackCooldown: 5
   travelTimeToTarget: 1
   minJumpDistanceRequired: 4

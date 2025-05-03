@@ -25,6 +25,7 @@ public class EnemyBoss : Enemy
 
 	[Header("Hammer")]
 	public GameObject hammerFxPrefab;
+	[SerializeField] private float hammerAbiltyDamageRadius;
 
 	[Header("Jump attack")]
 	public float jumpAttackCooldown = 5;
@@ -130,6 +131,8 @@ public class EnemyBoss : Enemy
 		GameObject newHammerFx = ObjectPool.instance.GetObjectFromPool(hammerFxPrefab, impactPoint);
 
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(newHammerFx, 1);
+
+		MassDamage(damagePoints[0].position, hammerAbiltyDamageRadius);
 	}
 
 	public bool CanDoAbility()
@@ -175,6 +178,7 @@ public class EnemyBoss : Enemy
 				if (uniqueEntities.Add(rootEntity) == false)
 					continue;
 
+				Debug.Log(collider.transform.root.name + " was damaged");
 				damagable.TakeDamage();
 			}
 
