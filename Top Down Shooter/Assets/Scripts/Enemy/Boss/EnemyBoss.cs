@@ -156,15 +156,38 @@ public class EnemyBoss : Enemy
 		if (impactPoint == null)
 			impactPoint = transform;
 
-		Collider[] colliders = Physics.OverlapSphere(impactPoint.position, impactRadius);
+		MassDamage(impactPoint.position, impactRadius);
+	}
+
+	private void MassDamage(Vector3 impactPoint, float impactRadius)
+	{
+		HashSet<GameObject> uniqueEntities = new HashSet<GameObject>();
+		Collider[] colliders = Physics.OverlapSphere(impactPoint, impactRadius, ~whatIsAlly);
 
 		foreach (Collider collider in colliders)
 		{
-			Rigidbody rb = collider.GetComponent<Rigidbody>();
+			IDamagable damagable = collider.GetComponent<IDamagable>();
 
-			if (rb != null)
-				rb.AddExplosionForce(impactPower, transform.position, impactRadius, upforceModifier, ForceMode.Impulse);
+			if (damagable != null)
+			{
+				GameObject rootEntity = collider.transform.root.gameObject;
+
+				if (uniqueEntities.Add(rootEntity) == false)
+					continue;
+
+				damagable.TakeDamage();
+			}
+
+			ApplyPhysicalForceTo(impactPoint, impactRadius, collider);
 		}
+	}
+
+	private void ApplyPhysicalForceTo(Vector3 impactPoint, float impactRadius, Collider collider)
+	{
+		Rigidbody rb = collider.GetComponent<Rigidbody>();
+
+		if (rb != null)
+			rb.AddExplosionForce(impactPower, impactPoint, impactRadius, upforceModifier, ForceMode.Impulse);
 	}
 
 	public bool CanDoJumpAttack()
@@ -185,15 +208,19 @@ public class EnemyBoss : Enemy
 
 	public bool IsPlayerInClearSight()
 	{
-		Vector3 enemyEyeLevel = transform.position + new Vector3(0, 1.55f, 0);
-		Vector3 playerEyeLevel = playerTransform.position + new Vector3(0, 1.55f, 0);
-		Vector3 directionToPlayer = (playerEyeLevel - enemyEyeLevel).normalized;
+		Vector3 enemyEyeLevel = transform.position + new Vector3(0, 1.5f, 0);
+		Vector3 playerLevel = playerTransform.position + new Vector3(0, 1.4f, 0);
+		Vector3 directionToPlayer = (playerLevel - enemyEyeLevel).normalized;
 
 		if (Physics.Raycast(enemyEyeLevel, directionToPlayer, out RaycastHit hit, 100, ~whatToIgnore))
 		{
 			if (hit.transform == playerTransform || hit.transform.parent == playerTransform)
+			{
+				Debug.Log("Player is in clear sight");
 				return true;
+			}
 		}
+		Debug.Log("Player is not in clear sight");
 		return false;
 	}
 
