@@ -3965,8 +3965,8 @@ MonoBehaviour:
   - {fileID: 7042368665320388525}
   - {fileID: 2389658879576089472}
   aggressionRange: 4
-  meleeType: 1
-  weaponType: 0
+  meleeType: 0
+  weaponType: 3
   shieldTransform: {fileID: 3645840972983696179}
   shieldDurability: 10
   dodgeCooldown: 3
