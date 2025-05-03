@@ -15,11 +15,14 @@ public class EnemyThrowAxe : MonoBehaviour
     private float rotationSpeed = 1600;
     private float timer = 1;
 
-    public void AxeSetup(float flySpeed, Transform player, float timer)
+    private int damage;
+
+    public void AxeSetup(float flySpeed, Transform player, float timer, int damage)
     {
         this.flySpeed = flySpeed;
         this.player = player;
         this.timer = timer;
+        this.damage = damage;
     }
 
 	private void Update()
@@ -41,7 +44,7 @@ public class EnemyThrowAxe : MonoBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
         IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
-        damagable?.TakeDamage();
+        damagable?.TakeDamage(damage);
 
 		GameObject newFx = ObjectPool.instance.GetObjectFromPool(impactFx, transform);
 

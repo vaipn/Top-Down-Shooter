@@ -8,7 +8,7 @@ public class HitBox : MonoBehaviour, IDamagable
 	{
 
 	}
-	public virtual void TakeDamage()
+	public virtual void TakeDamage(int damage)
 	{
 		
 	}

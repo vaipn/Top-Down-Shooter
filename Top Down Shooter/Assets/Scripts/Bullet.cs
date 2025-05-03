@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 	private MeshRenderer meshRenderer;
 	private TrailRenderer trailRenderer;
 
+	private int bulletDamage;
 	private float impactForce;
 	private Vector3 startPosition;
 	private float flyDistance;
@@ -27,7 +28,7 @@ public class Bullet : MonoBehaviour
 		trailRenderer = GetComponent<TrailRenderer>();
 	}
 
-	public void BulletSetup(LayerMask allyLayerMask, float flyDistance = 100, float impactForce = 100)
+	public void BulletSetup(LayerMask allyLayerMask, int damage, float flyDistance = 100, float impactForce = 100)
 	{
 		bulletDisabled = false;
 		boxCollider.enabled = true;
@@ -39,6 +40,7 @@ public class Bullet : MonoBehaviour
 		this.flyDistance = flyDistance /*+ 0.5f*/; // +0.5 because of tipLength that is 0.5 
 		this.impactForce = impactForce;
 		this.allyLayerMask = allyLayerMask;
+		this.bulletDamage = damage;
 	}
 
 	protected virtual void Update()
@@ -87,7 +89,7 @@ public class Bullet : MonoBehaviour
 		ReturnBulletToPool();
 
 		IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
-		damagable?.TakeDamage();
+		damagable?.TakeDamage(bulletDamage);
 
 		ApplyBulletImpactToEnemy(collision);
 	}

@@ -13,6 +13,7 @@ public class EnemyRange : Enemy
 
 	[Header("Grenade perk")]
 	public GameObject grenadePrefab;
+	public int grenadeDamage;
 	public float timeToReachTarget = 1.2f;
 	public float timeToExplode = 0.75f;
 	public float impactPower;
@@ -129,11 +130,11 @@ public class EnemyRange : Enemy
 
 		if (stateMachine.currentState == deadState)
 		{
-			grenadeScript.SetupGrenade(whatIsAlly, transform.position, 1, timeToExplode, impactPower);
+			grenadeScript.SetupGrenade(whatIsAlly, transform.position, 1, timeToExplode, impactPower, grenadeDamage);
 			return;
 		}
 
-		grenadeScript.SetupGrenade(whatIsAlly, playerTransform.position, timeToReachTarget, timeToExplode, impactPower);
+		grenadeScript.SetupGrenade(whatIsAlly, playerTransform.position, timeToReachTarget, timeToExplode, impactPower, grenadeDamage);
 	}
 
 	protected override void InitializePerk()
@@ -236,7 +237,7 @@ public class EnemyRange : Enemy
 		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab, gunPoint);
 		newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
 
-		newBullet.GetComponent<Bullet>().BulletSetup(whatIsAlly);
+		newBullet.GetComponent<Bullet>().BulletSetup(whatIsAlly, weaponData.bulletDamage);
 
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 

@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public struct EnemyMeleeAttackData
 {
+	public int attackDamage;
 	public string attackName;
 	public float attackRange;
 	public float attackMoveSpeed;
@@ -42,6 +43,7 @@ public class EnemyMelee : Enemy
 
 	[Header("Axe throw ability")]
 	public GameObject axePrefab;
+	public int axeDamage;
 	public float axeFlySpeed;
 	public float axeAimTimer;
 	public float axeThrowCooldown;
@@ -92,7 +94,7 @@ public class EnemyMelee : Enemy
 		stateMachine.currentState.Update();
 
 		
-		MeleeAttackCheck(currentWeapon.damagePoints, currentWeapon.attackRadius, meleeAttackFx);
+		MeleeAttackCheck(currentWeapon.damagePoints, currentWeapon.attackRadius, meleeAttackFx, attackData.attackDamage);
 	}
 
 	public override void EnterBattleMode()
@@ -189,7 +191,7 @@ public class EnemyMelee : Enemy
 
 		GameObject newAxe = ObjectPool.instance.GetObjectFromPool(axePrefab, axeStartPoint);
 
-		newAxe.GetComponent<EnemyThrowAxe>().AxeSetup(axeFlySpeed, playerTransform, axeAimTimer);
+		newAxe.GetComponent<EnemyThrowAxe>().AxeSetup(axeFlySpeed, playerTransform, axeAimTimer, axeDamage);
 	}
 	private float GetAnimationClipDuration(string clipName)
 	{

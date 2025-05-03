@@ -14,6 +14,7 @@ public class EnemyGrenade : MonoBehaviour
 	private LayerMask allyLayerMask;
 	private bool canExplode = true;
 
+	private int grenadeDamage;
 	private void Awake() => rb = GetComponent<Rigidbody>();
 
 	private void Update()
@@ -24,7 +25,7 @@ public class EnemyGrenade : MonoBehaviour
 			Explode();
 	}
 
-	public void SetupGrenade(LayerMask allyLayerMask, Vector3 target, float timeToReachTarget, float countdown, float impactPower)
+	public void SetupGrenade(LayerMask allyLayerMask, Vector3 target, float timeToReachTarget, float countdown, float impactPower, int damage)
 	{
 		canExplode = true;
 
@@ -33,6 +34,7 @@ public class EnemyGrenade : MonoBehaviour
 
 		this.impactPower = impactPower;
 		this.allyLayerMask = allyLayerMask;
+		this.grenadeDamage = damage;
 	}
 	private bool IsTargetValid(Collider collider)
 	{
@@ -68,7 +70,7 @@ public class EnemyGrenade : MonoBehaviour
 				if (uniqueEntities.Add(rootEntity) == false)
 					continue;
 
-				damagable.TakeDamage();
+				damagable.TakeDamage(grenadeDamage);
 			}
 
 			ApplyExplosionForceTo(collider);

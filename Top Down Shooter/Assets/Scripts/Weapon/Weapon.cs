@@ -21,6 +21,8 @@ public class Weapon
 {
 	public WeaponType weaponType;
 
+	public int bulletDamage;
+
 	#region Regular Mode Variables
 	public ShootType shootType;
 	private float defaultFireRate;
@@ -63,6 +65,8 @@ public class Weapon
 	public Weapon(WeaponData weaponData)
 	{
 		weaponType = weaponData.weaponType;
+
+		bulletDamage = weaponData.bulletDamage;
 
 		fireRate = weaponData.fireRate;
 		bulletsPerShot = weaponData.bulletsPerShot;

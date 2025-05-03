@@ -171,7 +171,7 @@ public class PlayerWeaponController : MonoBehaviour
 		Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
 
 		Bullet bulletScript = newBullet.GetComponent<Bullet>();
-		bulletScript.BulletSetup(whatIsAlly, currentWeapon.gunShotDistance, bulletImpactForce);
+		bulletScript.BulletSetup(whatIsAlly, currentWeapon.bulletDamage, currentWeapon.gunShotDistance, bulletImpactForce);
 
 		Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 

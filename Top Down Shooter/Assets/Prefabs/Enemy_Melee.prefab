@@ -3905,11 +3905,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8386914985738483918}
+  - component: {fileID: 6027098385815624157}
   - component: {fileID: 5501497414171557135}
   - component: {fileID: 6209146682175717825}
   - component: {fileID: 633742644948275456}
   - component: {fileID: 7178585684300861214}
-  - component: {fileID: 6027098385815624157}
   m_Layer: 11
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -3937,6 +3937,20 @@ Transform:
   - {fileID: 421952364946174634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6027098385815624157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554324078106123111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!114 &5501497414171557135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3971,11 +3985,13 @@ MonoBehaviour:
   shieldDurability: 10
   dodgeCooldown: 3
   axePrefab: {fileID: 6848989787514965232, guid: e37068b423317b44f98aa24192da1d02, type: 3}
+  axeDamage: 0
   axeFlySpeed: 5
   axeAimTimer: 1.5
   axeThrowCooldown: 6
   axeStartPoint: {fileID: 3646476533349824358}
   attackData:
+    attackDamage: 0
     attackName: 
     attackRange: 1
     attackMoveSpeed: 0
@@ -3983,13 +3999,15 @@ MonoBehaviour:
     animationSpeed: 1.7
     attackType: 0
   attackList:
-  - attackName: Sword Spinning Attack
+  - attackDamage: 25
+    attackName: Sword Spinning Attack
     attackRange: 1.5
     attackMoveSpeed: 2.5
     attackIndex: 0
     animationSpeed: 1
     attackType: 1
-  - attackName: Sword Slash - 1
+  - attackDamage: 10
+    attackName: Sword Slash - 1
     attackRange: 1
     attackMoveSpeed: 0
     attackIndex: 1
@@ -4061,20 +4079,6 @@ MonoBehaviour:
   leftHandIKConstraint: {fileID: 0}
   weaponAimConstraint: {fileID: 0}
   grenadeModel: {fileID: 0}
---- !u!114 &6027098385815624157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3554324078106123111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 0
 --- !u!1 &3597554501458728577
 GameObject:
   m_ObjectHideFlags: 0

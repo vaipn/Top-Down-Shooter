@@ -19,15 +19,18 @@ public class EnemyBoss : Enemy
 
 	[Header("Flame Throw")]
 	public ParticleSystem flameThrower;
+	public int flameDamage;
 	public float flameThrowDuration;
 	public float flameDamageCooldown;
 	public bool flameThrowActive {  get; private set; }
 
 	[Header("Hammer")]
 	public GameObject hammerFxPrefab;
+	public int hammerAbilityDamage;
 	[SerializeField] private float hammerAbiltyDamageRadius;
 
 	[Header("Jump attack")]
+	public int jumpAttackDamage;
 	public float jumpAttackCooldown = 5;
 	private float lastTimeJumped;
 	public float travelTimeToTarget = 1;
@@ -40,6 +43,7 @@ public class EnemyBoss : Enemy
 	[SerializeField] private LayerMask whatToIgnore;
 
 	[Header("Simple attack")]
+	[SerializeField] private int meleeDamage;
 	[SerializeField] private Transform[] damagePoints;
 	[SerializeField] private float damageRadius;
 	[SerializeField] private GameObject meleeAttackFx;
@@ -81,7 +85,7 @@ public class EnemyBoss : Enemy
 		if (ShouldEnterBattleMode())
 			EnterBattleMode();
 
-		MeleeAttackCheck(damagePoints, damageRadius, meleeAttackFx);
+		MeleeAttackCheck(damagePoints, damageRadius, meleeAttackFx, meleeDamage);
 	}
 
 	public override void Die()
@@ -132,7 +136,7 @@ public class EnemyBoss : Enemy
 
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(newHammerFx, 1);
 
-		MassDamage(damagePoints[0].position, hammerAbiltyDamageRadius);
+		MassDamage(damagePoints[0].position, hammerAbiltyDamageRadius, hammerAbilityDamage);
 	}
 
 	public bool CanDoAbility()
@@ -159,10 +163,10 @@ public class EnemyBoss : Enemy
 		if (impactPoint == null)
 			impactPoint = transform;
 
-		MassDamage(impactPoint.position, impactRadius);
+		MassDamage(impactPoint.position, impactRadius, jumpAttackDamage);
 	}
 
-	private void MassDamage(Vector3 impactPoint, float impactRadius)
+	private void MassDamage(Vector3 impactPoint, float impactRadius, int damage)
 	{
 		HashSet<GameObject> uniqueEntities = new HashSet<GameObject>();
 		Collider[] colliders = Physics.OverlapSphere(impactPoint, impactRadius, ~whatIsAlly);
@@ -179,7 +183,7 @@ public class EnemyBoss : Enemy
 					continue;
 
 				Debug.Log(collider.transform.root.name + " was damaged");
-				damagable.TakeDamage();
+				damagable.TakeDamage(damage);
 			}
 
 			ApplyPhysicalForceTo(impactPoint, impactRadius, collider);

@@ -235,6 +235,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 67ee6b21ff258d640a10446120c26f1e, type: 2}
   weapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -803,6 +804,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 386b667ae178d5f44a32decc8cba7693, type: 2}
   weapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -3113,6 +3115,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 8540f7e599a32e94f8495b28ccbad2ed, type: 2}
   weapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -5828,6 +5831,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c045de162d9b748b1e9d26b9ab0d9f, type: 3}
+--- !u!1001 &1046673358
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3554324078106123111, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.134
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386914985738483918, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
 --- !u!4 &1070423864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3308519967511987556, guid: 86a60ce43ae684e49a167a3e2b97333f, type: 3}
@@ -7015,6 +7075,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 560a45b573b454b478a7f847408f2e99, type: 2}
   weapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -10508,13 +10569,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005153923}
+  - component: {fileID: 2005153930}
   - component: {fileID: 2005153925}
   - component: {fileID: 2005153919}
   - component: {fileID: 2005153928}
   - component: {fileID: 2005153926}
   - component: {fileID: 2005153927}
   - component: {fileID: 2005153929}
-  - component: {fileID: 2005153930}
   - component: {fileID: 2005153931}
   - component: {fileID: 2005153924}
   m_Layer: 8
@@ -10613,6 +10674,7 @@ MonoBehaviour:
   defaultWeaponData: {fileID: 11400000, guid: 1f6d771849e1f5947a15ddd186bad81c, type: 2}
   currentWeapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -10625,6 +10687,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 779303515}
   weaponSlots:
   - weaponType: 3
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 1
@@ -10697,7 +10760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232402fb95b59f4890aea691f4296bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 100
   currentHealth: 0
 --- !u!114 &2005153931
 MonoBehaviour:
@@ -14117,6 +14180,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 1f6d771849e1f5947a15ddd186bad81c, type: 2}
   weapon:
     weaponType: 0
+    bulletDamage: 0
     shootType: 0
     fireRate: 0
     burstActive: 0
@@ -18309,3 +18373,4 @@ SceneRoots:
   - {fileID: 1151027140}
   - {fileID: 1246984716}
   - {fileID: 67285889}
+  - {fileID: 1046673358}

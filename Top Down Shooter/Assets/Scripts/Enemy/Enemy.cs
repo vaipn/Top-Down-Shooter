@@ -86,9 +86,9 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         inBattleMode = true;
     }
 
-    public virtual void GetHit()
+    public virtual void GetHit(int damage)
     {
-        health.ReduceHealth();
+        health.ReduceHealth(damage);
 
         if (health.ShouldDie())
             Die(); // this is going to call the Die that overrides the virtual Die in this script
@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
 	public void EnableMeleeAttackCheck(bool enable) => isMeleeAttackReady = enable;
 
-	public virtual void MeleeAttackCheck(Transform[] damagePoints, float attackCheckRadius, GameObject fx)
+	public virtual void MeleeAttackCheck(Transform[] damagePoints, float attackCheckRadius, GameObject fx, int damage)
 	{
 		if (!isMeleeAttackReady)
 			return;
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
 				if (damagable != null)
 				{
-					damagable.TakeDamage();
+					damagable.TakeDamage(damage);
 					isMeleeAttackReady = false;
 					GameObject newAttackFx = ObjectPool.instance.GetObjectFromPool(fx, attackPoint);
 					ObjectPool.instance.ReturnObjectToPoolWithDelay(newAttackFx, 1);

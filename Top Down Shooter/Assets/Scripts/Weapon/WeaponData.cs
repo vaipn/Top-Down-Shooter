@@ -7,6 +7,8 @@ public class WeaponData : ScriptableObject
 {
 	public string weaponName;
 
+	[Header("Bullet details")]
+	public int bulletDamage;
 
 	[Header("Regular shot")]
 	public WeaponType weaponType;
