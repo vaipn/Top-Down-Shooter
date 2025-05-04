@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Melee_Unarmed
   m_EditorClassIdentifier: 
   attackData:
-  - attackName: Flying kick
+  - attackDamage: 30
+    attackName: Flying kick
     attackRange: 2
     attackMoveSpeed: 5
     attackIndex: 0
     animationSpeed: 1
     attackType: 1
-  - attackName: Boxing/MMA
+  - attackDamage: 21
+    attackName: Boxing/MMA
     attackRange: 1
     attackMoveSpeed: 0
     attackIndex: 1
-    animationSpeed: 1.4
+    animationSpeed: 1.6
     attackType: 0
   turnSpeed: 10
