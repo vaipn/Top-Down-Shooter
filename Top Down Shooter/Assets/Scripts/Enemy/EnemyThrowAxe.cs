@@ -45,6 +45,7 @@ public class EnemyThrowAxe : MonoBehaviour
 	{
         IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
         damagable?.TakeDamage(damage);
+        Debug.Log("Taken " + damage + " axe damage");
 
 		GameObject newFx = ObjectPool.instance.GetObjectFromPool(impactFx, transform);
 

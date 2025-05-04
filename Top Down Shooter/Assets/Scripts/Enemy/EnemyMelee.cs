@@ -181,8 +181,12 @@ public class EnemyMelee : Enemy
 			return false;
 
 		if (Time.time > lastTimeAxeThrown + axeThrowCooldown)
+		{
+			Debug.Log("Axe can be thrown");
 			return true;
+		}
 
+		Debug.Log("Axe cannot be thrown");
 		return false;
 	}
 	public void ThrowAxe()
