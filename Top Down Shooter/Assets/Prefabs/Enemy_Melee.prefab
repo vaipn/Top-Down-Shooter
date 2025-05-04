@@ -3972,22 +3972,22 @@ MonoBehaviour:
   healthPoint: 20
   idleTime: 30
   walkSpeed: 1.5
-  chaseSpeed: 4
+  chaseSpeed: 3.5
   turnSpeed: 5
   patrolPoints:
   - {fileID: 631104336924334000}
   - {fileID: 7042368665320388525}
   - {fileID: 2389658879576089472}
   aggressionRange: 4
-  meleeType: 0
-  weaponType: 3
+  meleeType: 3
+  weaponType: 0
   shieldTransform: {fileID: 3645840972983696179}
-  shieldDurability: 10
+  shieldDurability: 400
   dodgeCooldown: 3
   axePrefab: {fileID: 6848989787514965232, guid: e37068b423317b44f98aa24192da1d02, type: 3}
-  axeDamage: 0
-  axeFlySpeed: 5
-  axeAimTimer: 1.5
+  axeDamage: 70
+  axeFlySpeed: 6
+  axeAimTimer: 1.25
   axeThrowCooldown: 6
   axeStartPoint: {fileID: 3646476533349824358}
   attackData:
@@ -3999,14 +3999,14 @@ MonoBehaviour:
     animationSpeed: 1.7
     attackType: 0
   attackList:
-  - attackDamage: 25
+  - attackDamage: 30
     attackName: Sword Spinning Attack
     attackRange: 1.5
-    attackMoveSpeed: 2.5
+    attackMoveSpeed: 3.5
     attackIndex: 0
     animationSpeed: 1
     attackType: 1
-  - attackDamage: 10
+  - attackDamage: 21
     attackName: Sword Slash - 1
     attackRange: 1
     attackMoveSpeed: 0
