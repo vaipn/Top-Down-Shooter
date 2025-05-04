@@ -10800,7 +10800,7 @@ MonoBehaviour:
   cameraSensitivity: 4
   aimLayerMask:
     serializedVersion: 2
-    m_Bits: 2240
+    m_Bits: 7927
 --- !u!114 &2005153929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13665,6 +13665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &3128884129866204460
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -15200,6 +15201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!65 &5418934017702185086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15288,6 +15290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &5542765371330544096
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -15744,6 +15747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &6029399305501642755
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -16546,6 +16550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &7194398096713378267
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -16760,6 +16765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &7367396530358743551
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -16943,6 +16949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &7471007696118287458
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -17580,6 +17587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &8193870820209655623
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18038,6 +18046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &8842387028711619210
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18139,6 +18148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &8871542008959348989
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18299,6 +18309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57e4710e7c2c847b946e7bf48374f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!144 &9062017727747498757
 CharacterJoint:
   m_ObjectHideFlags: 0

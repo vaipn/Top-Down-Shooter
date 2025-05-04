@@ -144,7 +144,7 @@ public class BattleState_Range : EnemyState
 
 		if (Physics.Raycast(rayLevel, directionToPlayer.normalized, out RaycastHit hit, distanceToPlayer))
 		{
-			if (hit.transform.parent == enemy.playerTransform || hit.transform == enemy.playerTransform)
+			if (hit.transform.root == enemy.playerTransform.root)
 				return true;
 		}
 

@@ -222,7 +222,7 @@ public class EnemyBoss : Enemy
 
 		if (Physics.Raycast(enemyEyeLevel, directionToPlayer, out RaycastHit hit, 100, ~whatToIgnore))
 		{
-			if (hit.transform == playerTransform || hit.transform.parent == playerTransform)
+			if (hit.transform.root == playerTransform.root)
 			{
 				Debug.Log("Player is in clear sight");
 				return true;
