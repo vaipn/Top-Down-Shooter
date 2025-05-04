@@ -15,6 +15,8 @@ public class PlayerHitBox : HitBox
 
 	public override void TakeDamage(int damage)
 	{
-		player.health.ReduceHealth(damage);
+		int newDamage = Mathf.RoundToInt(damage * damageMultiplier);
+
+		player.health.ReduceHealth(newDamage);
 	}
 }
