@@ -13,23 +13,24 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   weaponName: Pumper H-7
+  bulletDamage: 15
   weaponType: 3
   bulletsPerShot: 7
-  fireRate: 0.5
-  bulletsInMagazine: 14
-  magazineCapacity: 14
-  totalReserveAmmo: 140
+  fireRate: 2
+  bulletsInMagazine: 21
+  magazineCapacity: 21
+  totalReserveAmmo: 210
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
   burstFireRate: 0
   burstFireDelay: 0.1
-  baseSpread: 15
-  maximumSpread: 15
+  baseSpread: 13
+  maximumSpread: 13
   spreadIncreaseRate: 0.15
   spreadCooldown: 1
   shootType: 0
   reloadSpeed: 1
   equipSpeed: 1
-  gunShotDistance: 4.5
+  gunShotDistance: 25
   cameraDistance: 6

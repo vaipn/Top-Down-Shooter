@@ -1575,6 +1575,8 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects: []
+  damagePoints: []
+  attackRadius: 0
 --- !u!1 &1171992055461392776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,6 +4611,8 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects: []
+  damagePoints: []
+  attackRadius: 0
 --- !u!1 &3893127973761180570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,6 +6001,8 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects: []
+  damagePoints: []
+  attackRadius: 0
 --- !u!1 &5089039348088984219
 GameObject:
   m_ObjectHideFlags: 0
@@ -6322,6 +6328,8 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects: []
+  damagePoints: []
+  attackRadius: 0
 --- !u!1 &5309301825928636115
 GameObject:
   m_ObjectHideFlags: 0
@@ -6980,6 +6988,8 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   overrideController: {fileID: 0}
   trailEffects: []
+  damagePoints: []
+  attackRadius: 0
 --- !u!1 &5982720835959769803
 GameObject:
   m_ObjectHideFlags: 0
@@ -8016,6 +8026,9 @@ MonoBehaviour:
   whatIsAlly:
     serializedVersion: 2
     m_Bits: 2048
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   healthPoint: 5
   idleTime: 5
   walkSpeed: 1.5
@@ -8030,6 +8043,7 @@ MonoBehaviour:
   unstoppablePerk: 0
   grenadePerk: 1
   grenadePrefab: {fileID: 4334186090342610340, guid: 80dd5c8e4f13ffd478a4138179df8caa, type: 3}
+  grenadeDamage: 0
   timeToReachTarget: 1.2
   timeToExplode: 0.75
   impactPower: 5
@@ -8071,7 +8085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 100
   currentHealth: 0
 --- !u!1 &6763556269474422521
 GameObject:

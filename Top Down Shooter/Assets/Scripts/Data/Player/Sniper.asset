@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   weaponName: Stinger 97
+  bulletDamage: 80
   weaponType: 4
   bulletsPerShot: 1
-  fireRate: 1
-  bulletsInMagazine: 10
-  magazineCapacity: 10
-  totalReserveAmmo: 100
+  fireRate: 1.5
+  bulletsInMagazine: 12
+  magazineCapacity: 12
+  totalReserveAmmo: 120
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0
@@ -31,5 +32,5 @@ MonoBehaviour:
   shootType: 0
   reloadSpeed: 1
   equipSpeed: 1
-  gunShotDistance: 15
+  gunShotDistance: 25
   cameraDistance: 15

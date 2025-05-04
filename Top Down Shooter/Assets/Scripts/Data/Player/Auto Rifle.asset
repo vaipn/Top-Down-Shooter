@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Auto Rifle
   m_EditorClassIdentifier: 
   weaponName: Blaster K-40
+  bulletDamage: 12
   weaponType: 2
   bulletsPerShot: 1
-  fireRate: 5.5
-  bulletsInMagazine: 40
-  magazineCapacity: 40
+  fireRate: 8
+  bulletsInMagazine: 32
+  magazineCapacity: 32
   totalReserveAmmo: 320
   burstAvailable: 1
   burstActive: 0
@@ -30,6 +31,6 @@ MonoBehaviour:
   spreadCooldown: 2
   shootType: 1
   reloadSpeed: 1
-  equipSpeed: 1
-  gunShotDistance: 8
+  equipSpeed: 1.251
+  gunShotDistance: 25
   cameraDistance: 8

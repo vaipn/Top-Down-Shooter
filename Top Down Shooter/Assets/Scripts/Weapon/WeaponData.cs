@@ -41,7 +41,7 @@ public class WeaponData : ScriptableObject
 	[Range(1, 2)]
 	public float equipSpeed = 1;
 
-	[Range(2, 15)]
+	[Range(2, 25)]
 	public float gunShotDistance;
 
 	[Range(3, 15)]

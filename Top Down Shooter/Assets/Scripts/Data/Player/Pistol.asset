@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: TVT F47
-  bulletDamage: 20
+  bulletDamage: 25
   weaponType: 0
   bulletsPerShot: 1
-  fireRate: 3
-  bulletsInMagazine: 20
-  magazineCapacity: 20
+  fireRate: 6
+  bulletsInMagazine: 15
+  magazineCapacity: 15
   totalReserveAmmo: 99
   burstAvailable: 0
   burstActive: 0
@@ -32,5 +32,5 @@ MonoBehaviour:
   shootType: 0
   reloadSpeed: 2
   equipSpeed: 2
-  gunShotDistance: 6
+  gunShotDistance: 25
   cameraDistance: 6

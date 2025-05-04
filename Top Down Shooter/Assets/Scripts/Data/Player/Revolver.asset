@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   weaponName: Bolt X-12
+  bulletDamage: 35
   weaponType: 1
   bulletsPerShot: 1
-  fireRate: 1.875
-  bulletsInMagazine: 12
-  magazineCapacity: 12
+  fireRate: 2.5
+  bulletsInMagazine: 6
+  magazineCapacity: 6
   totalReserveAmmo: 99
   burstAvailable: 0
   burstActive: 0
@@ -29,7 +30,7 @@ MonoBehaviour:
   spreadIncreaseRate: 0.3
   spreadCooldown: 1
   shootType: 0
-  reloadSpeed: 1.5
+  reloadSpeed: 1.502
   equipSpeed: 2
-  gunShotDistance: 6
+  gunShotDistance: 25
   cameraDistance: 6
