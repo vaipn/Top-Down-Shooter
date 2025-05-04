@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: TVT F47
+  bulletDamage: 20
   weaponType: 0
   bulletsPerShot: 1
   fireRate: 3
