@@ -17,5 +17,6 @@ MonoBehaviour:
   bulletsToShoot: 10
   minWeaponCooldown: 2
   maxWeaponCooldown: 3
-  bulletSpeed: 20
+  bulletDamage: 4
+  bulletSpeed: 25
   bulletSpread: 1
