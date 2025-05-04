@@ -17815,7 +17815,7 @@ MonoBehaviour:
   healthPoint: 5
   idleTime: 3
   walkSpeed: 1.35
-  chaseSpeed: 3
+  chaseSpeed: 3.5
   turnSpeed: 8
   patrolPoints:
   - {fileID: 3903906673640435144}
@@ -17825,15 +17825,18 @@ MonoBehaviour:
   bossWeaponType: 0
   actionCooldown: 1
   attackRange: 1.35
-  abilityCooldown: 6
+  abilityCooldown: 10
   minAbilityDistance: 7
   flameThrower: {fileID: 4751623557004937249}
+  flameDamage: 6
   flameThrowDuration: 3
-  flameDamageCooldown: 0.5
+  flameDamageCooldown: 0.25
   hammerFxPrefab: {fileID: 0}
+  hammerAbilityDamage: 0
   hammerAbiltyDamageRadius: 0
+  jumpAttackDamage: 25
   jumpAttackCooldown: 5
-  travelTimeToTarget: 1
+  travelTimeToTarget: 0.6
   minJumpDistanceRequired: 4
   impactRadius: 2.5
   impactPower: 15
@@ -17842,6 +17845,7 @@ MonoBehaviour:
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
+  meleeDamage: 40
   damagePoints:
   - {fileID: 5888414348779061664}
   - {fileID: 5483877061692285436}
@@ -17893,7 +17897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 2000
   currentHealth: 0
 --- !u!1 &6505714032081030087
 GameObject:
