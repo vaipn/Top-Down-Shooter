@@ -47,7 +47,7 @@ public class EnemyMelee : Enemy
 	public float axeFlySpeed;
 	public float axeAimTimer;
 	public float axeThrowCooldown;
-	private float lastTimeAxeThrown;
+	private float lastTimeAxeThrown = -10;
 	public Transform axeStartPoint;
 
 	[Header("Attack data")]
