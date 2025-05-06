@@ -1267,24 +1267,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
---- !u!1 &261983571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4613900078249653662, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
+--- !u!114 &261983573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2171650201873321127, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
   m_PrefabInstance: {fileID: 1336535053349024013}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &261983573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261983571}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01020a9b3f7b29549bda56d9acf0377b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointType: 1
 --- !u!1 &277553711
 GameObject:
   m_ObjectHideFlags: 0
@@ -5948,6 +5941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelParts:
   - {fileID: 3801078733370585111, guid: 1ffe60e4a90a3894ea7362cece6beb14, type: 3}
+  - {fileID: 3801078733370585111, guid: 927e12936ec7c284091e470cd72b5142, type: 3}
   nextSnapPoint: {fileID: 261983573}
 --- !u!4 &1033876390
 Transform:
@@ -12569,17 +12563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPart - Start
       objectReference: {fileID: 0}
-    - target: {fileID: 4613900078249653662, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
-      propertyPath: m_Name
-      value: SnapPoint - Exit
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4613900078249653662, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 261983573}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
 --- !u!4 &1341733273193415912
 Transform:
