@@ -5942,7 +5942,10 @@ MonoBehaviour:
   levelParts:
   - {fileID: 3801078733370585111, guid: 1ffe60e4a90a3894ea7362cece6beb14, type: 3}
   - {fileID: 3801078733370585111, guid: 927e12936ec7c284091e470cd72b5142, type: 3}
+  - {fileID: 3801078733370585111, guid: f78e9a855449ca74db190bf1ed065bf3, type: 3}
+  lastLevelPart: {fileID: 4985113234143056873, guid: c871a08bec63b694cae170d6e11ac659, type: 3}
   nextSnapPoint: {fileID: 261983573}
+  generationCooldown: 0.25
 --- !u!4 &1033876390
 Transform:
   m_ObjectHideFlags: 0
@@ -12521,7 +12524,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1482688167622556430, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.54
+      value: 161.4
       objectReference: {fileID: 0}
     - target: {fileID: 1482688167622556430, guid: e8d0ed4ab5adb9e45a01f1daf2844645, type: 3}
       propertyPath: m_LocalPosition.y
