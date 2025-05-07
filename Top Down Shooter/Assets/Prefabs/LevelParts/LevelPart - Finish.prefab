@@ -272,6 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efba9b775aec77d43b3811bcc59dba09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intersectionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  intersectionCheckColliders: []
+  intersectionCheckParent: {fileID: 0}
 --- !u!1001 &4183842582245833325
 PrefabInstance:
   m_ObjectHideFlags: 0
