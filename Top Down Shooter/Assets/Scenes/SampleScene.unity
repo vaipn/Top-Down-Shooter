@@ -5973,6 +5973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efba9b775aec77d43b3811bcc59dba09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intersectionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  intersectionCheckColliders: []
+  intersectionCheckParent: {fileID: 0}
 --- !u!4 &1070423864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3308519967511987556, guid: 86a60ce43ae684e49a167a3e2b97333f, type: 3}
