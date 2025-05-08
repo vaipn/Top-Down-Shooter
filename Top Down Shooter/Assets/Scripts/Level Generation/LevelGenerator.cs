@@ -6,7 +6,7 @@ public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private List<Transform> levelParts;
     private List<Transform> currentLevelParts;
-    private List<Transform> generatedLevelParts;
+    private List<Transform> generatedLevelParts = new List<Transform>();
     [SerializeField] private Transform lastLevelPart;
     [SerializeField] private SnapPoint nextSnapPoint;
     private SnapPoint defaultSnapPoint;
@@ -19,10 +19,7 @@ public class LevelGenerator : MonoBehaviour
 	private void Start()
 	{
         defaultSnapPoint = nextSnapPoint;
-
-		GenerateNextLevelPart();
-        currentLevelParts = new List<Transform>(levelParts);
-        generatedLevelParts = new List<Transform>();
+        InitializeGeneration();
 	}
 
 	private void Update()
@@ -49,20 +46,25 @@ public class LevelGenerator : MonoBehaviour
 
     [ContextMenu("Restart generation")]
     private void InitializeGeneration()
-    {
-        nextSnapPoint = defaultSnapPoint;
+	{
+		nextSnapPoint = defaultSnapPoint;
 
-        generationOver = false;
+		generationOver = false;
 
-        currentLevelParts = new List<Transform>(levelParts);
+		currentLevelParts = new List<Transform>(levelParts);
 
-        foreach (Transform t in generatedLevelParts)
-        {
-            Destroy(t.gameObject);
-        }
+		DestroyOldLevelParts();
+	}
 
-        generatedLevelParts.Clear();
-    }
+	private void DestroyOldLevelParts()
+	{
+		foreach (Transform t in generatedLevelParts)
+		{
+			Destroy(t.gameObject);
+		}
+
+		generatedLevelParts = new List<Transform>();
+	}
 
 	private void FinishGeneration()
 	{
