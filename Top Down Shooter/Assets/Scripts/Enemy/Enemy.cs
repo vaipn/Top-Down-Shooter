@@ -14,8 +14,6 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public LayerMask whatIsAlly;
     public LayerMask whatIsPlayer;
 
-    public int healthPoint = 5;
-
     [Header("Idle data")]
     public float idleTime;
 

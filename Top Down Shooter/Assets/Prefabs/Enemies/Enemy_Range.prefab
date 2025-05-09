@@ -7927,10 +7927,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1096956486247935770}
   - component: {fileID: 4343508586068959035}
+  - component: {fileID: 6171531259403495389}
   - component: {fileID: 711660018750278557}
   - component: {fileID: 4595815384366455674}
   - component: {fileID: 361151926848101213}
-  - component: {fileID: 6171531259403495389}
   m_Layer: 11
   m_Name: Enemy_Range
   m_TagString: Untagged
@@ -7980,6 +7980,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6171531259403495389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666484301437568405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!114 &711660018750278557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8037,8 +8051,7 @@ MonoBehaviour:
     m_Bits: 2048
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
-  healthPoint: 5
+    m_Bits: 256
   idleTime: 5
   walkSpeed: 1.5
   chaseSpeed: 4
@@ -8082,20 +8095,6 @@ MonoBehaviour:
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
---- !u!114 &6171531259403495389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6666484301437568405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05318543dee0924188c588840a4c1e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!1 &6763556269474422521
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.Animations.Rigging;
 
 public enum EnemyMelee_WeaponType { OneHand, Throw, Unarmed, TwoHand}
 public enum Enemy_WeaponName { Axe1, Axe2, Pipe, Hammer, Wrench, Unarmed, Pistol, Revolver, Shotgun, AutoRifle, Sniper}
-public enum EnemyRange_WeaponType { Pistol, Revolver, Shotgun, AutoRifle, Sniper}
+public enum EnemyRange_WeaponType { Pistol, Revolver, Shotgun, AutoRifle, Sniper, Random}
 
 public class EnemyVisuals : MonoBehaviour
 {

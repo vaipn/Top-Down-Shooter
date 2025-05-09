@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &857773202951876886
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: idleTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: chaseSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: grenadePerk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: advanceSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: aggressionRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: unstoppablePerk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 361151926848101213, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: advanceStoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096956486247935770, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595815384366455674, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: corruptionAmount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171531259403495389, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666484301437568405, guid: 11cd63294c85997418d443baf56d6de3, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Range - Unstoppable (Shotgun) Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11cd63294c85997418d443baf56d6de3, type: 3}

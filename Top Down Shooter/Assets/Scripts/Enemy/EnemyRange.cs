@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -139,11 +140,30 @@ public class EnemyRange : Enemy
 
 	protected override void InitializePerk()
 	{
+		if (weaponType == EnemyRange_WeaponType.Random)
+		{
+			ChooseRandomWeaponOfType();
+		}
+
 		if (IsUnstoppable())
 		{
 			advanceSpeed = 1;
 			anim.SetFloat("AdvanceAnimIndex", 1);
 		}
+	}
+
+	private void ChooseRandomWeaponOfType()
+	{
+		List<EnemyRange_WeaponType> validTypes = new List<EnemyRange_WeaponType>();
+
+		foreach (EnemyRange_WeaponType weaponType in Enum.GetValues(typeof(EnemyRange_WeaponType)))
+		{
+			if (weaponType != EnemyRange_WeaponType.Random && weaponType != EnemyRange_WeaponType.Sniper && weaponType != EnemyRange_WeaponType.Shotgun)
+				validTypes.Add(weaponType);
+		}
+
+		int randomIndex = UnityEngine.Random.Range(0, validTypes.Count);
+		weaponType = validTypes[randomIndex];
 	}
 
 	#region Cover System
@@ -259,7 +279,7 @@ public class EnemyRange : Enemy
 
 		if (filteredData.Count > 0)
 		{
-			int randomIndex = Random.Range(0, filteredData.Count);
+			int randomIndex = UnityEngine.Random.Range(0, filteredData.Count);
 			weaponData = filteredData[randomIndex];
 		}
 		else

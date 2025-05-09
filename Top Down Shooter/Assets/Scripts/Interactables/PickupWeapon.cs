@@ -32,7 +32,7 @@ public class PickupWeapon : Interactable
 	[ContextMenu("Update Item Model")]
 	public void SetupGameObject()
 	{
-		Debug.Log("Update Game Object Called");
+		//Debug.Log("Update Game Object Called");
 		gameObject.name = "Pickup Weapon - " + weaponData.weaponType.ToString();
 		SetupWeaponModel();
 	}
