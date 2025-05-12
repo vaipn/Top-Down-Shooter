@@ -19,7 +19,7 @@ MonoBehaviour:
   fireRate: 6
   bulletsInMagazine: 15
   magazineCapacity: 15
-  totalReserveAmmo: 99
+  totalReserveAmmo: 999
   burstAvailable: 0
   burstActive: 0
   burstBulletsPerShot: 0

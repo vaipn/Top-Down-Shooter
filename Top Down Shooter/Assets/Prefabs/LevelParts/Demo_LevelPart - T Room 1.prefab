@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4658860100475292975}
   - component: {fileID: 8240867678804306013}
   m_Layer: 6
-  m_Name: LevelPart - T Room 1
+  m_Name: Demo_LevelPart - T Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
