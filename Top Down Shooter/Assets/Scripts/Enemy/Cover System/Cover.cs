@@ -16,10 +16,13 @@ public class Cover : MonoBehaviour
 
 	private void Start()
 	{
-        GenerateCoverPoints();
+		if (coverPoints.Count == 0)
+			GenerateCoverPoints();
+
 		playerTransform = FindObjectOfType<Player>().transform;
 	}
 
+	[ContextMenu("Generate Cover Points")]
 	private void GenerateCoverPoints()
 	{
 		Vector3[] localCoverPoints = {
