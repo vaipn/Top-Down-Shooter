@@ -16,15 +16,11 @@ public class IdleState_Melee : EnemyState
 		base.Enter();
 
 		stateTimer = enemyBase.idleTime;
-
-		Debug.Log("I enter Idle state");
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
-
-		Debug.Log("I exit idle state");
 	}
 
 	public override void Update()

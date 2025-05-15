@@ -39,8 +39,6 @@ public class AttackState_Melee : EnemyState
 		enemy.agent.velocity = Vector3.zero;
 
 		attackDirection = enemy.transform.position + (enemy.transform.forward * MAX_ATTACK_DISTANCE);
-
-		Debug.Log("I enter Attack state");
 	}
 
 	public override void Exit()
@@ -50,7 +48,6 @@ public class AttackState_Melee : EnemyState
 		SetupNextAttack();
 
 		enemy.enemyVisuals.EnableWeaponTrail(false);
-		Debug.Log("I exit Attack state");
 	}
 
 	private void SetupNextAttack()
