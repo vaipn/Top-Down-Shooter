@@ -17753,6 +17753,7 @@ GameObject:
   - component: {fileID: 49180083387786336}
   - component: {fileID: 6059831430326959982}
   - component: {fileID: 7690431286939163571}
+  - component: {fileID: 61297838491830439}
   m_Layer: 11
   m_Name: Enemy_Boss FlameThrower
   m_TagString: Untagged
@@ -17819,7 +17820,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  healthPoint: 5
   idleTime: 3
   walkSpeed: 1.35
   chaseSpeed: 3.5
@@ -17906,6 +17906,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2000
   currentHealth: 0
+--- !u!114 &61297838491830439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296430932255661386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b9c2807d753ae46b90030c1f0c502e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6505714032081030087
 GameObject:
   m_ObjectHideFlags: 0

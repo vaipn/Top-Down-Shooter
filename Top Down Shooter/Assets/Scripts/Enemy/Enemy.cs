@@ -39,6 +39,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	public Ragdoll ragdoll { get; private set; }
 
     public EnemyHealth health { get; private set; }
+
+    public EnemyDropController dropController { get; private set; }
 	protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         ragdoll = GetComponent<Ragdoll>();
 		enemyVisuals = GetComponent<EnemyVisuals>();
         health = GetComponent<EnemyHealth>();
+        dropController = GetComponent<EnemyDropController>();
 
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponentInChildren<Animator>();
@@ -89,7 +92,10 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
         health.ReduceHealth(damage);
 
         if (health.ShouldDie())
+        {
+            dropController.DropItems();
             Die(); // this is going to call the Die that overrides the virtual Die in this script
+        }
 
         EnterBattleMode(); // this is going to call the EnterBattleMode in EnemyMelee
     }

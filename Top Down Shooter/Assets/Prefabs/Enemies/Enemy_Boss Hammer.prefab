@@ -23717,6 +23717,7 @@ GameObject:
   - component: {fileID: 2649857815059385971}
   - component: {fileID: 4981213509647652693}
   - component: {fileID: 1656332747449268412}
+  - component: {fileID: 1948924241610462228}
   m_Layer: 11
   m_Name: Enemy_Boss Hammer
   m_TagString: Untagged
@@ -23783,7 +23784,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  healthPoint: 5
   idleTime: 3
   walkSpeed: 1.35
   chaseSpeed: 3.5
@@ -23866,6 +23866,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2000
   currentHealth: 0
+--- !u!114 &1948924241610462228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162512716380276299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b9c2807d753ae46b90030c1f0c502e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9164164678494401120
 GameObject:
   m_ObjectHideFlags: 0
