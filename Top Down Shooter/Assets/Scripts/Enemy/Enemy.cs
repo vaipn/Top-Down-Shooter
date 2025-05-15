@@ -73,6 +73,13 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     }
 
+    public virtual void MakeEnemyVIP()
+    {
+        int additionalHealth = Mathf.RoundToInt(health.currentHealth * 1.5f);
+        health.currentHealth += additionalHealth;
+        transform.localScale = transform.localScale * 1.2f;
+    }
+
     protected bool ShouldEnterBattleMode()
     {
         if (IsPlayerInAggressionRange() && !inBattleMode)

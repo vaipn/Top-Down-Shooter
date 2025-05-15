@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c725cedbe020e82408eb4a9716750c9c, type: 3}
+  m_Name: Mission - Key
+  m_EditorClassIdentifier: 
+  missionName: Key to Airplane
+  missionDescription: You must locate and defeat the key-holder to retrieve the key.
+    Be cautious, as this enemy might be heavily guarded.
+  key: {fileID: 5468770351165861163, guid: 73c94e7cad7025a4bb40e0b379717d61, type: 3}

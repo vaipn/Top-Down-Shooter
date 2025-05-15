@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyDropController : MonoBehaviour
 {
-   
+    [SerializeField] private GameObject missionObjectKey;
+
+    public void GiveKey(GameObject newKey) => missionObjectKey = newKey;
     public void DropItems()
     {
-        Debug.Log("dropped some items");
+        if (missionObjectKey != null)
+            CreateItem(missionObjectKey);
     }
 
     private void CreateItem(GameObject go)
