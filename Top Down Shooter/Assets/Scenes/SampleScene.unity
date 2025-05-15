@@ -10553,7 +10553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a5b28049a6c8445a2d8a7fd940a493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMission: {fileID: 0}
+  currentMission: {fileID: 11400000, guid: faf0ab18d2c6ecd4aa0210fc76122833, type: 2}
 --- !u!1001 &1967867850
 PrefabInstance:
   m_ObjectHideFlags: 0

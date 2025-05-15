@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ad18f14d79a044cadfb65a28f869e0, type: 3}
+  m_Name: Mission - Timer
+  m_EditorClassIdentifier: 
+  missionName: Race against time
+  missionDescription: You received an intel of an incoming sandstorm in this area.
+    You need to have taken off with the airplane in 15 minutes time, before the weather
+    conditions become unsuitable for flight.
+  time: 300
