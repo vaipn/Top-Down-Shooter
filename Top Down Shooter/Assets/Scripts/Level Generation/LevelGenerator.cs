@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [SerializeField] private NavMeshSurface navMeshSurface;
+    [Space]
+
+    //enemies
+    private List<Enemy> enemyList;
+
+    //level parts
     [SerializeField] private List<Transform> levelParts;
     private List<Transform> currentLevelParts;
     private List<Transform> generatedLevelParts = new List<Transform>();
     [SerializeField] private Transform lastLevelPart;
+
+    //snap points
     [SerializeField] private SnapPoint nextSnapPoint;
     private SnapPoint defaultSnapPoint;
     [Space]
+
+    //cooldown
     [SerializeField] private float generationCooldown;
     private float cooldownTimer;
 
@@ -18,6 +30,7 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Start()
 	{
+        enemyList = new List<Enemy>();
         defaultSnapPoint = nextSnapPoint;
         InitializeGeneration();
 	}
@@ -53,23 +66,35 @@ public class LevelGenerator : MonoBehaviour
 
 		currentLevelParts = new List<Transform>(levelParts);
 
-		DestroyOldLevelParts();
+		DestroyOldLevelPartsAndEnemies();
 	}
 
-	private void DestroyOldLevelParts()
+	private void DestroyOldLevelPartsAndEnemies()
 	{
+        foreach (Enemy enemy in enemyList)
+            Destroy(enemy.gameObject);
+
 		foreach (Transform t in generatedLevelParts)
 		{
 			Destroy(t.gameObject);
 		}
 
 		generatedLevelParts = new List<Transform>();
+        enemyList = new List<Enemy>();
 	}
 
 	private void FinishGeneration()
 	{
 		generationOver = true;
         GenerateNextLevelPart();
+
+        navMeshSurface.BuildNavMesh();
+
+        foreach (Enemy enemy in enemyList)
+        {
+            enemy.transform.parent = null;
+            enemy.gameObject.SetActive(true);
+        }
 	}
 
 	[ContextMenu("Create next level part")]
@@ -97,6 +122,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         nextSnapPoint = levelPartScript.GetExitPoint();
+        enemyList.AddRange(levelPartScript.LevelPartEnemies());
     }
     private Transform ChooseRandomPart()
     {
