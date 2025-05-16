@@ -18,11 +18,17 @@ public class Mission_ScavengerHunt : Mission
 
 		List<Enemy> validEnemies = new List<Enemy>();
 
-		foreach (Enemy enemy in LevelGenerator.instance.GetEnemyList())
+		if (enemyType == EnemyType.Random)
+			validEnemies = LevelGenerator.instance.GetEnemyList();
+		else
 		{
-			if (enemy.enemyType == enemyType)
-				validEnemies.Add(enemy);
+			foreach (Enemy enemy in LevelGenerator.instance.GetEnemyList())
+			{
+				if (enemy.enemyType == enemyType)
+					validEnemies.Add(enemy);
+			}
 		}
+		
 
 		for (int i = 0; i < amountToKill; i++)
 		{

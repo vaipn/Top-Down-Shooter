@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum EnemyType { Melee, Range, Boss}
+public enum EnemyType { Melee, Range, Boss, Random}
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour //You have to attach this to an enemy object
