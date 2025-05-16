@@ -23778,6 +23778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eda3a6644c1ce94c821ceb0f0ec2300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   whatIsAlly:
     serializedVersion: 2
     m_Bits: 2048
@@ -23878,6 +23879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b9c2807d753ae46b90030c1f0c502e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionObjectKey: {fileID: 0}
 --- !u!1 &9164164678494401120
 GameObject:
   m_ObjectHideFlags: 0

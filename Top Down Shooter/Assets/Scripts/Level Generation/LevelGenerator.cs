@@ -148,4 +148,6 @@ public class LevelGenerator : MonoBehaviour
 
         return enemyList[randomIndex];
     }
+
+    public List<Enemy> GetEnemyList() => enemyList;
 }

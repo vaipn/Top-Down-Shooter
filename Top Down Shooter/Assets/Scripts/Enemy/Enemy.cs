@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyType { Melee, Range, Boss}
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 {
+    public EnemyType enemyType;
+
     public EnemyStateMachine stateMachine {  get; private set; }
 	public EnemyVisuals enemyVisuals { get; private set; }
 
@@ -100,7 +104,6 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
         if (health.ShouldDie())
         {
-            dropController.DropItems();
             Die(); // this is going to call the Die that overrides the virtual Die in this script
         }
 
@@ -109,7 +112,10 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 
     public virtual void Die()
     {
+        dropController.DropItems();
 
+        MissionObject_HuntTarget huntTarget = GetComponent<MissionObject_HuntTarget>();
+        huntTarget?.InvokeOnTargetKilled();
     }
 
 	public void EnableMeleeAttackCheck(bool enable) => isMeleeAttackReady = enable;
