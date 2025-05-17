@@ -5,10 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Defence Mission", menuName = "Missions/Defence Mission")]
 public class Mission_Defence : Mission
 {
+	public bool defenceBegun = false;
+
+	[Header("Cooldown and duration")]
+	public float defenceDuration = 120;
+	private float defenceTimer;
+	public float waveCooldown = 15;
+	private float waveTimer;
+
+
 	[Header("Respawn details")]
 	public int amountOfRespawnPoints = 2;
 	public List<Transform> respawnPoints;
 	private Vector3 defencePoint;
+	[Space]
+
+	public int enemiesPerWave;
+	public GameObject[] possibleEnemies;
+
+	// Because changing defenceBegun bool with script will save the current value in scriptable object, this OnEnable is needed,
+	// so it resets every time the script is loaded or recompiled.
+	private void OnEnable()
+	{
+		defenceBegun = false;
+	}
 
 	public override void StartMission()
 	{
@@ -17,7 +37,35 @@ public class Mission_Defence : Mission
 	}
 	public override bool MissionCompleted()
 	{
-		throw new System.NotImplementedException();
+		// trigger defence mission when player gets to exit point destination (plane)
+		if (!defenceBegun)
+		{
+			StartDefenceEvent();
+			return false;
+		}
+
+		return defenceTimer < 0;
+	}
+	public override void UpdateMission()
+	{
+		if (!defenceBegun)
+			return;
+
+		defenceTimer -= Time.deltaTime;
+		waveTimer -= Time.deltaTime;
+
+		if (waveTimer < 0)
+		{
+			CreateNewEnemies(enemiesPerWave);
+			waveTimer = waveCooldown;
+		}
+	}
+
+	private void StartDefenceEvent()
+	{
+		waveTimer = 0.5f;
+		defenceTimer = defenceDuration;
+		defenceBegun = true;
 	}
 
 	private List<Transform> ClosestPoints(int amount)
@@ -49,5 +97,21 @@ public class Mission_Defence : Mission
 		}
 
 		return closestPoints;
+	}
+
+	private void CreateNewEnemies(int amount)
+	{
+		for (int i = 0; i < amount; i++)
+		{
+			int randomRespawnPointIndex = Random.Range(0, respawnPoints.Count);
+			int randomEnemyIndex = Random.Range(0, possibleEnemies.Length);
+
+			Transform randomRespawnPoint = respawnPoints[randomRespawnPointIndex];
+			GameObject randomEnemy = possibleEnemies[randomEnemyIndex];
+
+			randomEnemy.GetComponent<Enemy>().aggressionRange = 100; // so enemy always charge towards player
+
+			ObjectPool.instance.GetObjectFromPool(randomEnemy, randomRespawnPoint);
+		}
 	}
 }
