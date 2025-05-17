@@ -9,6 +9,8 @@ public class Mission_ObjectDelivery : Mission
 	private bool objectWasDelivered;
 	public override void StartMission()
 	{
+		FindObjectOfType<MissionObject_ObjectDeliveryZone>(true).gameObject.SetActive(true);
+
 		objectWasDelivered = false;
 		MissionObject_ObjectToDeliver.OnObjectDelivery += ObjectDeliveryCompleted;
 

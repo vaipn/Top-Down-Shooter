@@ -29602,7 +29602,7 @@ GameObject:
   - component: {fileID: 5840747083209622719}
   - component: {fileID: 741356036156034247}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Object To Deliver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29752,7 +29752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7163927509132239744
 Transform:
   m_ObjectHideFlags: 0
