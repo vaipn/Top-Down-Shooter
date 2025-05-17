@@ -23,6 +23,8 @@ public class Mission_Defence : Mission
 	public int enemiesPerWave;
 	public GameObject[] possibleEnemies;
 
+	private string defenceTimerText;
+
 	// Because changing defenceBegun bool with script will save the current value in scriptable object, this OnEnable is needed,
 	// so it resets every time the script is loaded or recompiled.
 	private void OnEnable()
@@ -59,6 +61,9 @@ public class Mission_Defence : Mission
 			CreateNewEnemies(enemiesPerWave);
 			waveTimer = waveCooldown;
 		}
+
+		defenceTimerText = System.TimeSpan.FromSeconds(defenceTimer).ToString("mm':'ss");
+		Debug.Log(defenceTimerText);
 	}
 
 	private void StartDefenceEvent()
