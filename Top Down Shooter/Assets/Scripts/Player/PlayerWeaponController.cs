@@ -63,6 +63,8 @@ public class PlayerWeaponController : MonoBehaviour
 		player.weaponVisuals.PlayWeaponEquipAnimation();
 
 		CameraManager.instance.ChangeCameraDistance(currentWeapon.cameraDistance);
+
+		UpdateWeaponUI();
 	}
 
 
@@ -107,6 +109,8 @@ public class PlayerWeaponController : MonoBehaviour
 
 		weaponSlots.Add(newWeapon);
 		player.weaponVisuals.SwitchOnBackupWeaponModelObject();
+
+		UpdateWeaponUI();
 	}
 
 	public Weapon WeaponInSlots(WeaponType weaponType)
@@ -123,6 +127,11 @@ public class PlayerWeaponController : MonoBehaviour
 	public void SetWeaponReady(bool ready) => weaponReady = ready;
 	public bool WeaponReady() => weaponReady;
 	#endregion
+
+	public void UpdateWeaponUI()
+	{
+		UI.instance.inGameUI.UpdateWeaponUI(weaponSlots, currentWeapon);
+	}
 
 	IEnumerator BurstShoot()
 	{
@@ -163,6 +172,8 @@ public class PlayerWeaponController : MonoBehaviour
 	private void ShootSingleBullet()
 	{
 		currentWeapon.bulletsInMagazine--;
+		UpdateWeaponUI();
+
 
 		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab, GunPoint());
 		newBullet.transform.rotation = Quaternion.LookRotation(BulletDirection());
@@ -183,6 +194,9 @@ public class PlayerWeaponController : MonoBehaviour
 	{
 		SetWeaponReady(false);
 		player.weaponVisuals.PlayReloadAnimation();
+
+		// we do actual refilling of bullets and weaponUI update in PlayerAnimationEvents
+
 	}
 
 	public Vector3 BulletDirection()

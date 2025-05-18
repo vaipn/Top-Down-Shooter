@@ -46,4 +46,7 @@ public class WeaponData : ScriptableObject
 
 	[Range(3, 15)]
 	public float cameraDistance;
+
+	[Header("UI elements")]
+	public Sprite weaponIcon;
 }

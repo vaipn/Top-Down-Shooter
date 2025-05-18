@@ -5,9 +5,35 @@ using UnityEngine.UI;
 
 public class UI_Ingame : MonoBehaviour
 {
+	[Header("Health")]
     [SerializeField] private Image healthBarFill;
 
-    public void UpdateHealthUI(float currentHealth, float maxHealth)
+
+	[Header("Weapons")]
+	[SerializeField] private UI_WeaponSlot[] weaponSlots_UI;
+
+	private void Awake()
+	{
+		weaponSlots_UI = GetComponentsInChildren<UI_WeaponSlot>();
+	}
+	public void UpdateWeaponUI(List<Weapon> weaponSlots, Weapon currentWeapon)
+	{
+		// try to update each weapon slot from first one to last one
+		for (int i = 0; i < weaponSlots_UI.Length; i++)
+		{
+			// to be sure we are updating slots only when we actually have weapons in the weapon slot of the player
+			if (i < weaponSlots.Count)
+			{
+				bool isActiveWeapon = weaponSlots[i] == currentWeapon ? true : false;
+				weaponSlots_UI[i].UpdateWeaponSlot(weaponSlots[i], isActiveWeapon);
+			}
+			else
+			{
+				weaponSlots_UI[i].UpdateWeaponSlot(null, false);
+			}
+		}
+	}
+	public void UpdateHealthUI(float currentHealth, float maxHealth)
     {
         healthBarFill.fillAmount = currentHealth/maxHealth;
 		healthBarFill.color = GetHealthColor(healthBarFill.fillAmount);

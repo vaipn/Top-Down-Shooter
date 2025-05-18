@@ -34,3 +34,4 @@ MonoBehaviour:
   equipSpeed: 1.251
   gunShotDistance: 25
   cameraDistance: 8
+  weaponIcon: {fileID: -1468257227, guid: 1652852ef93cd1546b62cfd1a94152da, type: 3}
