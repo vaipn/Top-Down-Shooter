@@ -10,8 +10,17 @@ public class UI_TransparentOnHover : MonoBehaviour, IPointerEnterHandler, IPoint
 	private Dictionary<Image, Color> originalImageColors = new Dictionary<Image, Color>();
 	private Dictionary<TextMeshProUGUI, Color> originalTextColors = new Dictionary<TextMeshProUGUI, Color>();
 
+	private bool hasUIWeaponSlots;
+	private PlayerWeaponController playerWeaponController;
+
 	private void Start()
 	{
+		hasUIWeaponSlots = GetComponentInChildren<UI_WeaponSlot>();
+
+		if (hasUIWeaponSlots)
+			playerWeaponController = FindObjectOfType<PlayerWeaponController>();
+
+
 		foreach (var image in GetComponentsInChildren<Image>(true))
 		{
 			originalImageColors[image] = image.color;
@@ -52,5 +61,7 @@ public class UI_TransparentOnHover : MonoBehaviour, IPointerEnterHandler, IPoint
 		{
 			text.color = originalTextColors[text];
 		}
+
+		playerWeaponController?.UpdateWeaponUI();
 	}
 }
