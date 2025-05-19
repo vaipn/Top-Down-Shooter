@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Mission - Hunt
   m_EditorClassIdentifier: 
   missionName: Scavenger Hunt
-  missionDescription: Hunt 3 melee enemies equipped with the keys to the anti-aircraft
-    system. The anti-aircracft system is dangerous to the plane, preventing a safe
-    takeoff. Eliminate the threats and make your path to escape safe.
+  missionDescription: Kill 3 melee enemies equipped with the keys to the anti-aircraft
+    system.
   amountToKill: 3
   enemyType: 0

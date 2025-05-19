@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,22 @@ public class UI_Ingame : MonoBehaviour
 	[Header("Health")]
     [SerializeField] private Image healthBarFill;
 
-
 	[Header("Weapons")]
 	[SerializeField] private UI_WeaponSlot[] weaponSlots_UI;
+
+	[Header("Missions")]
+	[SerializeField] private TextMeshProUGUI missionText;
+	[SerializeField] private TextMeshProUGUI missionDetails;
 
 	private void Awake()
 	{
 		weaponSlots_UI = GetComponentsInChildren<UI_WeaponSlot>();
+	}
+
+	public void UpdateMissionInfo(string missionText, string missionDetails = "")
+	{
+		this.missionText.text = missionText;
+		this.missionDetails.text = missionDetails;
 	}
 	public void UpdateWeaponUI(List<Weapon> weaponSlots, Weapon currentWeapon)
 	{

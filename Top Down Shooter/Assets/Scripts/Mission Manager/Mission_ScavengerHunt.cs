@@ -13,6 +13,7 @@ public class Mission_ScavengerHunt : Mission
 	public override void StartMission()
 	{
 		killsToGo = amountToKill;
+		UpdateMissionUI();
 
 		MissionObject_HuntTarget.OnTargetKilled += ReduceKillsToGo;
 
@@ -49,8 +50,20 @@ public class Mission_ScavengerHunt : Mission
 	private void ReduceKillsToGo()
 	{
 		killsToGo--;
+		UpdateMissionUI();
 
 		if (killsToGo <= 0)
+		{
+			UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
 			MissionObject_HuntTarget.OnTargetKilled -= ReduceKillsToGo;
+		}
+	}
+
+	private void UpdateMissionUI()
+	{
+		string missionText = missionDescription;
+		string missionDetails = "Kills left: " + killsToGo;
+
+		UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
 	}
 }
