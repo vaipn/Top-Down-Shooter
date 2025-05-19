@@ -7,9 +7,17 @@ using UnityEngine;
 public class Mission_ObjectDelivery : Mission
 {
 	private bool objectWasDelivered;
+
+	public string objectName;
 	public override void StartMission()
 	{
 		FindObjectOfType<MissionObject_ObjectDeliveryZone>(true).gameObject.SetActive(true);
+
+		string missionText = "Find " + objectName;
+		string missionDetails = "Deliver it to the delivery zone";
+
+		UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
+
 
 		objectWasDelivered = false;
 		MissionObject_ObjectToDeliver.OnObjectDelivery += ObjectDeliveryCompleted;
@@ -31,5 +39,7 @@ public class Mission_ObjectDelivery : Mission
 	{
 		objectWasDelivered = true;
 		MissionObject_ObjectToDeliver.OnObjectDelivery -= ObjectDeliveryCompleted;
+
+		UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point");
 	}
 }

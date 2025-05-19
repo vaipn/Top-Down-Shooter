@@ -7,7 +7,7 @@ public class Mission_Timer : Mission
 {
 	public float time;
 
-	private float currentTime;
+	private float currentTime = 0.0001f; // small number so it doesn't sometime say game over at start
 	public override void StartMission()
 	{
 		currentTime = time;
@@ -22,7 +22,10 @@ public class Mission_Timer : Mission
 
 		string timeText = System.TimeSpan.FromSeconds(currentTime).ToString("mm':'ss");
 
-		Debug.Log(timeText);
+		string missionText = "Get to evacuation point before plane takes off.";
+		string missionDetails = "Time left: " + timeText;
+
+		UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
 	}
 
 	public override bool MissionCompleted()

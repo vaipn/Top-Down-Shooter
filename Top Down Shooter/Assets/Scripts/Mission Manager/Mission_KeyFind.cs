@@ -12,6 +12,8 @@ public class Mission_KeyFind : Mission
 	{
 		MissionObject_Key.OnKeyPickedUp += PickUpKey;
 
+		UI.instance.inGameUI.UpdateMissionInfo("Find and defeat the key-holder.", "Retrieve the key");
+
 		// find random enemy
 		Enemy enemy = LevelGenerator.instance.GetRandomEnemy();
 
@@ -32,6 +34,7 @@ public class Mission_KeyFind : Mission
 	{
 		keyFound = true;
 		MissionObject_Key.OnKeyPickedUp -= PickUpKey;
-		Debug.Log("I picked up a key");
+
+		UI.instance.inGameUI.UpdateMissionInfo("You've gotten the key!", "Get to the evacuation point.");
 	}
 }

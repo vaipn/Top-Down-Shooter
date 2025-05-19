@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Object Delivery
   missionDescription: Deliver the object to the delivery zone
+  objectName: an Ice cream stand
