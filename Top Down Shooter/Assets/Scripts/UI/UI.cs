@@ -11,6 +11,6 @@ public class UI : MonoBehaviour
 	private void Awake()
 	{
 		instance = this;
-		inGameUI = GetComponentInChildren<UI_Ingame>();
+		inGameUI = GetComponentInChildren<UI_Ingame>(true);
 	}
 }
