@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
 	[Header("Mouse hover settings")]
 	public float scaleChangeRate = 1;
@@ -57,9 +57,20 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 	public virtual void OnPointerExit(PointerEventData eventData)
 	{
+		ReturnToDefaultLook();
+	}
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		ReturnToDefaultLook();
+	}
+
+	private void ReturnToDefaultLook()
+	{
 		targetScale = defaultScale;
 
 		buttonImage.color = Color.white;
 		buttonText.color = Color.white;
 	}
+
 }
