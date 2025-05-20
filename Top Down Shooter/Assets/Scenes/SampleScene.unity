@@ -4101,6 +4101,7 @@ GameObject:
   - component: {fileID: 626840113}
   - component: {fileID: 626840112}
   - component: {fileID: 626840111}
+  - component: {fileID: 626840114}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -4210,6 +4211,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626840109}
   m_CullTransparentMesh: 1
+--- !u!114 &626840114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626840109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a07a6044ab4641a1ff34511e7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleChangeRate: 5
+  scaleAmount: 1.07
+  isQuitButton: 0
 --- !u!1 &636723276
 GameObject:
   m_ObjectHideFlags: 0
@@ -5395,6 +5411,7 @@ GameObject:
   - component: {fileID: 800870398}
   - component: {fileID: 800870397}
   - component: {fileID: 800870396}
+  - component: {fileID: 800870399}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -5504,6 +5521,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800870394}
   m_CullTransparentMesh: 1
+--- !u!114 &800870399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800870394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a07a6044ab4641a1ff34511e7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleChangeRate: 5
+  scaleAmount: 1.07
+  isQuitButton: 0
 --- !u!4 &815274473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3257864471771377257, guid: 4cd154bca69af1143831fbd557ab5957, type: 3}
@@ -6021,6 +6053,7 @@ GameObject:
   - component: {fileID: 875019661}
   - component: {fileID: 875019660}
   - component: {fileID: 875019659}
+  - component: {fileID: 875019662}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -6130,6 +6163,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875019657}
   m_CullTransparentMesh: 1
+--- !u!114 &875019662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875019657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a07a6044ab4641a1ff34511e7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleChangeRate: 5
+  scaleAmount: 1.07
+  isQuitButton: 1
 --- !u!1 &899439327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7736,6 +7784,7 @@ GameObject:
   - component: {fileID: 1025144434}
   - component: {fileID: 1025144433}
   - component: {fileID: 1025144432}
+  - component: {fileID: 1025144435}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7845,6 +7894,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025144430}
   m_CullTransparentMesh: 1
+--- !u!114 &1025144435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025144430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a07a6044ab4641a1ff34511e7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleChangeRate: 5
+  scaleAmount: 1.07
+  isQuitButton: 0
 --- !u!1001 &1030902263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12487,6 +12551,7 @@ GameObject:
   - component: {fileID: 1726903948}
   - component: {fileID: 1726903947}
   - component: {fileID: 1726903946}
+  - component: {fileID: 1726903949}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -12596,6 +12661,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726903944}
   m_CullTransparentMesh: 1
+--- !u!114 &1726903949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726903944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a07a6044ab4641a1ff34511e7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleChangeRate: 5
+  scaleAmount: 1.07
+  isQuitButton: 0
 --- !u!4 &1735870527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3025830979286153855, guid: 22f8452e0545cdc40824c6b0f528ab05, type: 3}
