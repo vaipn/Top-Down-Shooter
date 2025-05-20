@@ -24,5 +24,6 @@ public class UI : MonoBehaviour
 		uiToSwitchOn.SetActive(true);
 	}
 
+	public void SwitchToInGameUI() => SwitchTo(inGameUI.gameObject);
 	public void QuitTheGame() => Application.Quit();
 }

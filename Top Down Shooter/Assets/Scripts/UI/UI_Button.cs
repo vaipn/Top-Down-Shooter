@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
 	[Header("Mouse hover settings")]
-	public float scaleChangeRate = 1;
-	public float scaleAmount = 1.2f;
+	public float scaleChangeRate = 5;
+	public float scaleAmount = 1.07f;
 
 	private Vector3 defaultScale;
 	private Vector3 targetScale;
@@ -60,7 +60,7 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 		ReturnToDefaultLook();
 	}
 
-	public void OnPointerDown(PointerEventData eventData)
+	public virtual void OnPointerDown(PointerEventData eventData)
 	{
 		ReturnToDefaultLook();
 	}
