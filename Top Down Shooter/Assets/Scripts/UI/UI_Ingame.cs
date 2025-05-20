@@ -18,7 +18,7 @@ public class UI_Ingame : MonoBehaviour
 
 	private void Awake()
 	{
-		weaponSlots_UI = GetComponentsInChildren<UI_WeaponSlot>();
+		weaponSlots_UI = GetComponentsInChildren<UI_WeaponSlot>(true);
 	}
 
 	public void UpdateMissionInfo(string missionText, string missionDetails = "")

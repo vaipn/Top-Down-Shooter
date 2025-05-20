@@ -11,8 +11,8 @@ public class UI_WeaponSlot : MonoBehaviour
 
 	private void Awake()
 	{
-		weaponIcon = GetComponentInChildren<Image>();
-		ammoText = GetComponentInChildren<TextMeshProUGUI>();
+		weaponIcon = GetComponentInChildren<Image>(true);
+		ammoText = GetComponentInChildren<TextMeshProUGUI>(true);
 	}
 
 	public void UpdateWeaponSlot(Weapon myWeapon, bool activeWeapon)

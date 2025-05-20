@@ -8,9 +8,21 @@ public class UI : MonoBehaviour
 
     public UI_Ingame inGameUI {  get; private set; }
 
+	[SerializeField] private GameObject[] UIElements;
+
 	private void Awake()
 	{
 		instance = this;
 		inGameUI = GetComponentInChildren<UI_Ingame>(true);
 	}
+
+	public void SwitchTo(GameObject uiToSwitchOn)
+	{
+		foreach (GameObject go in UIElements)
+			go.SetActive(false);
+
+		uiToSwitchOn.SetActive(true);
+	}
+
+	public void QuitTheGame() => Application.Quit();
 }
