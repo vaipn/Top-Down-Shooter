@@ -44,7 +44,5 @@ public class UI_MissionSelectionButton : UI_Button
 		base.OnPointerDown(eventData);
 
 		MissionManager.instance.SetMission(myMission);
-
-		UI.instance.SwitchToInGameUI();
 	}
 }
