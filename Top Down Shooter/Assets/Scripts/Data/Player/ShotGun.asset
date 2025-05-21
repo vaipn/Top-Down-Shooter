@@ -35,3 +35,4 @@ MonoBehaviour:
   gunShotDistance: 25
   cameraDistance: 6
   weaponIcon: {fileID: -150481919, guid: 1652852ef93cd1546b62cfd1a94152da, type: 3}
+  weaponInfo: Best for close range, strong stopping power

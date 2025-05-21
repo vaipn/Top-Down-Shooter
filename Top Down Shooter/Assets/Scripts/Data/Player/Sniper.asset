@@ -35,3 +35,4 @@ MonoBehaviour:
   gunShotDistance: 25
   cameraDistance: 15
   weaponIcon: {fileID: 1629023830, guid: 1652852ef93cd1546b62cfd1a94152da, type: 3}
+  weaponInfo: Perfect for long distance shots

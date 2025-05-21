@@ -35,3 +35,4 @@ MonoBehaviour:
   gunShotDistance: 25
   cameraDistance: 6
   weaponIcon: {fileID: 143585029, guid: 1652852ef93cd1546b62cfd1a94152da, type: 3}
+  weaponInfo: Quick to draw, quick to reload

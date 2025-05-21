@@ -44,8 +44,11 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 		if (!isQuitButton)
 		{
-			buttonImage.color = Color.yellow;
-			buttonText.color = Color.yellow;
+			if (buttonImage != null)
+				buttonImage.color = Color.yellow;
+
+			if (buttonText != null)
+				buttonText.color = Color.yellow;
 		}
 		else
 		{
@@ -69,8 +72,11 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	{
 		targetScale = defaultScale;
 
-		buttonImage.color = Color.white;
-		buttonText.color = Color.white;
+		if (buttonImage != null)
+			buttonImage.color = Color.white;
+
+		if (buttonText != null)
+			buttonText.color = Color.white;
 	}
 
 }
