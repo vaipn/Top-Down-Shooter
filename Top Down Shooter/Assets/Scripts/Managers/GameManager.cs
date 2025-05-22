@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
 
 	public void RestartScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+	public void GameOver()
+	{
+		TimeManager.instance.SlowMotion(1.5f);
+		UI.instance.ShowGameOverUI();
+		CameraManager.instance.ChangeCameraDistance(5);
+	}
 	private void SetDefaultWeaponsForPlayer()
 	{
 		List<WeaponData> newWeaponsList = UI.instance.weaponSelection.SelectedWeaponData();

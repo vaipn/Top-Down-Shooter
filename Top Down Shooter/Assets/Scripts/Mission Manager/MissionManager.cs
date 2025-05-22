@@ -8,13 +8,16 @@ public class MissionManager : MonoBehaviour
 
 	public Mission currentMission;
 
+	public bool startedMission;
+
 	private void Awake()
 	{
 		instance = this;
 	}
 	private void Update()
 	{
-		currentMission?.UpdateMission();
+		if (startedMission)
+			currentMission?.UpdateMission();
 	}
 
 	public void SetMission(Mission newMission)
@@ -22,7 +25,10 @@ public class MissionManager : MonoBehaviour
 		currentMission = newMission;
 	}
 
-	public void StartMission() => currentMission.StartMission();
-
+	public void StartMission()
+	{
+		currentMission.StartMission();
+		startedMission = true;
+	}
 	public bool MissionCompleted() => currentMission.MissionCompleted();
 }

@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
 
 
 	[SerializeField] private bool canChangeCameraDistance;
-	private float targetCameraDistance;
+	[SerializeField] private float targetCameraDistance;
 	[SerializeField] private float distanceChangeRate;
 	private void Awake()
 	{

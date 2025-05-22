@@ -5,9 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Timer Mission", menuName = "Missions/Timer mission")]
 public class Mission_Timer : Mission
 {
-	public float time;
-
-	private float currentTime = 0.0001f; // small number so it doesn't sometime say game over at start
+	public float time; 
+	private float currentTime;
 	public override void StartMission()
 	{
 		currentTime = time;
@@ -18,7 +17,9 @@ public class Mission_Timer : Mission
 		currentTime -= Time.deltaTime;
 
 		if (currentTime < 0)
-			Debug.Log("Game Over");
+		{
+			GameManager.instance.GameOver();
+		}
 
 		string timeText = System.TimeSpan.FromSeconds(currentTime).ToString("mm':'ss");
 
