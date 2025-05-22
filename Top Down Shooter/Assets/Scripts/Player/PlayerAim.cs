@@ -43,6 +43,9 @@ public class PlayerAim : MonoBehaviour
 		if (player.health.isDead)
 			return;
 
+		if (player.controlsEnabled == false)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.P)) //precise aim toggle
 			isAimingPrecisely = !isAimingPrecisely;
 
