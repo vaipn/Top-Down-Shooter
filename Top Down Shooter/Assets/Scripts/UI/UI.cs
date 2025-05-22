@@ -51,13 +51,13 @@ public class UI : MonoBehaviour
 		{
 			SwitchTo(inGameUI.gameObject);
 			ControlsManager.instance.SwitchToCharacterControls();
-			Time.timeScale = 1;
+			TimeManager.instance.ResumeTime();
 		}
 		else
 		{
 			SwitchTo(pauseUI);
 			ControlsManager.instance.SwitchToUIControls();
-			Time.timeScale = 0;
+			TimeManager.instance.PauseTime();
 		}
 	}
 

@@ -5410,8 +5410,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 2134585842, guid: 113dc86f96434a342801059152b09e01, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -10627,7 +10627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshSurface: {fileID: 1155367321}
-  levelParts: []
+  levelParts:
+  - {fileID: 1551776024338887757, guid: 637576dbf51552142834c631c306f4f6, type: 3}
   lastLevelPart: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
   nextSnapPoint: {fileID: 2011086803}
   generationCooldown: 0.25
@@ -19962,6 +19963,7 @@ GameObject:
   - component: {fileID: 1920242445}
   - component: {fileID: 1920242447}
   - component: {fileID: 1920242448}
+  - component: {fileID: 1920242449}
   m_Layer: 0
   m_Name: '*** Game Manager ***'
   m_TagString: Untagged
@@ -20023,6 +20025,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057928f6b3a293c4e8188c337f256e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1920242449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920242444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5979d263ca68fbe4f83a0aab993a2b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeRate: 3
+  pauseRate: 7
 --- !u!1 &1926921534
 GameObject:
   m_ObjectHideFlags: 0
