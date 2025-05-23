@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class UI : MonoBehaviour
 
 	[SerializeField] private GameObject[] UIElements;
 
+
+	[Header("Fade Image")]
+	[SerializeField] private Image fadeImage;
 	private void Awake()
 	{
 		instance = this;
@@ -24,6 +28,8 @@ public class UI : MonoBehaviour
 	private void Start()
 	{
 		AssignInputsUI();
+
+		StartCoroutine(ChangeImageAlpha(0, 1.5f, null));
 	}
 	public void SwitchTo(GameObject uiToSwitchOn)
 	{
@@ -33,16 +39,12 @@ public class UI : MonoBehaviour
 		uiToSwitchOn.SetActive(true);
 	}
 
-	public void StartTheGame()
-	{
-		SwitchTo(inGameUI.gameObject);
-		GameManager.instance.GameStart();
-	}
+	public void StartTheGame() => StartCoroutine(StartGameSequence());
 	public void QuitTheGame() => Application.Quit();
 
 	public void RestartTheGame()
 	{
-		GameManager.instance.RestartScene();
+		StartCoroutine(ChangeImageAlpha(1, 1, GameManager.instance.RestartScene));
 	}
 
 	public void PauseSwitch()
@@ -63,6 +65,12 @@ public class UI : MonoBehaviour
 		}
 	}
 
+	public void ShowGameOverUI(string message = "Game Over")
+	{
+		SwitchTo(gameOverUI.gameObject);
+		gameOverUI.ShowGameOverMessage(message);
+	}
+
 	private void AssignInputsUI()
 	{
 		PlayerControls controls = GameManager.instance.player.controls;
@@ -70,9 +78,35 @@ public class UI : MonoBehaviour
 		controls.UI.UIPause.performed += ctx => PauseSwitch();
 	}
 
-	public void ShowGameOverUI(string message = "Game Over")
+	private IEnumerator StartGameSequence()
 	{
-		SwitchTo(gameOverUI.gameObject);
-		gameOverUI.ShowGameOverMessage(message);
+		StartCoroutine(ChangeImageAlpha(1, 1, null));
+
+		yield return new WaitForSeconds(1); // duration of fade (ChangeImageAlpha)
+		SwitchTo(inGameUI.gameObject);
+		GameManager.instance.GameStart();
+
+		StartCoroutine(ChangeImageAlpha(0, 1, null));
+	}
+
+	private IEnumerator ChangeImageAlpha(float targetAlpha, float duration, System.Action onComplete)
+	{
+		float time = 0;
+		Color currentColor = fadeImage.color;
+		float startAlpha = currentColor.a;
+
+		while (time < duration)
+		{
+			time += Time.deltaTime;
+			float alpha = Mathf.Lerp(startAlpha, targetAlpha, time/duration);
+
+			fadeImage.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+			yield return null; // so the loop runs once per frame
+		}
+
+		fadeImage.color = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha);
+
+		// call the completion method if it exists
+		onComplete?.Invoke();
 	}
 }
