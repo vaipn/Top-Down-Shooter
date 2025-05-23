@@ -47,6 +47,8 @@ public class UI : MonoBehaviour
 		StartCoroutine(ChangeImageAlpha(1, 1, GameManager.instance.RestartScene));
 	}
 
+	public void StartLevelGeneration() => LevelGenerator.instance.InitializeGeneration();
+
 	public void PauseSwitch()
 	{
 		bool gamePaused = pauseUI.activeSelf;
