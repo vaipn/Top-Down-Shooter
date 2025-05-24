@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
 	public UI_WeaponSelection weaponSelection { get; private set; }
 	public UI_GameOver gameOverUI { get; private set; }
 
+	public GameObject victoryScreenUI;
 	public GameObject pauseUI;
 
 	[SerializeField] private GameObject[] UIElements;
@@ -72,7 +73,20 @@ public class UI : MonoBehaviour
 		SwitchTo(gameOverUI.gameObject);
 		gameOverUI.ShowGameOverMessage(message);
 	}
+	public void ShowVictoryScreenUI()
+	{
+		StartCoroutine(ChangeImageAlpha(1, 1.5f, SwitchToVictoryScreenUI));
+	}
+	private void SwitchToVictoryScreenUI()
+	{
+		SwitchTo(victoryScreenUI);
 
+		// because the screen would still be black when we switch to victoryScreenUI
+		Color color = fadeImage.color;
+		color.a = 0;
+
+		fadeImage.color = color;
+	}
 	private void AssignInputsUI()
 	{
 		PlayerControls controls = GameManager.instance.player.controls;

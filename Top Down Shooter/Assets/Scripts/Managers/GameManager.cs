@@ -34,6 +34,14 @@ public class GameManager : MonoBehaviour
 		UI.instance.ShowGameOverUI();
 		CameraManager.instance.ChangeCameraDistance(5);
 	}
+
+	public void LevelCompleted()
+	{
+		UI.instance.ShowVictoryScreenUI();
+		ControlsManager.instance.controls.Character.Disable();
+		player.health.currentHealth += 999999;
+	}
+
 	private void SetDefaultWeaponsForPlayer()
 	{
 		List<WeaponData> newWeaponsList = UI.instance.weaponSelection.SelectedWeaponData();
