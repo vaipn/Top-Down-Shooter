@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 	public void GameStart()
 	{
 		SetDefaultWeaponsForPlayer();
-		LevelGenerator.instance.InitializeGeneration();
+		//LevelGenerator.instance.InitializeGeneration();
 
 		// we start selected mission in LevelGenerator script, after levels have finished generating
 	}
