@@ -13,6 +13,7 @@ public class UI_SelectedWeaponWindow : MonoBehaviour
 
 	private void Start()
 	{
+        weaponData = null; // so weapon selection works normally in non quick play mode
         UpdateSlotInfo(null);
 	}
 
