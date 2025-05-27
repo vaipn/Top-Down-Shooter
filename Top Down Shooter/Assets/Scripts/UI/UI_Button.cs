@@ -19,6 +19,10 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	private TextMeshProUGUI buttonText;
 
 	public bool isQuitButton;
+
+	[Header("Audio")]
+	[SerializeField] private AudioSource pointerEnterSFX;
+	[SerializeField] private AudioSource pointerDownSFX;
 	public virtual void Start()
 	{
 		defaultScale = transform.localScale;
@@ -41,6 +45,9 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	public virtual void OnPointerEnter(PointerEventData eventData)
 	{
 		targetScale = defaultScale * scaleAmount;
+
+		if (pointerEnterSFX != null)
+			pointerEnterSFX.Play();
 
 		if (!isQuitButton)
 		{
@@ -66,6 +73,9 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	public virtual void OnPointerDown(PointerEventData eventData)
 	{
 		ReturnToDefaultLook();
+
+		if (pointerDownSFX != null)
+			pointerDownSFX.Play();
 	}
 
 	private void ReturnToDefaultLook()
@@ -79,4 +89,9 @@ public class UI_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 			buttonText.color = Color.white;
 	}
 
+	public void AssignAudioSource()
+	{
+		pointerEnterSFX = GameObject.FindGameObjectWithTag("UI_PointerEnter_Sound").GetComponent<AudioSource>();
+		pointerDownSFX = GameObject.FindGameObjectWithTag("UI_PointerDown_Sound").GetComponent<AudioSource>();
+	}
 }

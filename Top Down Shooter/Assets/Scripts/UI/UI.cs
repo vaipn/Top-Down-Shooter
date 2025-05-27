@@ -125,4 +125,15 @@ public class UI : MonoBehaviour
 		// call the completion method if it exists
 		onComplete?.Invoke();
 	}
+
+	[ContextMenu("Assign audio to buttons")]
+	public void AssignAudioToButtons()
+	{
+		UI_Button[] buttons = FindObjectsOfType<UI_Button>(true);
+
+		foreach (UI_Button button in buttons)
+		{
+			button.AssignAudioSource();
+		}
+	}
 }

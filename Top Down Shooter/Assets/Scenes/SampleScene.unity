@@ -122,6 +122,134 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8652789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8652791}
+  - component: {fileID: 8652790}
+  m_Layer: 0
+  m_Name: UI_PointerDown
+  m_TagString: UI_PointerDown_Sound
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &8652790
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652789}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 44a5d716536c11248a09ee1a54d5d168, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &8652791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652789}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54829775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &12760251 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4566952761851135906, guid: 75d05940850b4e841b44cf1724660021, type: 3}
@@ -242,6 +370,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &17020178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +876,8 @@ MonoBehaviour:
   scaleChangeRate: 1
   scaleAmount: 1.2
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   myMission: {fileID: 11400000, guid: 04c2b5280891bb74888fecd67e366277, type: 2}
 --- !u!114 &42773450
 MonoBehaviour:
@@ -841,6 +973,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42773447}
   m_CullTransparentMesh: 1
+--- !u!1 &54829774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54829775}
+  m_Layer: 0
+  m_Name: UI_Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &54829775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54829774}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8652791}
+  - {fileID: 1203111186}
+  m_Father: {fileID: 1127011857}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &59423341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2307,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &192470195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3013,6 +3180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolTip: {fileID: 71612647}
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &261285449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,6 +3568,7 @@ GameObject:
   - component: {fileID: 320680660}
   - component: {fileID: 320680662}
   - component: {fileID: 320680661}
+  - component: {fileID: 320680663}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -3464,6 +3634,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320680659}
   m_CullTransparentMesh: 1
+--- !u!114 &320680663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320680659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c883cc71f0a9d94ead33f50dd574c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolTip: {fileID: 0}
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &326765840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543667380422735997, guid: 75d05940850b4e841b44cf1724660021, type: 3}
@@ -3765,6 +3950,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &347828403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5351,6 +5538,8 @@ MonoBehaviour:
   scaleChangeRate: 1
   scaleAmount: 1.2
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   myMission: {fileID: 11400000, guid: faf0ab18d2c6ecd4aa0210fc76122833, type: 2}
 --- !u!114 &434802605
 MonoBehaviour:
@@ -6426,6 +6615,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   weaponData: {fileID: 11400000, guid: 67ee6b21ff258d640a10446120c26f1e, type: 2}
   weaponIcon: {fileID: 916794112}
 --- !u!114 &570251120
@@ -7093,6 +7284,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &636723276
 GameObject:
   m_ObjectHideFlags: 0
@@ -8009,6 +8202,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &695037283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9959,6 +10154,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 1
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &899439327
 GameObject:
   m_ObjectHideFlags: 0
@@ -11123,6 +11320,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &974228793
 GameObject:
   m_ObjectHideFlags: 0
@@ -12251,6 +12450,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1001 &1030902263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12387,6 +12588,7 @@ GameObject:
   - component: {fileID: 1038806921}
   - component: {fileID: 1038806923}
   - component: {fileID: 1038806922}
+  - component: {fileID: 1038806924}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -12452,6 +12654,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038806920}
   m_CullTransparentMesh: 1
+--- !u!114 &1038806924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038806920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c883cc71f0a9d94ead33f50dd574c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolTip: {fileID: 0}
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &1044804479
 GameObject:
   m_ObjectHideFlags: 0
@@ -13467,6 +13684,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1836578841}
+  - {fileID: 54829775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135118536
@@ -14131,6 +14349,134 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167969672}
   m_Mesh: {fileID: 7005862561380833248, guid: a6b5168797d4fda4f8ccc837dc6705c0, type: 3}
+--- !u!1 &1203111185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203111186}
+  - component: {fileID: 1203111187}
+  m_Layer: 0
+  m_Name: UI_PointerEnter
+  m_TagString: UI_PointerEnter_Sound
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203111186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203111185}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54829775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1203111187
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203111185}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e5c0b5435124eee4a9bab0e4dc5c16b7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1204741442
 GameObject:
   m_ObjectHideFlags: 0
@@ -15076,6 +15422,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &1249092794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15225,6 +15573,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &1255027828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16949,6 +17299,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &1436553761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17306,6 +17658,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   weaponData: {fileID: 11400000, guid: 560a45b573b454b478a7f847408f2e99, type: 2}
   weaponIcon: {fileID: 1371735164}
 --- !u!114 &1453862134
@@ -19347,6 +19701,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &1598624743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21264,6 +21620,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!1 &1735057802
 GameObject:
   m_ObjectHideFlags: 0
@@ -21837,6 +22195,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &1763263771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26047,6 +26407,8 @@ MonoBehaviour:
   scaleChangeRate: 1
   scaleAmount: 1.2
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   myMission: {fileID: 11400000, guid: 8764bfe7cfd1cad4c86ea8282a33f3e4, type: 2}
 --- !u!114 &2078672751
 MonoBehaviour:
@@ -26253,6 +26615,8 @@ MonoBehaviour:
   scaleChangeRate: 1
   scaleAmount: 1.2
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   myMission: {fileID: 11400000, guid: 1fb4a1cde6f21914a95b6e8570842395, type: 2}
 --- !u!114 &2088958790
 MonoBehaviour:
@@ -26439,6 +26803,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   weaponData: {fileID: 11400000, guid: 8540f7e599a32e94f8495b28ccbad2ed, type: 2}
   weaponIcon: {fileID: 1724367841}
 --- !u!114 &2094112953
@@ -26690,6 +27056,8 @@ MonoBehaviour:
   scaleChangeRate: 1
   scaleAmount: 1.2
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   myMission: {fileID: 11400000, guid: 45dc0d37206c3a7469f35c3421aa1e81, type: 2}
 --- !u!114 &2109997897
 MonoBehaviour:
@@ -26840,6 +27208,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
 --- !u!114 &2115591320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26989,6 +27359,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   weaponData: {fileID: 11400000, guid: 1f6d771849e1f5947a15ddd186bad81c, type: 2}
   weaponIcon: {fileID: 1639090262}
 --- !u!114 &2116848717
@@ -27221,6 +27593,8 @@ MonoBehaviour:
   scaleChangeRate: 5
   scaleAmount: 1.07
   isQuitButton: 0
+  pointerEnterSFX: {fileID: 1203111187}
+  pointerDownSFX: {fileID: 8652790}
   weaponData: {fileID: 11400000, guid: 386b667ae178d5f44a32decc8cba7693, type: 2}
   weaponIcon: {fileID: 246011076}
 --- !u!114 &2131497396
