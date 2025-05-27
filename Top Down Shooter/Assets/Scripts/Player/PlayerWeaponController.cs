@@ -128,7 +128,13 @@ public class PlayerWeaponController : MonoBehaviour
 		return null;
 	}
 
-	public void SetWeaponReady(bool ready) => weaponReady = ready;
+	public void SetWeaponReady(bool ready)
+	{
+		weaponReady = ready;
+		
+		if (ready)
+			player.soundFX.weaponReady.Play();
+	}
 	public bool WeaponReady() => weaponReady;
 	#endregion
 
@@ -156,7 +162,10 @@ public class PlayerWeaponController : MonoBehaviour
 			return;
 
 		if (!currentWeapon.CanShoot())
+		{
+			player.soundFX.outOfAmmo.Play();
 			return;
+		}
 
 		if (currentWeapon.shootType == ShootType.Single)
 			isShooting = false;
@@ -178,6 +187,7 @@ public class PlayerWeaponController : MonoBehaviour
 		currentWeapon.bulletsInMagazine--;
 		UpdateWeaponUI();
 
+		player.weaponVisuals.CurrentWeaponModel().fireSFX.Play();
 
 		GameObject newBullet = ObjectPool.instance.GetObjectFromPool(bulletPrefab, GunPoint());
 		newBullet.transform.rotation = Quaternion.LookRotation(BulletDirection());
@@ -199,6 +209,7 @@ public class PlayerWeaponController : MonoBehaviour
 		SetWeaponReady(false);
 		player.weaponVisuals.PlayReloadAnimation();
 
+		player.weaponVisuals.CurrentWeaponModel().reloadSFX.Play();
 		// we do actual refilling of bullets and weaponUI update in PlayerAnimationEvents
 
 	}

@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
 	public PlayerWeaponVisuals weaponVisuals { get; private set; }
 	public PlayerInteraction interaction { get; private set; }
 	public PlayerHealth health { get; private set; }
+	public PlayerSoundFX soundFX { get; private set; }
 	public Ragdoll ragdoll { get; private set; }
 	public Animator anim { get; private set; }
+
 
 	public bool controlsEnabled { get; private set; }
 	private void Awake()
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
 		weaponVisuals = GetComponent<PlayerWeaponVisuals>();
 		interaction = GetComponent<PlayerInteraction>();
 		health = GetComponent<PlayerHealth>();
+		soundFX = GetComponent<PlayerSoundFX>();
 		ragdoll = GetComponent<Ragdoll>();
 		anim = GetComponentInChildren<Animator>();
 	}

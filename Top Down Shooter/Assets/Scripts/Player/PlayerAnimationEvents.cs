@@ -18,7 +18,9 @@ public class PlayerAnimationEvents : MonoBehaviour
 		weaponController.SetWeaponReady(true);
 
 		weaponVisualController.ReturnRigWeightToOne();
-		
+
+		weaponVisualController.CurrentWeaponModel().reloadSFX.Stop();
+
 		//refill bullets
 		weaponController.CurrentWeapon().RefillBullets();
 		weaponController.UpdateWeaponUI();
