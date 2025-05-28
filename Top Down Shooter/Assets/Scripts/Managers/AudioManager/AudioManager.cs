@@ -11,10 +11,12 @@ public class AudioManager : MonoBehaviour
 
 	private void Update()
 	{
-        //if (playBackgroundMusic == false && BackgroundMusicIsPlaying())
-        //    StopAllBackgroundMusic();
-        //else if (backgroundMusic[backgroundMusicIndex].isPlaying == false)
-        //    PlayRandomBackgroundMusic();
+        if (playBackgroundMusic == false && BackgroundMusicIsPlaying())
+            StopAllBackgroundMusic();
+        
+
+        if (playBackgroundMusic && backgroundMusic[backgroundMusicIndex].isPlaying == false)
+            PlayRandomBackgroundMusic();
     }
 
 	public void PlayBackgroundMusic(int index)
@@ -36,6 +38,8 @@ public class AudioManager : MonoBehaviour
     [ContextMenu("Play Random background music")]
     public void PlayRandomBackgroundMusic()
     {
+        StopAllBackgroundMusic();
+
         backgroundMusicIndex = Random.Range(0, backgroundMusic.Length);
 
         PlayBackgroundMusic(backgroundMusicIndex);
