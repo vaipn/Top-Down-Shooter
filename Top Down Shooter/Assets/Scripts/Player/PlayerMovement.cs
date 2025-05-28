@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 		walkSFX = player.soundFX.walkSFX;
 		runSFX = player.soundFX.runSFX;
 
-		Invoke(nameof(AllowFootstepsSFX), 1f); // so footsteps don't sound immediately player is setup.
+		Invoke(nameof(AllowFootstepsSFX), 1f); // so footsteps don't sound immediately player is setup and level has not been shown.
 
 		walkSpeed = movementSpeed;
 
