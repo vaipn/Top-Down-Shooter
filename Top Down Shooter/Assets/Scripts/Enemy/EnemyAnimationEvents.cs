@@ -29,6 +29,11 @@ public class EnemyAnimationEvents : MonoBehaviour
 
 		enemyBoss.JumpImpact();
 	}
-	public void BeginMeleeAttackCheck() => enemy?.EnableMeleeAttackCheck(true);
+	public void BeginMeleeAttackCheck()
+	{
+		enemy?.EnableMeleeAttackCheck(true);
+
+		enemy?.audioManager.PlaySFX(enemyMelee?.meleeSFX.kickSwooshSFX, true);
+	}
 	public void FinishMeleeAttackCheck() => enemy?.EnableMeleeAttackCheck(false);
 }

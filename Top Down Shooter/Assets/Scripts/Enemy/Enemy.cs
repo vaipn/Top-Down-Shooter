@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
     public EnemyHealth health { get; private set; }
 
     public EnemyDropController dropController { get; private set; }
+
+    public AudioManager audioManager { get; private set; }
 	protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
@@ -63,7 +65,7 @@ public class Enemy : MonoBehaviour //You have to attach this to an enemy object
 	{
 		InitializePatrolPoints();
 
-		
+		audioManager = AudioManager.instance;
 	}
 
 	protected virtual void Update()

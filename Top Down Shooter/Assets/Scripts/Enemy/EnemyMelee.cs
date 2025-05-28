@@ -17,6 +17,8 @@ public enum AttackType_Melee { Close, Charge }
 public enum EnemyMelee_Type { Regular, Shield, Dodger, AxeThrower }
 public class EnemyMelee : Enemy
 {
+	public EnemyMeleeSFX meleeSFX {  get; private set; }
+
 	#region States
 	public IdleState_Melee idleState { get; private set; }
 	public MoveState_Melee moveState { get; private set; }
@@ -72,6 +74,8 @@ public class EnemyMelee : Enemy
 		attackState = new AttackState_Melee(this, stateMachine, "Attack");
 		deadState = new DeadState_Melee(this, stateMachine, "Idle"); // Idle anim is just a placeholder (ragdoll is used)
 		abilityState = new AbilityState_Melee(this, stateMachine, "AxeThrow");
+
+		meleeSFX = GetComponent<EnemyMeleeSFX>();
 	}
 
 	protected override void Start()
