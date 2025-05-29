@@ -52,7 +52,7 @@ public class EnemyGrenade : MonoBehaviour
 	{
 		canExplode = false;
 
-		PlayExplosionEffect();
+		PlayExplosionEffect(); // this also returns grenade to pool
 
 		HashSet<GameObject> uniqueEntities = new HashSet<GameObject>();
 		Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
