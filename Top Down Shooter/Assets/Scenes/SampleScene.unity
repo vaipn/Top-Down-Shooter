@@ -1766,63 +1766,6 @@ Transform:
   - {fileID: 2090640981}
   m_Father: {fileID: 67285889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &119101892
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 149
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169721590342368946, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4865752011881043005, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
-      propertyPath: m_Name
-      value: Enemy_Range - Advance + Grenade Variant
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bd88abd1d998774a93786ece6ec755c, type: 3}
 --- !u!1 &123254206
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,7 +5198,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e5198250a6a57408bb36e14bc4a322c4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -26709,7 +26652,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2d159f7e00d44d9bbc2d50a0c4fef59, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.32
   m_Pitch: 1.2
   Loop: 0
   Mute: 0
@@ -35678,4 +35621,3 @@ SceneRoots:
   - {fileID: 1668522035}
   - {fileID: 948123185}
   - {fileID: 541092439}
-  - {fileID: 119101892}

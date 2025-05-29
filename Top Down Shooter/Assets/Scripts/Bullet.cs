@@ -111,6 +111,13 @@ public class Bullet : MonoBehaviour
 
 	protected void CreateImpactFX()
 	{
+		// Use this while testing impact SFX
+		//GameObject newFx = Instantiate(bulletImpactFX);
+		//newFx.transform.position = transform.position;
+
+		//Destroy(newFx, 1);
+
+		// Use this normally
 		GameObject newImpactFX = ObjectPool.instance.GetObjectFromPool(bulletImpactFX, transform);
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(newImpactFX, 1);
 	}

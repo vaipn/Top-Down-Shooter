@@ -6,5 +6,5 @@ public class EnemyMeleeSFX : MonoBehaviour
 {
     public AudioSource punchSwooshFX;
     public AudioSource kickSwooshSFX;
-    public AudioSource hitImpactSFX;
+    //public AudioSource hitImpactSFX; this is on meleeImpact
 }
