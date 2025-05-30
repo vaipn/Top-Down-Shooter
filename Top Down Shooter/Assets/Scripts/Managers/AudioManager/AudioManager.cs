@@ -36,6 +36,10 @@ public class AudioManager : MonoBehaviour
         sfx.Play();
     }
 
+    public void PlaySFXWithDelayAndFade(AudioSource audioSource, bool play, float targetVolume, float delay = 0, float fadeDuration = 1)
+    {
+        StartCoroutine(SFXDelayAndFade(audioSource, play, targetVolume, delay, fadeDuration));
+    }
 	public void PlayBackgroundMusic(int index)
     {
         StopAllBackgroundMusic();
@@ -70,5 +74,33 @@ public class AudioManager : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private IEnumerator SFXDelayAndFade(AudioSource audioSource, bool play, float targetVolume, float delay = 0, float fadeDuration = 1)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float startVolume = play ? 0 : audioSource.volume;
+        float endVolume = play ? targetVolume : 0;
+        float elapsed = 0;
+
+        if (play)
+        {
+            audioSource.volume = 0;
+            audioSource.Play();
+        }
+
+        // Fade in/out over the duration
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, endVolume, elapsed / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = endVolume; // snap volume to endVolume
+
+        if (!play)
+            audioSource.Stop();
     }
 }
