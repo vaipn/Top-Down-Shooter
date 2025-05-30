@@ -19491,6 +19491,7 @@ MonoBehaviour:
   bgmSlider: {fileID: 1474275960}
   bgmSliderText: {fileID: 1358118421}
   bgmParameter: bgm
+  friendlyFireToggle: {fileID: 89216902}
 --- !u!1 &1526031251
 GameObject:
   m_ObjectHideFlags: 0

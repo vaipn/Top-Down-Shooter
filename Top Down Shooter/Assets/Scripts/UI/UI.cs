@@ -10,7 +10,7 @@ public class UI : MonoBehaviour
     public UI_Ingame inGameUI {  get; private set; }
 	public UI_WeaponSelection weaponSelection { get; private set; }
 	public UI_GameOver gameOverUI { get; private set; }
-
+	public UI_Settings settingsUI { get; private set; }
 	public GameObject victoryScreenUI;
 	public GameObject pauseUI;
 
@@ -25,6 +25,7 @@ public class UI : MonoBehaviour
 		inGameUI = GetComponentInChildren<UI_Ingame>(true);
 		weaponSelection = GetComponentInChildren<UI_WeaponSelection>(true);
 		gameOverUI = GetComponentInChildren<UI_GameOver>(true);
+		settingsUI = GetComponentInChildren<UI_Settings>(true);
 	}
 	private void Start()
 	{
@@ -38,6 +39,9 @@ public class UI : MonoBehaviour
 			go.SetActive(false);
 
 		uiToSwitchOn.SetActive(true);
+
+		if (uiToSwitchOn == settingsUI.gameObject)
+			settingsUI.LoadSettings();
 	}
 
 	public void StartTheGame() => StartCoroutine(StartGameSequence());

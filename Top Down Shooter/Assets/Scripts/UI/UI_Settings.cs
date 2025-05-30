@@ -20,6 +20,9 @@ public class UI_Settings : MonoBehaviour
 	[SerializeField] private Slider bgmSlider;
 	[SerializeField] private TextMeshProUGUI bgmSliderText;
 	[SerializeField] private string bgmParameter;
+
+	[Header("Toggle")]
+	[SerializeField] private Toggle friendlyFireToggle;
 	public void SFXSliderValue(float value)
 	{
 		sfxSliderText.text = Mathf.RoundToInt(value * 100) + "%";
@@ -38,5 +41,29 @@ public class UI_Settings : MonoBehaviour
 	{
 		bool friendlyFire = GameManager.instance.friendlyFire;
 		GameManager.instance.friendlyFire = !friendlyFire;
+	}
+
+	public void LoadSettings()
+	{
+		sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, 0.5f);
+		bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, 0.8f);
+
+		int friendlyFireInt = PlayerPrefs.GetInt("FriendlyFire", 0);
+		bool friendlyFire = false;
+
+		if (friendlyFireInt == 1)
+			friendlyFire = true;
+
+		friendlyFireToggle.isOn = friendlyFire;
+	}
+
+	private void OnDisable()
+	{
+		bool friendlyFire = GameManager.instance.friendlyFire;
+		int friendlyFireInt = friendlyFire ? 1 : 0;
+
+		PlayerPrefs.SetInt("FriendlyFire", friendlyFireInt);
+		PlayerPrefs.SetFloat(sfxParameter, sfxSlider.value);
+		PlayerPrefs.SetFloat(bgmParameter, bgmSlider.value);
 	}
 }
