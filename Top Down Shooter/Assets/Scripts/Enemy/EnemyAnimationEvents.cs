@@ -6,12 +6,14 @@ public class EnemyAnimationEvents : MonoBehaviour
 {
     private Enemy enemy;
 	private EnemyMelee enemyMelee;
+	private EnemyRange enemyRange;
 	private EnemyBoss enemyBoss;
 
 	private void Awake()
 	{
 		enemy = GetComponentInParent<Enemy>();
 		enemyMelee = GetComponentInParent<EnemyMelee>();
+		enemyRange = GetComponentInParent<EnemyRange>();
 	}
 
 	public void AnimationTrigger() => enemy.AnimationTrigger();
@@ -20,7 +22,14 @@ public class EnemyAnimationEvents : MonoBehaviour
 	public void StopManualMovement() => enemy.ActivateManualMovement(false);
 	public void StartManualRotation() => enemy.ActivateManualRotation(true);
 	public void StopManualRotation() => enemy.ActivateManualRotation(false);
-	public void AbilityEvent() => enemy.AbilityTrigger();
+	public void AbilityEvent() 
+	{
+		enemy.AbilityTrigger();
+
+		enemy?.audioManager.PlaySFX(enemyRange?.rangeSFX.throwSFX, true);
+
+		enemy?.audioManager.PlaySFX(enemyMelee?.meleeSFX.throwSFX, true);
+	} 
 	public void EnableIK() => enemy.enemyVisuals.EnableIK(true, true, 1.5f);
 	public void BossJumpImpact()
 	{

@@ -53,6 +53,8 @@ public class EnemyRange : Enemy
 	public Transform playersBody;
 	public LayerMask whatToIgnore;
 
+	public EnemyRangeSFX rangeSFX {  get; private set; }
+
 	#region States
 	public IdleState_Range idleState { get; private set; }
 	public MoveState_Range moveState { get; private set; }
@@ -74,6 +76,8 @@ public class EnemyRange : Enemy
 		advanceToPlayerState = new AdvanceToPlayerState_Range(this, stateMachine, "Advance");
 		throwGrenadeState = new ThrowGrenadeState_Range(this, stateMachine, "ThrowGrenade");
 		deadState = new DeadState_Range(this, stateMachine, "Idle"); //idle is placeholder, we using ragdoll.
+
+		rangeSFX = GetComponent<EnemyRangeSFX>();
 	}
 
 	protected override void Start()
