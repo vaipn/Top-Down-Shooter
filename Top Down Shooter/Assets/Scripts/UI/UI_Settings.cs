@@ -45,7 +45,7 @@ public class UI_Settings : MonoBehaviour
 
 	public void LoadSettings()
 	{
-		sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, 0.5f);
+		sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, 0.8f);
 		bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, 0.8f);
 
 		int friendlyFireInt = PlayerPrefs.GetInt("FriendlyFire", 0);

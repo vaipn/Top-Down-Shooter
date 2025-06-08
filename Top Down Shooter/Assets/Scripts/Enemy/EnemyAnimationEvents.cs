@@ -18,7 +18,12 @@ public class EnemyAnimationEvents : MonoBehaviour
 
 	public void AnimationTrigger() => enemy.AnimationTrigger();
 
-	public void StartManualMovement() => enemy.ActivateManualMovement(true);
+	public void StartManualMovement() 
+	{
+		enemy.ActivateManualMovement(true);
+
+		enemy?.audioManager.PlaySFX(enemyBoss?.bossSFX.beforeJumpSFX, true);
+	} 
 	public void StopManualMovement() => enemy.ActivateManualMovement(false);
 	public void StartManualRotation() => enemy.ActivateManualRotation(true);
 	public void StopManualRotation() => enemy.ActivateManualRotation(false);
@@ -37,12 +42,16 @@ public class EnemyAnimationEvents : MonoBehaviour
 			enemyBoss = GetComponentInParent<EnemyBoss>();
 
 		enemyBoss.JumpImpact();
+
+		enemy?.audioManager.PlaySFX(enemyBoss?.bossSFX.jumpLandingSFX, true);
 	}
 	public void BeginMeleeAttackCheck()
 	{
 		enemy?.EnableMeleeAttackCheck(true);
 
 		enemy?.audioManager.PlaySFX(enemyMelee?.meleeSFX.kickSwooshSFX, true);
+
+		enemy?.audioManager.PlaySFX(enemyBoss?.bossSFX.punchSwooshSFX, true);
 	}
 	public void FinishMeleeAttackCheck() => enemy?.EnableMeleeAttackCheck(false);
 }

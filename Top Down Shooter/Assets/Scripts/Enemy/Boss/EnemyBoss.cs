@@ -55,11 +55,14 @@ public class EnemyBoss : Enemy
 	public DeadState_Boss deadState { get; private set; }
 
 	public EnemyBossVisuals bossVisuals { get; private set; }
+
+	public EnemyBossSFX bossSFX { get; private set; }
 	protected override void Awake()
 	{
 		base.Awake();
 
 		bossVisuals = GetComponent<EnemyBossVisuals>();
+		bossSFX = GetComponent<EnemyBossSFX>();
 
 		idleState = new IdleState_Boss(this, stateMachine, "Idle");
 		moveState = new MoveState_Boss(this, stateMachine, "Move");
@@ -128,6 +131,36 @@ public class EnemyBoss : Enemy
 
 		flameThrower.Clear();
 		flameThrower.Play();
+
+		//Audio
+		//bossSFX.flameStartSFX.Play();
+		StartCoroutine(PlayFlameLoopForDurationAfterDelay(flameThrowDuration - 1));
+		StartCoroutine(FadeOut(bossSFX.flameEndSFX, 1f));
+	}
+	IEnumerator PlayFlameLoopForDurationAfterDelay(float playDuration)
+	{
+		// Wait for some seconds before playing (delay)
+		yield return new WaitForSeconds(0.5f);
+
+		bossSFX.flameLoopSFX.Play();
+
+		// Wait for play duration then stop
+		yield return new WaitForSeconds(playDuration);
+
+		bossSFX.flameLoopSFX.Stop();
+	}
+	IEnumerator FadeOut(AudioSource audioSource, float fadeDuration)
+	{
+		float startVolume = audioSource.volume;
+
+		while (audioSource.volume > 0f)
+		{
+			audioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+			yield return null;
+		}
+
+		audioSource.Stop();
+		audioSource.volume = startVolume; // Reset for next play
 	}
 
 	public void ActivateHammer()
@@ -222,6 +255,7 @@ public class EnemyBoss : Enemy
 
 		if (Physics.Raycast(enemyEyeLevel, directionToPlayer, out RaycastHit hit, 100, ~whatToIgnore))
 		{
+			//Debug.Log("Object hit = "+hit.transform.name);
 			if (hit.transform.root == playerTransform.root)
 			{
 				Debug.Log("Player is in clear sight");
@@ -240,8 +274,8 @@ public class EnemyBoss : Enemy
 
 		if (playerTransform != null)
 		{
-			Vector3 enemyEyeLevel = transform.position + new Vector3(0, 1.55f, 0);
-			Vector3 playerEyeLevel = playerTransform.position + new Vector3(0, 1.55f, 0);
+			Vector3 enemyEyeLevel = transform.position + new Vector3(0, 1.5f, 0);
+			Vector3 playerEyeLevel = playerTransform.position + new Vector3(0, 1.4f, 0);
 
 			Gizmos.color = Color.green;
 
