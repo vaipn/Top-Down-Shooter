@@ -142,12 +142,12 @@ public class EnemyBoss : Enemy
 		// Wait for some seconds before playing (delay)
 		yield return new WaitForSeconds(0.5f);
 
-		bossSFX.flameLoopSFX.Play();
+		bossSFX.flameLoopSFX?.Play();
 
 		// Wait for play duration then stop
 		yield return new WaitForSeconds(playDuration);
 
-		bossSFX.flameLoopSFX.Stop();
+		bossSFX.flameLoopSFX?.Stop();
 	}
 	IEnumerator FadeOut(AudioSource audioSource, float fadeDuration)
 	{
