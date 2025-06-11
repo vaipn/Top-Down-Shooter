@@ -125,6 +125,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreciseAim"",
+                    ""type"": ""Button"",
+                    ""id"": ""73484307-fc67-480e-98a7-285ec3dc7d15"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""UI Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f159fad1-c0f3-4eac-a7c8-ab0d34636ff2"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreciseAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -339,6 +359,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Character_ToggleWeaponMode = m_Character.FindAction("Toggle Weapon Mode", throwIfNotFound: true);
         m_Character_Interaction = m_Character.FindAction("Interaction", throwIfNotFound: true);
         m_Character_UIPause = m_Character.FindAction("UI Pause", throwIfNotFound: true);
+        m_Character_PreciseAim = m_Character.FindAction("PreciseAim", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UIPause = m_UI.FindAction("UI Pause", throwIfNotFound: true);
@@ -420,6 +441,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_ToggleWeaponMode;
     private readonly InputAction m_Character_Interaction;
     private readonly InputAction m_Character_UIPause;
+    private readonly InputAction m_Character_PreciseAim;
     public struct CharacterActions
     {
         private @PlayerControls m_Wrapper;
@@ -435,6 +457,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @ToggleWeaponMode => m_Wrapper.m_Character_ToggleWeaponMode;
         public InputAction @Interaction => m_Wrapper.m_Character_Interaction;
         public InputAction @UIPause => m_Wrapper.m_Character_UIPause;
+        public InputAction @PreciseAim => m_Wrapper.m_Character_PreciseAim;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -477,6 +500,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @UIPause.started += instance.OnUIPause;
             @UIPause.performed += instance.OnUIPause;
             @UIPause.canceled += instance.OnUIPause;
+            @PreciseAim.started += instance.OnPreciseAim;
+            @PreciseAim.performed += instance.OnPreciseAim;
+            @PreciseAim.canceled += instance.OnPreciseAim;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -514,6 +540,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @UIPause.started -= instance.OnUIPause;
             @UIPause.performed -= instance.OnUIPause;
             @UIPause.canceled -= instance.OnUIPause;
+            @PreciseAim.started -= instance.OnPreciseAim;
+            @PreciseAim.performed -= instance.OnPreciseAim;
+            @PreciseAim.canceled -= instance.OnPreciseAim;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -590,6 +619,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnToggleWeaponMode(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnUIPause(InputAction.CallbackContext context);
+        void OnPreciseAim(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

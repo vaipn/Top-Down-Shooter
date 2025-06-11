@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerAim : MonoBehaviour
 {
     private Player player;
+	private CameraManager cameraManager;
     private PlayerControls controls;
 
     private Vector2 mouseInput;
@@ -16,12 +17,22 @@ public class PlayerAim : MonoBehaviour
 	[SerializeField] private LineRenderer aimLaser;
 
 
-	[Header("Aim control")]
+	[Header("Aim Control")]
+	[SerializeField] private float preciseAimCamDistance = 6;
+	[SerializeField] private float regularAimCamDistance = 10;
+	[SerializeField] private float camChangeRate = 5;
+
+	[Header("Aim Setup")]
 	[SerializeField] private Transform aim;
 	[SerializeField] private bool isAimingPrecisely;
-	[SerializeField] private bool isLockingToTarget;
+	[SerializeField] private float offsetChangeRate = 6;
+	private float offsetY;
 
-	[Header("Camera control")]
+	[Header("Aim Layers")]
+	public LayerMask preciseAimLayerMask;
+	public LayerMask regularAimLayerMask;
+
+	[Header("Camera Control")]
 	[SerializeField] private Transform cameraTarget;
 	[Range(0.5f, 1)]
 	[SerializeField] private float minCameraDistance = 1.5f;
@@ -31,11 +42,12 @@ public class PlayerAim : MonoBehaviour
 
 	private RaycastHit lastKnownHitPoint;
 
-	public LayerMask aimLayerMask;
 
 	private void Start()
 	{
 		player = GetComponent<Player>();
+		cameraManager = CameraManager.instance;
+
 		AssignInputEvents();
 	}
 	private void Update()
@@ -46,17 +58,32 @@ public class PlayerAim : MonoBehaviour
 		if (player.controlsEnabled == false)
 			return;
 
-		if (Input.GetKeyDown(KeyCode.P)) //precise aim toggle
-			isAimingPrecisely = !isAimingPrecisely;
+		//if (Input.GetKeyDown(KeyCode.P)) //precise aim toggle
+		//	isAimingPrecisely = !isAimingPrecisely;
 
-		if (Input.GetKeyDown(KeyCode.L))
-			isLockingToTarget = !isLockingToTarget;
+		//if (Input.GetKeyDown(KeyCode.L))
+		//	isLockingToTarget = !isLockingToTarget;
 
 		UpdateAimLaser();
 		UpdateAimPosition();
 		UpdateCameraPosition();
 	}
+	private void EnablePreciseAim(bool enable)
+	{
+		isAimingPrecisely = !isAimingPrecisely;
+		Cursor.visible = false;
 
+		if (enable)
+		{
+			cameraManager.ChangeCameraDistance(preciseAimCamDistance, camChangeRate);
+			Time.timeScale = 0.9f;
+		}
+		else
+		{
+			cameraManager.ChangeCameraDistance(regularAimCamDistance, camChangeRate);
+			Time.timeScale = 1;
+		}
+	}
 	private void UpdateAimLaser()
 	{
 		aim.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
@@ -92,33 +119,35 @@ public class PlayerAim : MonoBehaviour
 	}
 	private void UpdateAimPosition()
 	{
-		Transform target = TargetToLock();
-
-		if (target != null && isLockingToTarget)
-		{
-			aim.position = target.position;
-			return;
-		}
-
 		aim.position = GetMouseHitInfo().point;
 
-		if (!isAimingPrecisely)
-			aim.position = new Vector3(aim.position.x, transform.position.y + 1.3f, aim.position.z);
+		Vector3 newAimPosition = isAimingPrecisely ? aim.position : transform.position;
+
+		aim.position = new Vector3(aim.position.x, newAimPosition.y + AdjustedOffsetY(), aim.position.z);
 	}
 
-
-
-	public Transform TargetToLock()
+	private float AdjustedOffsetY()
 	{
-		Transform target = null;
+		if (isAimingPrecisely)
+			offsetY = Mathf.Lerp(offsetY, 0, Time.deltaTime * offsetChangeRate * 0.5f);
+		else
+			offsetY = Mathf.Lerp(offsetY, 1.3f, Time.deltaTime * offsetChangeRate);
 
-		if (GetMouseHitInfo().transform.GetComponent<Target>() != null)
-		{
-			target = GetMouseHitInfo().transform;
-		}
-
-		return target;
+		return offsetY;
 	}
+
+
+	//public Transform TargetToLock()
+	//{
+	//	Transform target = null;
+
+	//	if (GetMouseHitInfo().transform.GetComponent<Target>() != null)
+	//	{
+	//		target = GetMouseHitInfo().transform;
+	//	}
+
+	//	return target;
+	//}
 	public Transform Aim() => aim;
 
 	public bool CanAimPrecisely() => isAimingPrecisely;
@@ -128,7 +157,7 @@ public class PlayerAim : MonoBehaviour
 	{
 		Ray ray = Camera.main.ScreenPointToRay(mouseInput);
 
-		if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, aimLayerMask))
+		if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, preciseAimLayerMask))
 		{ 
 			lastKnownHitPoint = hitInfo;
 			return hitInfo;
@@ -155,6 +184,11 @@ public class PlayerAim : MonoBehaviour
 	}
 	private void UpdateCameraPosition()
 	{
+		bool canMoveCamera = Vector3.Distance(cameraTarget.position, DesiredCameraPosition()) > 1;
+
+		if (canMoveCamera == false)
+			return;
+
 		cameraTarget.position = Vector3.Lerp(cameraTarget.position, DesiredCameraPosition(), cameraSensitivity * Time.deltaTime);
 	}
 
@@ -162,6 +196,9 @@ public class PlayerAim : MonoBehaviour
 	private void AssignInputEvents()
 	{
 		controls = player.controls;
+
+		controls.Character.PreciseAim.performed += context => EnablePreciseAim(true);
+		controls.Character.PreciseAim.canceled += context => EnablePreciseAim(false);
 
 		controls.Character.Aim.performed += context => mouseInput = context.ReadValue<Vector2>();
 		controls.Character.Aim.canceled += context => mouseInput = Vector2.zero;

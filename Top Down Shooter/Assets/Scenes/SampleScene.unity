@@ -26165,16 +26165,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimLaser: {fileID: 1246984715}
+  preciseAimCamDistance: 6
+  regularAimCamDistance: 10
+  camChangeRate: 5
   aim: {fileID: 1391074560}
   isAimingPrecisely: 0
-  isLockingToTarget: 0
+  offsetChangeRate: 6
+  preciseAimLayerMask:
+    serializedVersion: 2
+    m_Bits: 6337
+  regularAimLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   cameraTarget: {fileID: 985588907}
   minCameraDistance: 0.5
   maxCameraDistance: 3
   cameraSensitivity: 4
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 7927
 --- !u!114 &2005153929
 MonoBehaviour:
   m_ObjectHideFlags: 0
