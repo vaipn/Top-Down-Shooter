@@ -59,6 +59,7 @@ public class PlayerAim : MonoBehaviour
 
 	private void UpdateAimLaser()
 	{
+		aim.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
 		aimLaser.enabled = player.weaponController.WeaponReady();
 
 		if (!aimLaser.enabled)
