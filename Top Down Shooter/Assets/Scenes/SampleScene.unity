@@ -3591,8 +3591,8 @@ RectTransform:
   - {fileID: 1358118420}
   m_Father: {fileID: 1321898033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMin: {x: 0.65, y: 0}
+  m_AnchorMax: {x: 0.65, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 234, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13187,6 +13187,12 @@ MonoBehaviour:
   navMeshSurface: {fileID: 1155367321}
   levelParts:
   - {fileID: 1551776024338887757, guid: 637576dbf51552142834c631c306f4f6, type: 3}
+  - {fileID: 2761732783408733036, guid: 047549fcab4b53e428ebf0c955888e50, type: 3}
+  - {fileID: 344561504900064319, guid: d72da90f32ea1304c83507d742401a3a, type: 3}
+  - {fileID: 1990789868430406224, guid: 1d7d46429e009bb4585eb449a59464bc, type: 3}
+  - {fileID: 7543869285160702219, guid: 852be70be64b96946abc6189fae2bb65, type: 3}
+  - {fileID: 2961092432926518290, guid: 6c0eed8ac5766974682b1e8ab8acf259, type: 3}
+  - {fileID: 1961009257641033207, guid: c7441dc3308dcfc409567612e043e980, type: 3}
   lastLevelPart: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
   nextSnapPoint: {fileID: 2011086803}
   generationCooldown: 0.25
@@ -13256,8 +13262,8 @@ RectTransform:
   - {fileID: 1225955570}
   m_Father: {fileID: 1438019167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.801, y: 0}
+  m_AnchorMax: {x: 0.801, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 234, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14318,7 +14324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic:
   - {fileID: 871969155}
-  playBackgroundMusic: 0
+  playBackgroundMusic: 1
 --- !u!4 &1127011857
 Transform:
   m_ObjectHideFlags: 0
@@ -14466,7 +14472,7 @@ RectTransform:
   m_Father: {fileID: 169176268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMax: {x: 0.65, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15444,7 +15450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50%
+  m_text: 80%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4c4e05f7d8b56542a1dce510e21d3e7, type: 2}
   m_sharedMaterial: {fileID: -3459236091167403587, guid: d4c4e05f7d8b56542a1dce510e21d3e7, type: 2}
@@ -17056,7 +17062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 80%
+  m_text: 65%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4c4e05f7d8b56542a1dce510e21d3e7, type: 2}
   m_sharedMaterial: {fileID: -3459236091167403587, guid: d4c4e05f7d8b56542a1dce510e21d3e7, type: 2}
@@ -18748,7 +18754,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.8
+  m_Value: 0.65
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -21212,63 +21218,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4657643777315235595, guid: bac7d428197e18748adf20022ffa4627, type: 3}
   m_PrefabInstance: {fileID: 1120189473}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1668522035
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 593296202396551607, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_Name
-      value: LevelPart - End
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 292.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 93.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
 --- !u!1 &1674283898
 GameObject:
   m_ObjectHideFlags: 0
@@ -21900,7 +21849,7 @@ RectTransform:
   m_Father: {fileID: 1946228218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.801, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26600,7 +26549,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.801
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -35969,7 +35918,6 @@ SceneRoots:
   - {fileID: 67285889}
   - {fileID: 356156823}
   - {fileID: 1120189473}
-  - {fileID: 1668522035}
   - {fileID: 948123185}
   - {fileID: 541092439}
   - {fileID: 417983054}
