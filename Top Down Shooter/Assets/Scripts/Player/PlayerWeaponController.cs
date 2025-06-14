@@ -161,11 +161,11 @@ public class PlayerWeaponController : MonoBehaviour
 		if (!WeaponReady())
 			return;
 
-		if (!currentWeapon.CanShoot())
-		{
+		if (!currentWeapon.HaveEnoughBullets())
 			player.soundFX.outOfAmmo.Play();
+
+		if (!currentWeapon.CanShoot())
 			return;
-		}
 
 		if (currentWeapon.shootType == ShootType.Single)
 			isShooting = false;

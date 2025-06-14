@@ -160,7 +160,7 @@ public class Weapon
 	#endregion
 	public bool CanShoot() => HaveEnoughBullets() && ReadyToFire();
 
-	private bool HaveEnoughBullets() => bulletsInMagazine > 0;
+	public bool HaveEnoughBullets() => bulletsInMagazine > 0;
 
 	private bool ReadyToFire()
 	{
