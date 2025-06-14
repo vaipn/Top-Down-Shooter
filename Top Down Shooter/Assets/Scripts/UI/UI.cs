@@ -32,6 +32,8 @@ public class UI : MonoBehaviour
 		AssignInputsUI();
 
 		StartCoroutine(ChangeImageAlpha(0, 1.5f, null));
+
+		settingsUI.LoadSettings();
 	}
 	public void SwitchTo(GameObject uiToSwitchOn)
 	{
