@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
