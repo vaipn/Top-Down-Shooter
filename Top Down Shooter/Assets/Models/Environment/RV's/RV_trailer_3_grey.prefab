@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8571840769788963114}
   - component: {fileID: 3458355447136426567}
   - component: {fileID: 5083045867185348930}
+  - component: {fileID: 3529128779822352806}
   m_Layer: 0
   m_Name: RV_trailer_3_grey
   m_TagString: Untagged
@@ -105,3 +106,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3442802, y: 2.4636958, z: 7.1123705}
   m_Center: {x: 0.07245499, y: 1.2006568, z: -0.15769815}
+--- !u!114 &3529128779822352806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683053231538366312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a75c31cb53ec7d479fb0a64eccefd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coverPointPrefab: {fileID: 3792518821371700210, guid: 066824deee3e49b438b3c67d86c8784b, type: 3}
+  coverPoints: []
+  xOffset: 1.5
+  yOffset: 0.5
+  zOffset: 4.5

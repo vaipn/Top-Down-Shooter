@@ -17,6 +17,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
+      propertyPath: axeDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501497414171557135, guid: e48f54f4818cf974cbcdf25162f8bc5f, type: 3}
       propertyPath: meleeType
       value: 3
       objectReference: {fileID: 0}
