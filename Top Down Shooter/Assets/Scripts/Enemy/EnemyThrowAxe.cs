@@ -23,15 +23,15 @@ public class EnemyThrowAxe : MonoBehaviour
         this.player = player;
         this.timer = timer;
         this.damage = damage;
-    }
+
+        // capture direction at throw time
+		direction = player.position + Vector3.up - transform.position;
+	}
 
 	private void Update()
 	{
 		axeVisual.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
         timer -= Time.deltaTime;
-
-        if (timer > 0)
-            direction = player.position + Vector3.up - transform.position;
 
         transform.forward = rb.velocity; // to make sure axe is facing player
 	}
