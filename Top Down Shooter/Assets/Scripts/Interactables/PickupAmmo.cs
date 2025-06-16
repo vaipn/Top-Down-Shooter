@@ -41,6 +41,8 @@ public class PickupAmmo : Interactable
 
 		Debug.Log("Added Ammo to weapon");
 		ObjectPool.instance.ReturnObjectToPoolWithDelay(gameObject);
+
+		GameManager.instance.player.weaponController.UpdateWeaponUI();
 	}
 	private int GetAmmoAmount(AmmoData ammoData)
 	{
