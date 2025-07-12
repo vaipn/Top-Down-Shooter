@@ -12062,10 +12062,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshSurface: {fileID: 1155367321}
   levelParts:
-  - {fileID: 2761732783408733036, guid: 047549fcab4b53e428ebf0c955888e50, type: 3}
-  - {fileID: 1551776024338887757, guid: 637576dbf51552142834c631c306f4f6, type: 3}
-  - {fileID: 344561504900064319, guid: d72da90f32ea1304c83507d742401a3a, type: 3}
-  - {fileID: 1990789868430406224, guid: 1d7d46429e009bb4585eb449a59464bc, type: 3}
   - {fileID: 1961009257641033207, guid: c7441dc3308dcfc409567612e043e980, type: 3}
   lastLevelPart: {fileID: 3966566735694463111, guid: 83262a10d4d27134e9e355b014a55fc7, type: 3}
   nextSnapPoint: {fileID: 2011086803}
