@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
 	private Player player;
-	private const float REFERENCE_BULLET_SPEED = 500; // This is the default speed from which our mass formula is derived
+	private const float REFERENCE_BULLET_SPEED = 20; // This is the default speed from which our mass formula is derived
 
 	[SerializeField] private LayerMask whatIsAlly;
 	[Space]
@@ -201,7 +201,7 @@ public class PlayerWeaponController : MonoBehaviour
 		Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 
 		rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
-		rbNewBullet.velocity = bulletsDirection * bulletSpeed * Time.deltaTime;
+		rbNewBullet.velocity = bulletsDirection * bulletSpeed;
 	}
 
 	private void Reload()
