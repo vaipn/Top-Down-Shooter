@@ -13,6 +13,8 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	private UI_SelectedWeaponWindow emptySlot;
 
+	private Button thisButton;
+
 	private void OnValidate()
 	{
 		gameObject.name = "Button - Select Weapon: " + weaponData.weaponType;
@@ -22,12 +24,16 @@ public class UI_WeaponSelectionButton : UI_Button
 	{
 		base.Start();
 
+		thisButton = this.GetComponent<Button>();
+
 		weaponSelectionUI = GetComponentInParent<UI_WeaponSelection>();
 		weaponIcon.sprite = weaponData.weaponIcon;
 	}
 
 	public override void OnPointerEnter(PointerEventData eventData)
 	{
+		ReturnIfButtonUninteractable();
+
 		base.OnPointerEnter(eventData);
 
 		weaponIcon.color = Color.yellow;
@@ -38,6 +44,8 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	public override void OnPointerExit(PointerEventData eventData)
 	{
+		ReturnIfButtonUninteractable();
+
 		base.OnPointerExit(eventData);
 
 		weaponIcon.color = Color.white;
@@ -48,6 +56,8 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	public override void OnPointerDown(PointerEventData eventData)
 	{
+		ReturnIfButtonUninteractable();
+
 		base.OnPointerDown(eventData);
 
 		weaponIcon.color = Color.white;
@@ -76,5 +86,11 @@ public class UI_WeaponSelectionButton : UI_Button
 		}
 
 		emptySlot = null; // required, so OnPointerExit doesn't call UpdateSlotInfo(null) -- setting the slot info back to null
+	}
+
+	private void ReturnIfButtonUninteractable()
+	{
+		if (!thisButton.interactable)
+			return;
 	}
 }

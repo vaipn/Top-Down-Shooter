@@ -16288,7 +16288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7283019, g: 0.7076896, b: 0.7076896, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -24613,7 +24613,7 @@ MonoBehaviour:
     totalReserveAmmo: 0
   bulletImpactForce: 100
   bulletPrefab: {fileID: 280203576485290946, guid: 9e40ec3fafeed4f48b955e4be6793146, type: 3}
-  bulletSpeed: 1500
+  bulletSpeed: 35
   weaponHolder: {fileID: 779303515}
   weaponSlots:
   - weaponType: 3
