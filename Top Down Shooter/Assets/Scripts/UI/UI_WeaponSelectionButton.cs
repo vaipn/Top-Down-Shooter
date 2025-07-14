@@ -13,7 +13,6 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	private UI_SelectedWeaponWindow emptySlot;
 
-	private Button thisButton;
 
 	private void OnValidate()
 	{
@@ -24,15 +23,12 @@ public class UI_WeaponSelectionButton : UI_Button
 	{
 		base.Start();
 
-		thisButton = this.GetComponent<Button>();
-
 		weaponSelectionUI = GetComponentInParent<UI_WeaponSelection>();
 		weaponIcon.sprite = weaponData.weaponIcon;
 	}
 
 	public override void OnPointerEnter(PointerEventData eventData)
 	{
-		ReturnIfButtonUninteractable();
 
 		base.OnPointerEnter(eventData);
 
@@ -44,7 +40,6 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	public override void OnPointerExit(PointerEventData eventData)
 	{
-		ReturnIfButtonUninteractable();
 
 		base.OnPointerExit(eventData);
 
@@ -56,7 +51,6 @@ public class UI_WeaponSelectionButton : UI_Button
 
 	public override void OnPointerDown(PointerEventData eventData)
 	{
-		ReturnIfButtonUninteractable();
 
 		base.OnPointerDown(eventData);
 
@@ -88,9 +82,4 @@ public class UI_WeaponSelectionButton : UI_Button
 		emptySlot = null; // required, so OnPointerExit doesn't call UpdateSlotInfo(null) -- setting the slot info back to null
 	}
 
-	private void ReturnIfButtonUninteractable()
-	{
-		if (!thisButton.interactable)
-			return;
-	}
 }
