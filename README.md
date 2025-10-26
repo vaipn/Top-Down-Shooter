@@ -1,0 +1,1 @@
+Check out the itch.io page here: https://bobokan.itch.io/survival-shooter for info about its featues and practices adopted. The itch page also explains the controls, gameplay, and includes a gameplay video
